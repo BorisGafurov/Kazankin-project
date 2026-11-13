@@ -1,0 +1,11 @@
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+/target/
+.highgrade/local/
+.codex/
+/ui/dist/
+/ui/storybook-static/

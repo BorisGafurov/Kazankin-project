@@ -1,0 +1,9 @@
+{
+  "runners": [
+    {
+      "id": "browser-visual",
+      "command": "python3 -m http.server 3000",
+      "kind": "manual"
+    }
+  ]
+}

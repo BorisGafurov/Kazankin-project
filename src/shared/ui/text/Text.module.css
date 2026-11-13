@@ -1,0 +1,29 @@
+.text {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.body {
+  font-size: var(--text-body);
+}
+
+.body-sm {
+  font-size: var(--text-body-sm);
+}
+
+.lead {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #D6CBC0;
+}
+
+.caption {
+  font-size: var(--text-caption);
+  color: var(--color-gray-brown);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.muted {
+  color: var(--color-gray-brown);
+}

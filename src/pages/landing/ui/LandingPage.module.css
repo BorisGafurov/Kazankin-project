@@ -1,0 +1,17 @@
+.pageWrapper {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-warm-black);
+}
+
+.fullpageTrack {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-swipe);
+  will-change: transform;
+}

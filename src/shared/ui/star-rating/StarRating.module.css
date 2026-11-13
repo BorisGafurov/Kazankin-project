@@ -1,0 +1,15 @@
+.starRating {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.star {
+  color: #554D47;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.filled {
+  color: var(--color-star-gold);
+  text-shadow: 0 0 10px rgba(230, 163, 37, 0.4);
+}

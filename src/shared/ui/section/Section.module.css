@@ -1,0 +1,36 @@
+.section {
+  width: 100vw;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 85px 0 35px;
+  flex-shrink: 0;
+}
+
+.fullpage {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Themes */
+.dark {
+  background-color: var(--color-warm-black);
+  color: #FFFFFF;
+}
+
+.milk {
+  background-color: var(--color-milk);
+  color: var(--color-dark-text);
+  border-top: 1px solid rgba(200, 189, 176, 0.4);
+}
+
+.contact {
+  background: radial-gradient(ellipse at 50% 35%, #221715 0%, #0F0C0B 100%);
+  color: #FFFFFF;
+  border-top: 1px solid rgba(200, 189, 176, 0.15);
+  justify-content: space-between;
+  padding: 90px 0 0;
+}

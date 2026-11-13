@@ -1,0 +1,36 @@
+.footer {
+  width: 100%;
+  background-color: rgba(16, 13, 12, 0.98);
+  border-top: 1px solid rgba(200, 189, 176, 0.15);
+  padding: 24px 0;
+  color: var(--color-gray-brown);
+  font-size: 0.85rem;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .inner {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: var(--tracking-wider);
+  color: #E0D8D0;
+  text-transform: uppercase;
+}
+
+.geo {
+  font-size: 0.8rem;
+  color: #8C847C;
+  letter-spacing: var(--tracking-wide);
+}

@@ -1,0 +1,85 @@
+{
+  "status": "adapted",
+  "documents": [
+    {
+      "id": "readme",
+      "path": "README.md",
+      "role": "purpose-navigation",
+      "budget": {
+        "unit": "bytes",
+        "agreed": true,
+        "baseline": 4000,
+        "current": 5900,
+        "ceiling": 15000,
+        "history": []
+      },
+      "budget_status": "agreed",
+      "loading": "entry",
+      "scope": []
+    },
+    {
+      "id": "agents",
+      "path": "AGENTS.md",
+      "role": "agent-rules",
+      "budget": {
+        "unit": "bytes",
+        "agreed": true,
+        "baseline": 2000,
+        "current": 3300,
+        "ceiling": 10000,
+        "history": []
+      },
+      "budget_status": "agreed",
+      "loading": "entry",
+      "scope": []
+    },
+    {
+      "id": "architecture",
+      "path": "docs/ARCHITECTURE.md",
+      "role": "architecture",
+      "budget": {
+        "unit": "bytes",
+        "agreed": true,
+        "baseline": 3000,
+        "current": 12500,
+        "ceiling": 25000,
+        "history": []
+      },
+      "budget_status": "agreed",
+      "loading": "on_demand",
+      "scope": []
+    },
+    {
+      "id": "design-system",
+      "path": "docs/DESIGN_SYSTEM.md",
+      "role": "design-tokens",
+      "budget": {
+        "unit": "bytes",
+        "agreed": true,
+        "baseline": 3000,
+        "current": 11500,
+        "ceiling": 25000,
+        "history": []
+      },
+      "budget_status": "agreed",
+      "loading": "on_demand",
+      "scope": []
+    },
+    {
+      "id": "development",
+      "path": "docs/DEVELOPMENT.md",
+      "role": "engineering-development",
+      "budget": {
+        "unit": "bytes",
+        "agreed": true,
+        "baseline": 2500,
+        "current": 4900,
+        "ceiling": 15000,
+        "history": []
+      },
+      "budget_status": "agreed",
+      "loading": "on_demand",
+      "scope": []
+    }
+  ]
+}

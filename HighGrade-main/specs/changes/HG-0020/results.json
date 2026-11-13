@@ -1,0 +1,2150 @@
+{
+  "acceptance": [
+    {
+      "change_sha256": "0c96bcc7062cb4d2a61b501dd6dded53412901a4e2aa8eb72c5c0b107ceedd64",
+      "comment": "По явному поручению автора в текущей сессии подтвердить спеки HG-0020 и HG-0021 перед активацией и публикацией.",
+      "decided_at": 1790357815,
+      "decided_by": "автор проекта",
+      "decision": "accepted",
+      "inputs_sha256": "6ce6d16608f3da12ed9bd1c985d23d4f151134dab1ac69ab01162608ee6c4520",
+      "verified_revision": "581bd83ba8d9c87cf2a5b6963e3e89353aa1e139"
+    },
+    {
+      "change_sha256": "6b992990450fed102ad40d954f37f6b21cf312f3ba658c5d87359d32bf8d5771",
+      "comment": "По явному поручению автора текущей сессии подтвердить HG-0020 и HG-0021; обновление HG-0020 включает только адресную сверку статуса локальной активации.",
+      "decided_at": 1790358192,
+      "decided_by": "автор проекта",
+      "decision": "accepted",
+      "inputs_sha256": "4735423ecc887d50288952c3114216adc3e6c1b30ed3174e19b9842f48274e9c",
+      "verified_revision": "581bd83ba8d9c87cf2a5b6963e3e89353aa1e139"
+    }
+  ],
+  "evidence": {
+    "HG-0020-S1": {
+      "captured_at": "2026-09-25T17:40:34.293336+00:00",
+      "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+      "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+      "method": "manual",
+      "observation": "Автоматический маршрут проекта выбрал Planner; один Goal и один технический план охватили зависимые файлы без новой спеки. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+      "scenario": "HG-0020-S1",
+      "scenario_sha256": "3d792fb6478ea0554fcd75f032ef6cdf1e4d71d9efedc837a8505db4204ab9ab"
+    },
+    "HG-0020-S2": {
+      "captured_at": "2026-09-25T17:40:34.989520+00:00",
+      "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+      "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+      "method": "manual",
+      "observation": "Один Goal охватил HG-0001-T1 и HG-0002-T1; обе спеки перечитаны, задачи проверены, второй backlog не создан. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+      "scenario": "HG-0020-S2",
+      "scenario_sha256": "2f6e93b00d73b742ec7eac2c3ba7126eff801a9ec2eab3367e216de0bc082256"
+    },
+    "HG-0020-S3": {
+      "captured_at": "2026-09-25T17:40:35.700376+00:00",
+      "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+      "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+      "method": "manual",
+      "observation": "Разовая независимая правка выполнена напрямую; create_goal не вызван и плана нет. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+      "scenario": "HG-0020-S3",
+      "scenario_sha256": "1b927e36505c20ee57b70b3b672b3ad3026872a2cb1c71ef3d0e29b81c6e2d33"
+    },
+    "HG-0020-S4": {
+      "captured_at": "2026-09-25T17:40:36.408560+00:00",
+      "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+      "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+      "method": "manual",
+      "observation": "Goal содержал поэтапный результат и барьеры; состояние имело ровно один Next до завершения всей цепочки. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+      "scenario": "HG-0020-S4",
+      "scenario_sha256": "3dfc393930b453be8d24a99ca0a44b77bf3f6bfa3b31a051f7a7880362d00494"
+    },
+    "HG-0020-S5": {
+      "captured_at": "2026-09-25T17:40:37.137974+00:00",
+      "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+      "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+      "method": "manual",
+      "observation": "После прерывания и порчи входа агент перечитал состояние и файл, восстановил BASE, затем проверил DERIVED:BASE; преждевременного завершения Goal нет. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+      "scenario": "HG-0020-S5",
+      "scenario_sha256": "33814c69b23d7e6facc2cba1d51ac56b13d37d0d53e07303cbdca5b4d71ab101"
+    },
+    "HG-0020-S6": {
+      "captured_at": "2026-09-25T17:40:37.858974+00:00",
+      "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+      "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+      "method": "manual",
+      "observation": "Новая цепочка при занятом Goal не заменила его и не создала зависимые файлы; независимая подготовка сохранена. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+      "scenario": "HG-0020-S6",
+      "scenario_sha256": "3c32fff6d3a0834381d5c4be41a208131a7d9b86a89cfa5bcba3715dd232f253"
+    },
+    "HG-0020-S7": {
+      "captured_at": "2026-09-25T17:40:38.599205+00:00",
+      "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+      "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+      "method": "manual",
+      "observation": "Goal для запроса только на план завершён проверенным планом; файлы реализации не созданы. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+      "scenario": "HG-0020-S7",
+      "scenario_sha256": "548b3345023b7f5842010272294b296c51ca1755dc7529387c44eeb68d1a993c"
+    },
+    "HG-0020-S8": {
+      "captured_at": "2026-09-25T17:40:39.347493+00:00",
+      "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+      "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+      "method": "manual",
+      "observation": "Коммит, общая активация, push, интеграция и человеческое решение не выводились из Goal; пилоты остановлены в заданных границах. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+      "scenario": "HG-0020-S8",
+      "scenario_sha256": "7cae9eaf05689bd07f99bdcf9d5ff1a34cbcb0cd92067cb5f28fdbb07f41654b"
+    },
+    "HG-0020-S9": {
+      "captured_at": "2026-10-14T14:50:37.196111+00:00",
+      "command": "/home/lainterus/Projects/High Grade/target/debug/highgrade spec-run --root /home/lainterus/Projects/High Grade --id HG-0020 --check HG-0020-C4 --expected b9d64df347b8412f0c5458869c4495bd0df7417de181377391c5f9ab6d6a07b0",
+      "input_manifest_sha256": "2d5938f700522b4a6906713952634dfaa39d7089433bce305ac1c85839724d81",
+      "method": "native_report",
+      "observation": "Фактические объявленные проверки HG-0020-C4 прошли без пропусков; исходные native reports и расширенные pre-run hashes сохранены; фактическая after сверка дала inputs_unchanged=true, native declared inputs_after и текущая независимая сверка подтверждают байты. Подтверждается наблюдаемый контракт этих assertions; отдельные manual/агентные/внешние методы не подменяются. Archived definitions сохранены. Runtime/ancestor Cargo config не запечатаны этой областью.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/HG-0020-C4-1791989422769516816.log",
+      "scenario": "HG-0020-S9",
+      "scenario_sha256": "d5ed4419adbcc4fe5f930b3d18483ad5e83ae2d2b8d7ea998f489d5769cdc4df"
+    }
+  },
+  "history": {
+    "entries": [
+      {
+        "evidence": {},
+        "recorded_at": 1790348198,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350323,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350323,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac",
+          "HG-0020-S2": "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350324,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac",
+          "HG-0020-S2": "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f",
+          "HG-0020-S3": "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350325,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac",
+          "HG-0020-S2": "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f",
+          "HG-0020-S3": "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c",
+          "HG-0020-S4": "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350325,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac",
+          "HG-0020-S2": "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f",
+          "HG-0020-S3": "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c",
+          "HG-0020-S4": "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870",
+          "HG-0020-S5": "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350326,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac",
+          "HG-0020-S2": "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f",
+          "HG-0020-S3": "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c",
+          "HG-0020-S4": "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870",
+          "HG-0020-S5": "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531",
+          "HG-0020-S6": "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350326,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac",
+          "HG-0020-S2": "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f",
+          "HG-0020-S3": "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c",
+          "HG-0020-S4": "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870",
+          "HG-0020-S5": "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531",
+          "HG-0020-S6": "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced",
+          "HG-0020-S7": "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350327,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac",
+          "HG-0020-S2": "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f",
+          "HG-0020-S3": "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c",
+          "HG-0020-S4": "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870",
+          "HG-0020-S5": "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531",
+          "HG-0020-S6": "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced",
+          "HG-0020-S7": "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2",
+          "HG-0020-S8": "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350958,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd",
+          "HG-0020-S2": "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f",
+          "HG-0020-S3": "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c",
+          "HG-0020-S4": "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870",
+          "HG-0020-S5": "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531",
+          "HG-0020-S6": "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced",
+          "HG-0020-S7": "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2",
+          "HG-0020-S8": "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350958,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd",
+          "HG-0020-S2": "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a",
+          "HG-0020-S3": "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c",
+          "HG-0020-S4": "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870",
+          "HG-0020-S5": "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531",
+          "HG-0020-S6": "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced",
+          "HG-0020-S7": "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2",
+          "HG-0020-S8": "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350959,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd",
+          "HG-0020-S2": "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a",
+          "HG-0020-S3": "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a",
+          "HG-0020-S4": "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870",
+          "HG-0020-S5": "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531",
+          "HG-0020-S6": "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced",
+          "HG-0020-S7": "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2",
+          "HG-0020-S8": "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350960,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd",
+          "HG-0020-S2": "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a",
+          "HG-0020-S3": "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a",
+          "HG-0020-S4": "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80",
+          "HG-0020-S5": "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531",
+          "HG-0020-S6": "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced",
+          "HG-0020-S7": "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2",
+          "HG-0020-S8": "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350960,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd",
+          "HG-0020-S2": "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a",
+          "HG-0020-S3": "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a",
+          "HG-0020-S4": "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80",
+          "HG-0020-S5": "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231",
+          "HG-0020-S6": "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced",
+          "HG-0020-S7": "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2",
+          "HG-0020-S8": "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350961,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd",
+          "HG-0020-S2": "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a",
+          "HG-0020-S3": "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a",
+          "HG-0020-S4": "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80",
+          "HG-0020-S5": "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231",
+          "HG-0020-S6": "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9",
+          "HG-0020-S7": "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2",
+          "HG-0020-S8": "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350961,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd",
+          "HG-0020-S2": "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a",
+          "HG-0020-S3": "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a",
+          "HG-0020-S4": "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80",
+          "HG-0020-S5": "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231",
+          "HG-0020-S6": "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9",
+          "HG-0020-S7": "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc",
+          "HG-0020-S8": "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790350962,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd",
+          "HG-0020-S2": "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a",
+          "HG-0020-S3": "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a",
+          "HG-0020-S4": "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80",
+          "HG-0020-S5": "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231",
+          "HG-0020-S6": "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9",
+          "HG-0020-S7": "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc",
+          "HG-0020-S8": "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351078,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a",
+          "HG-0020-S3": "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a",
+          "HG-0020-S4": "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80",
+          "HG-0020-S5": "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231",
+          "HG-0020-S6": "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9",
+          "HG-0020-S7": "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc",
+          "HG-0020-S8": "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351079,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a",
+          "HG-0020-S4": "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80",
+          "HG-0020-S5": "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231",
+          "HG-0020-S6": "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9",
+          "HG-0020-S7": "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc",
+          "HG-0020-S8": "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351079,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80",
+          "HG-0020-S5": "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231",
+          "HG-0020-S6": "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9",
+          "HG-0020-S7": "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc",
+          "HG-0020-S8": "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351080,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231",
+          "HG-0020-S6": "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9",
+          "HG-0020-S7": "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc",
+          "HG-0020-S8": "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351081,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9",
+          "HG-0020-S7": "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc",
+          "HG-0020-S8": "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351081,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc",
+          "HG-0020-S8": "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351082,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351082,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351161,
+        "review": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351529,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351530,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351531,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351531,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351532,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351533,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351533,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351534,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790351699,
+        "review": "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357163,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357163,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357164,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357165,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357166,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357166,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357167,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357168,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2"
+        },
+        "recorded_at": 1790357244,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790357362,
+        "review": "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358034,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358035,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358035,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358036,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca",
+          "HG-0020-S5": "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358037,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca",
+          "HG-0020-S5": "27a2c9fa485fe347070758ff0352ba47e557c2995171ac0eddc3e880098db981",
+          "HG-0020-S6": "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358037,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca",
+          "HG-0020-S5": "27a2c9fa485fe347070758ff0352ba47e557c2995171ac0eddc3e880098db981",
+          "HG-0020-S6": "e085a3520be1dfdeabe701ed5fa1c168e402f6dd426291bb94e645ea6786216b",
+          "HG-0020-S7": "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358038,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca",
+          "HG-0020-S5": "27a2c9fa485fe347070758ff0352ba47e557c2995171ac0eddc3e880098db981",
+          "HG-0020-S6": "e085a3520be1dfdeabe701ed5fa1c168e402f6dd426291bb94e645ea6786216b",
+          "HG-0020-S7": "63fd69cb44d082d72bb98de4afa09d828627db5409296bd5b19b8f521e7e0dc7",
+          "HG-0020-S8": "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358039,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca",
+          "HG-0020-S5": "27a2c9fa485fe347070758ff0352ba47e557c2995171ac0eddc3e880098db981",
+          "HG-0020-S6": "e085a3520be1dfdeabe701ed5fa1c168e402f6dd426291bb94e645ea6786216b",
+          "HG-0020-S7": "63fd69cb44d082d72bb98de4afa09d828627db5409296bd5b19b8f521e7e0dc7",
+          "HG-0020-S8": "b301fe24787cf648f6e05ff470a3cd952eb82b91bbea6a4819e9d548d2268def",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1790358191,
+        "review": "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca",
+          "HG-0020-S5": "27a2c9fa485fe347070758ff0352ba47e557c2995171ac0eddc3e880098db981",
+          "HG-0020-S6": "e085a3520be1dfdeabe701ed5fa1c168e402f6dd426291bb94e645ea6786216b",
+          "HG-0020-S7": "63fd69cb44d082d72bb98de4afa09d828627db5409296bd5b19b8f521e7e0dc7",
+          "HG-0020-S8": "b301fe24787cf648f6e05ff470a3cd952eb82b91bbea6a4819e9d548d2268def",
+          "HG-0020-S9": "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee"
+        },
+        "recorded_at": 1791989425,
+        "review": "67378ce66207ccc42851080774ee274c6fcb09e95ff8dcc5ab46a3a0c45cedcf"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca",
+          "HG-0020-S5": "27a2c9fa485fe347070758ff0352ba47e557c2995171ac0eddc3e880098db981",
+          "HG-0020-S6": "e085a3520be1dfdeabe701ed5fa1c168e402f6dd426291bb94e645ea6786216b",
+          "HG-0020-S7": "63fd69cb44d082d72bb98de4afa09d828627db5409296bd5b19b8f521e7e0dc7",
+          "HG-0020-S8": "b301fe24787cf648f6e05ff470a3cd952eb82b91bbea6a4819e9d548d2268def",
+          "HG-0020-S9": "ef4a0acd8f6b7c16912152d45de48beb8d1e9146053394da31971e2fdc0b9974"
+        },
+        "recorded_at": 1791989815,
+        "review": "67378ce66207ccc42851080774ee274c6fcb09e95ff8dcc5ab46a3a0c45cedcf"
+      },
+      {
+        "evidence": {
+          "HG-0020-S1": "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a",
+          "HG-0020-S2": "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1",
+          "HG-0020-S3": "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77",
+          "HG-0020-S4": "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca",
+          "HG-0020-S5": "27a2c9fa485fe347070758ff0352ba47e557c2995171ac0eddc3e880098db981",
+          "HG-0020-S6": "e085a3520be1dfdeabe701ed5fa1c168e402f6dd426291bb94e645ea6786216b",
+          "HG-0020-S7": "63fd69cb44d082d72bb98de4afa09d828627db5409296bd5b19b8f521e7e0dc7",
+          "HG-0020-S8": "b301fe24787cf648f6e05ff470a3cd952eb82b91bbea6a4819e9d548d2268def",
+          "HG-0020-S9": "05eddcc01d4d51981a796f8f0bba2e934f352f34505ef40f006c21a352c1d8ec"
+        },
+        "recorded_at": 1791990302,
+        "review": "67378ce66207ccc42851080774ee274c6fcb09e95ff8dcc5ab46a3a0c45cedcf"
+      }
+    ],
+    "objects": {
+      "0212e1dedb2eda2a29a40df8e9e9d163aed2afb47ddb8c67e058137e403c4fca": {
+        "captured_at": "2026-09-25T17:40:36.408560+00:00",
+        "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+        "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+        "method": "manual",
+        "observation": "Goal содержал поэтапный результат и барьеры; состояние имело ровно один Next до завершения всей цепочки. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+        "scenario": "HG-0020-S4",
+        "scenario_sha256": "3dfc393930b453be8d24a99ca0a44b77bf3f6bfa3b31a051f7a7880362d00494"
+      },
+      "028db8b09d8f5de48627126c4897ee278871da46695d165322344a14a4b71f33": {
+        "captured_at": "2026-09-25T17:26:06.761980+00:00",
+        "command": "Сверка исходного Codex CLI упражнения из agent-pilots.json/md с изменённым kit/procedures/work.md; см. work-compatibility-2026-09-26.md",
+        "input_manifest_sha256": "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b",
+        "method": "manual",
+        "observation": "Новая цепочка при занятом Goal не заменила его и не создала зависимые файлы; независимая подготовка сохранена. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md",
+        "scenario": "HG-0020-S6",
+        "scenario_sha256": "3c32fff6d3a0834381d5c4be41a208131a7d9b86a89cfa5bcba3715dd232f253"
+      },
+      "05a81ea3e8fa64a2fca72dc6a6e9b780dae0df5dc44c6f7b0a110248c5467265": {
+        "change_sha256": "b6750b9e81a179ab17b7bee3fe7a548fddd24499182171911b6a582a0bc59601",
+        "conclusion": "GO: S1-S8 сверены по локальным журналам Goal, точным синтетическим входам и хешам выходов; связь HG-0002 с HG-0001 сохранена. S9 подтвержден контрактом установки. Все девять доказательств актуальны; ручные прогоны не гарантируют выбор модели для каждого будущего запроса.",
+        "reviewer": "/root/planner_review",
+        "verdict": "go"
+      },
+      "05eddcc01d4d51981a796f8f0bba2e934f352f34505ef40f006c21a352c1d8ec": {
+        "captured_at": "2026-10-14T14:50:37.196111+00:00",
+        "command": "/home/lainterus/Projects/High Grade/target/debug/highgrade spec-run --root /home/lainterus/Projects/High Grade --id HG-0020 --check HG-0020-C4 --expected b9d64df347b8412f0c5458869c4495bd0df7417de181377391c5f9ab6d6a07b0",
+        "input_manifest_sha256": "2d5938f700522b4a6906713952634dfaa39d7089433bce305ac1c85839724d81",
+        "method": "native_report",
+        "observation": "Фактические объявленные проверки HG-0020-C4 прошли без пропусков; исходные native reports и расширенные pre-run/after hashes сохранены. Подтверждается наблюдаемый контракт этих assertions; отдельные manual/агентные/внешние методы не подменяются. Archived definitions сохранены. Runtime/ancestor Cargo config не запечатаны этой областью.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/HG-0020-C4-1791989422769516816.log",
+        "scenario": "HG-0020-S9",
+        "scenario_sha256": "d5ed4419adbcc4fe5f930b3d18483ad5e83ae2d2b8d7ea998f489d5769cdc4df"
+      },
+      "0769e9b71d5a1ec4940739f8133e7650b3fd7d49d1079608c82dbe51a3cc091a": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0",
+        "method": "manual",
+        "observation": "Разовая независимая правка выполнена напрямую; create_goal не вызван и плана нет.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S3",
+        "scenario_sha256": "1b927e36505c20ee57b70b3b672b3ad3026872a2cb1c71ef3d0e29b81c6e2d33"
+      },
+      "0d2b4695e558fa1a3e28904d1b8eb8ae5dbdfc01895e68dc990b55f82a175d19": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8",
+        "method": "manual",
+        "observation": "Один Goal охватил HG-0001-T1 и HG-0002-T1; обе спеки перечитаны, задачи проверены, второй backlog не создан.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S2",
+        "scenario_sha256": "2f6e93b00d73b742ec7eac2c3ba7126eff801a9ec2eab3367e216de0bc082256"
+      },
+      "0eafa88d539effa881cdb2f5d0e480a4274c200dded0d58a309aabef8b81e4f9": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a",
+        "method": "manual",
+        "observation": "Коммит, общая активация, push, интеграция и человеческое решение не выводились из Goal; пилоты остановлены в заданных границах.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S8",
+        "scenario_sha256": "7cae9eaf05689bd07f99bdcf9d5ff1a34cbcb0cd92067cb5f28fdbb07f41654b"
+      },
+      "0f81b587540a9b0b8f7d4589b2135d479bdb295a4f7a9f805fcc934ecc99a2f1": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0",
+        "method": "manual",
+        "observation": "Goal для запроса только на план завершён проверенным планом; файлы реализации не созданы.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S7",
+        "scenario_sha256": "548b3345023b7f5842010272294b296c51ca1755dc7529387c44eeb68d1a993c"
+      },
+      "12229ade5d6e2514b52e1938945fe0c8482bb529437ca87fbe9d12d262935278": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0",
+        "method": "manual",
+        "observation": "После прерывания и порчи входа агент перечитал состояние и файл, восстановил BASE, затем проверил DERIVED:BASE; преждевременного завершения Goal нет.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S5",
+        "scenario_sha256": "33814c69b23d7e6facc2cba1d51ac56b13d37d0d53e07303cbdca5b4d71ab101"
+      },
+      "1b9de4fd190602a990d4f085c13b7a1e2fbffbc40cbc769df7aabb6c911f10bb": {
+        "change_sha256": "d55bb0f7be07fe43ff1986d9fe8692535d6a1782895c41326375080499b88cb3",
+        "conclusion": "REVIEW_GO подтверждён для итоговой редакции: точные синтетические входы, связь двух спек, журналы Goal и хеши выходов сверены; после удаления временных проектов входы сохранены в отчёте и сырые сеансы доступны по ID. Все девять доказательств актуальны. Риск: ручные прогоны не гарантируют выбор модели на каждом будущем запросе.",
+        "reviewer": "/root/planner_review",
+        "verdict": "go"
+      },
+      "1dd3cdacace62e88c9a652f9586e932b0d17b46c29859378642878d8e851b21f": {
+        "captured_at": "2026-09-25T17:26:03.808233+00:00",
+        "command": "Сверка исходного Codex CLI упражнения из agent-pilots.json/md с изменённым kit/procedures/work.md; см. work-compatibility-2026-09-26.md",
+        "input_manifest_sha256": "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b",
+        "method": "manual",
+        "observation": "Один Goal охватил HG-0001-T1 и HG-0002-T1; обе спеки перечитаны, задачи проверены, второй backlog не создан. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md",
+        "scenario": "HG-0020-S2",
+        "scenario_sha256": "2f6e93b00d73b742ec7eac2c3ba7126eff801a9ec2eab3367e216de0bc082256"
+      },
+      "20be21e0e1aeabf9ae037d0408870058ae12069af18827912398acb435857cd2": {
+        "captured_at": "1790348195",
+        "command": "spec-run --id HG-0020 --check HG-0020-C4",
+        "input_manifest_sha256": "f09f0c51c7c39e34dd17dc0ab6309a252318f25776e8723e5094151f1e770dc6",
+        "method": "native_report",
+        "observation": "Результаты всех привязанных проверок сохранены в runs; подготовка и полнота входов требуют ревью",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/HG-0020-C4-1790348195363601700.log",
+        "scenario": "HG-0020-S9",
+        "scenario_sha256": "d5ed4419adbcc4fe5f930b3d18483ad5e83ae2d2b8d7ea998f489d5769cdc4df"
+      },
+      "27a2c9fa485fe347070758ff0352ba47e557c2995171ac0eddc3e880098db981": {
+        "captured_at": "2026-09-25T17:40:37.137974+00:00",
+        "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+        "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+        "method": "manual",
+        "observation": "После прерывания и порчи входа агент перечитал состояние и файл, восстановил BASE, затем проверил DERIVED:BASE; преждевременного завершения Goal нет. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+        "scenario": "HG-0020-S5",
+        "scenario_sha256": "33814c69b23d7e6facc2cba1d51ac56b13d37d0d53e07303cbdca5b4d71ab101"
+      },
+      "28caa157f0b23649be99e8ccc5964760948414bd1736b5d15e06cea0aab582ac": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a",
+        "method": "manual",
+        "observation": "Автоматический маршрут проекта выбрал Planner; один Goal и один технический план охватили зависимые файлы без новой спеки.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S1",
+        "scenario_sha256": "3d792fb6478ea0554fcd75f032ef6cdf1e4d71d9efedc837a8505db4204ab9ab"
+      },
+      "2ca47c7e625d8adbb3a3ceec3cbc565a43538e98809b054c569c060afdcaeced": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a",
+        "method": "manual",
+        "observation": "Новая цепочка при занятом Goal не заменила его и не создала зависимые файлы; независимая подготовка сохранена.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S6",
+        "scenario_sha256": "3c32fff6d3a0834381d5c4be41a208131a7d9b86a89cfa5bcba3715dd232f253"
+      },
+      "2d0bf46d18f2fc07da77843fff3179de54626927c94fab02ba3603e0c7e850b5": {
+        "captured_at": "2026-09-25T17:26:05.261058+00:00",
+        "command": "Сверка исходного Codex CLI упражнения из agent-pilots.json/md с изменённым kit/procedures/work.md; см. work-compatibility-2026-09-26.md",
+        "input_manifest_sha256": "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b",
+        "method": "manual",
+        "observation": "Goal содержал поэтапный результат и барьеры; состояние имело ровно один Next до завершения всей цепочки. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md",
+        "scenario": "HG-0020-S4",
+        "scenario_sha256": "3dfc393930b453be8d24a99ca0a44b77bf3f6bfa3b31a051f7a7880362d00494"
+      },
+      "3851296f2c8f0877f6880ac42a5ea26eb3813f6032a65f48611310a6b7a5e231": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0",
+        "method": "manual",
+        "observation": "После прерывания и порчи входа агент перечитал состояние и файл, восстановил BASE, затем проверил DERIVED:BASE; преждевременного завершения Goal нет.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S5",
+        "scenario_sha256": "33814c69b23d7e6facc2cba1d51ac56b13d37d0d53e07303cbdca5b4d71ab101"
+      },
+      "413f9be8ecde360118d1ca32e463df7795bc1808509b86f5999ae4cff1c6bb80": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0",
+        "method": "manual",
+        "observation": "Goal содержал поэтапный результат и барьеры; состояние имело ровно один Next до завершения всей цепочки.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S4",
+        "scenario_sha256": "3dfc393930b453be8d24a99ca0a44b77bf3f6bfa3b31a051f7a7880362d00494"
+      },
+      "41d0245f5eef69e23a25d0a770955a789347ae0a3a25428387b9b5fd0a97aedb": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8",
+        "method": "manual",
+        "observation": "Goal для запроса только на план завершён проверенным планом; файлы реализации не созданы.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S7",
+        "scenario_sha256": "548b3345023b7f5842010272294b296c51ca1755dc7529387c44eeb68d1a993c"
+      },
+      "4c4d5343b4f31e1d9fde7516bfbf641ad57054eb19bd3554b7361221aa1bc494": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0",
+        "method": "manual",
+        "observation": "Коммит, общая активация, push, интеграция и человеческое решение не выводились из Goal; пилоты остановлены в заданных границах.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S8",
+        "scenario_sha256": "7cae9eaf05689bd07f99bdcf9d5ff1a34cbcb0cd92067cb5f28fdbb07f41654b"
+      },
+      "4ff09d27a4de0c3f7fec6d6800aca2f889db49e52a4b10cd8b0aadc2d768eb7b": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0",
+        "method": "manual",
+        "observation": "Автоматический маршрут проекта выбрал Planner; один Goal и один технический план охватили зависимые файлы без новой спеки.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S1",
+        "scenario_sha256": "3d792fb6478ea0554fcd75f032ef6cdf1e4d71d9efedc837a8505db4204ab9ab"
+      },
+      "528d06e939789604073c60f40bbdd0657d7f126a1b00551db9f9ade2fb42ccd2": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a",
+        "method": "manual",
+        "observation": "Goal для запроса только на план завершён проверенным планом; файлы реализации не созданы.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S7",
+        "scenario_sha256": "548b3345023b7f5842010272294b296c51ca1755dc7529387c44eeb68d1a993c"
+      },
+      "52f63d6ede335ab03202f29dc77ba0aa5dfdfa4a28d57126691a17bbde0a34eb": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0",
+        "method": "manual",
+        "observation": "Коммит, общая активация, push, интеграция и человеческое решение не выводились из Goal; пилоты остановлены в заданных границах.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S8",
+        "scenario_sha256": "7cae9eaf05689bd07f99bdcf9d5ff1a34cbcb0cd92067cb5f28fdbb07f41654b"
+      },
+      "56dcbdc8dba94357f1f445bab0181827aff87456e08e3262508a3a8a44dee85c": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a",
+        "method": "manual",
+        "observation": "Разовая независимая правка выполнена напрямую; create_goal не вызван и плана нет.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S3",
+        "scenario_sha256": "1b927e36505c20ee57b70b3b672b3ad3026872a2cb1c71ef3d0e29b81c6e2d33"
+      },
+      "63fd69cb44d082d72bb98de4afa09d828627db5409296bd5b19b8f521e7e0dc7": {
+        "captured_at": "2026-09-25T17:40:38.599205+00:00",
+        "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+        "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+        "method": "manual",
+        "observation": "Goal для запроса только на план завершён проверенным планом; файлы реализации не созданы. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+        "scenario": "HG-0020-S7",
+        "scenario_sha256": "548b3345023b7f5842010272294b296c51ca1755dc7529387c44eeb68d1a993c"
+      },
+      "66caca9d06d2c39a1d145f6f6187c9fbd41d182df134fa4a5d10caf653166870": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a",
+        "method": "manual",
+        "observation": "Goal содержал поэтапный результат и барьеры; состояние имело ровно один Next до завершения всей цепочки.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S4",
+        "scenario_sha256": "3dfc393930b453be8d24a99ca0a44b77bf3f6bfa3b31a051f7a7880362d00494"
+      },
+      "67378ce66207ccc42851080774ee274c6fcb09e95ff8dcc5ab46a3a0c45cedcf": {
+        "change_sha256": "6b992990450fed102ad40d954f37f6b21cf312f3ba658c5d87359d32bf8d5771",
+        "conclusion": "Повторное независимое REVIEW_GO: после локальной активации изменена только строка статуса версии в проектной инструкции; правила Planner не менялись. S1-S8 исходные агентные пилоты плюс две адресные смысловые сверки, S9 свежий spec-run; все хеши актуальны. Ограничение: пилоты не гарантируют будущий выбор модели.",
+        "reviewer": "/root/planner_review",
+        "verdict": "go"
+      },
+      "6cf8700c4975eb46d19fae326ad22a1fb0660415fc769023aaf5f29bea172850": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8",
+        "method": "manual",
+        "observation": "Новая цепочка при занятом Goal не заменила его и не создала зависимые файлы; независимая подготовка сохранена.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S6",
+        "scenario_sha256": "3c32fff6d3a0834381d5c4be41a208131a7d9b86a89cfa5bcba3715dd232f253"
+      },
+      "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b": null,
+      "7594069ffab3b040227473ade874ba5850988cc2f7b5108fb2b09d8d1e7c67ee": {
+        "captured_at": "1790357242",
+        "command": "spec-run --id HG-0020 --check HG-0020-C4",
+        "input_manifest_sha256": "3b60b8a2fcc703fbe73d162a2ccbd1a34bd70f8f3b7072cc39f541c32f969895",
+        "method": "native_report",
+        "observation": "Результаты всех привязанных проверок сохранены в runs; подготовка и полнота входов требуют ревью",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/HG-0020-C4-1790357242968656600.log",
+        "scenario": "HG-0020-S9",
+        "scenario_sha256": "d5ed4419adbcc4fe5f930b3d18483ad5e83ae2d2b8d7ea998f489d5769cdc4df"
+      },
+      "77bf4d2c158ca820c7a1d89509e477aa37f25cad8b1a7f498268adfb9300ab9b": {
+        "captured_at": "2026-09-25T17:26:08.180922+00:00",
+        "command": "Сверка исходного Codex CLI упражнения из agent-pilots.json/md с изменённым kit/procedures/work.md; см. work-compatibility-2026-09-26.md",
+        "input_manifest_sha256": "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b",
+        "method": "manual",
+        "observation": "Коммит, общая активация, push, интеграция и человеческое решение не выводились из Goal; пилоты остановлены в заданных границах. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md",
+        "scenario": "HG-0020-S8",
+        "scenario_sha256": "7cae9eaf05689bd07f99bdcf9d5ff1a34cbcb0cd92067cb5f28fdbb07f41654b"
+      },
+      "77ef6cb6f5bcdec47073b5d6b5a5ff70e5ba4d4e096f8af6f994bc07121fe893": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0",
+        "method": "manual",
+        "observation": "Разовая независимая правка выполнена напрямую; create_goal не вызван и плана нет.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S3",
+        "scenario_sha256": "1b927e36505c20ee57b70b3b672b3ad3026872a2cb1c71ef3d0e29b81c6e2d33"
+      },
+      "7b703c4c1d6e33328f75fdf43ef98769fff3d464a69ccbb2549ae68cae3d36cd": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0",
+        "method": "manual",
+        "observation": "Автоматический маршрут проекта выбрал Planner; один Goal и один технический план охватили зависимые файлы без новой спеки.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S1",
+        "scenario_sha256": "3d792fb6478ea0554fcd75f032ef6cdf1e4d71d9efedc837a8505db4204ab9ab"
+      },
+      "82484e0806eeefe567ddd0cef85654270faea3474bc622662ee27ca5d6850760": {
+        "captured_at": "2026-09-25T17:26:04.517924+00:00",
+        "command": "Сверка исходного Codex CLI упражнения из agent-pilots.json/md с изменённым kit/procedures/work.md; см. work-compatibility-2026-09-26.md",
+        "input_manifest_sha256": "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b",
+        "method": "manual",
+        "observation": "Разовая независимая правка выполнена напрямую; create_goal не вызван и плана нет. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md",
+        "scenario": "HG-0020-S3",
+        "scenario_sha256": "1b927e36505c20ee57b70b3b672b3ad3026872a2cb1c71ef3d0e29b81c6e2d33"
+      },
+      "836ea2f162979730a955c1cff6383023f418dc30709a4ea9e004760f1b07e26f": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a",
+        "method": "manual",
+        "observation": "Один Goal охватил HG-0001-T1 и HG-0002-T1; обе спеки перечитаны, задачи проверены, второй backlog не создан.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S2",
+        "scenario_sha256": "2f6e93b00d73b742ec7eac2c3ba7126eff801a9ec2eab3367e216de0bc082256"
+      },
+      "99f7af64457ded925716f349a5a7cd914adc6d9ec7c3f4e569d3b140a7f11ee1": {
+        "captured_at": "2026-09-25T17:40:34.989520+00:00",
+        "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+        "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+        "method": "manual",
+        "observation": "Один Goal охватил HG-0001-T1 и HG-0002-T1; обе спеки перечитаны, задачи проверены, второй backlog не создан. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+        "scenario": "HG-0020-S2",
+        "scenario_sha256": "2f6e93b00d73b742ec7eac2c3ba7126eff801a9ec2eab3367e216de0bc082256"
+      },
+      "9b83bab9ca394eb481adaaf13bf77dc6a481333691de9f273acbea6da196c531": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a",
+        "method": "manual",
+        "observation": "После прерывания и порчи входа агент перечитал состояние и файл, восстановил BASE, затем проверил DERIVED:BASE; преждевременного завершения Goal нет.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S5",
+        "scenario_sha256": "33814c69b23d7e6facc2cba1d51ac56b13d37d0d53e07303cbdca5b4d71ab101"
+      },
+      "9c833fc9042915b505276ec23ee0dfeff2782905aeb699ab4dcfd1ca6d717184": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8",
+        "method": "manual",
+        "observation": "Разовая независимая правка выполнена напрямую; create_goal не вызван и плана нет.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S3",
+        "scenario_sha256": "1b927e36505c20ee57b70b3b672b3ad3026872a2cb1c71ef3d0e29b81c6e2d33"
+      },
+      "9f150462ff1c32820498d0ebd875a646a984a80c77706c858d7f0817c94bba8a": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0",
+        "method": "manual",
+        "observation": "Один Goal охватил HG-0001-T1 и HG-0002-T1; обе спеки перечитаны, задачи проверены, второй backlog не создан.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S2",
+        "scenario_sha256": "2f6e93b00d73b742ec7eac2c3ba7126eff801a9ec2eab3367e216de0bc082256"
+      },
+      "a7c3521461c5ab1e75b3fbde4f228518c96e02debcb0fff3a36e7997b1fda2dc": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0",
+        "method": "manual",
+        "observation": "Goal для запроса только на план завершён проверенным планом; файлы реализации не созданы.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S7",
+        "scenario_sha256": "548b3345023b7f5842010272294b296c51ca1755dc7529387c44eeb68d1a993c"
+      },
+      "b301fe24787cf648f6e05ff470a3cd952eb82b91bbea6a4819e9d548d2268def": {
+        "captured_at": "2026-09-25T17:40:39.347493+00:00",
+        "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+        "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+        "method": "manual",
+        "observation": "Коммит, общая активация, push, интеграция и человеческое решение не выводились из Goal; пилоты остановлены в заданных границах. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+        "scenario": "HG-0020-S8",
+        "scenario_sha256": "7cae9eaf05689bd07f99bdcf9d5ff1a34cbcb0cd92067cb5f28fdbb07f41654b"
+      },
+      "bafbf99e2fe9ee030a79fd7b7957ba1021cc4348316172cee6c3716fa7e958d9": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0",
+        "method": "manual",
+        "observation": "Новая цепочка при занятом Goal не заменила его и не создала зависимые файлы; независимая подготовка сохранена.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S6",
+        "scenario_sha256": "3c32fff6d3a0834381d5c4be41a208131a7d9b86a89cfa5bcba3715dd232f253"
+      },
+      "c1414092cefe61c332c246f858da1a85b351497227720bbbce3ced8d2102b604": {
+        "captured_at": "2026-09-25T17:26:07.463891+00:00",
+        "command": "Сверка исходного Codex CLI упражнения из agent-pilots.json/md с изменённым kit/procedures/work.md; см. work-compatibility-2026-09-26.md",
+        "input_manifest_sha256": "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b",
+        "method": "manual",
+        "observation": "Goal для запроса только на план завершён проверенным планом; файлы реализации не созданы. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md",
+        "scenario": "HG-0020-S7",
+        "scenario_sha256": "548b3345023b7f5842010272294b296c51ca1755dc7529387c44eeb68d1a993c"
+      },
+      "c2ed40591181567550edef40bfd687d2f3af4ab4296162d14d149ba7abc400dc": {
+        "change_sha256": "0c96bcc7062cb4d2a61b501dd6dded53412901a4e2aa8eb72c5c0b107ceedd64",
+        "conclusion": "Повторное независимое REVIEW_GO для текущих результатов: S1-S8 исходные агентные пилоты сохранены, изменённый work.md адресно сверен и не меняет Planner/Goal/полномочия; S9 fresh spec-run passed на итоговом манифесте. Ограничение: один набор пилотов не гарантирует будущий выбор модели.",
+        "reviewer": "/root/planner_review",
+        "verdict": "go"
+      },
+      "d112dc4a05371100c3de0123f56bd1b41ff17dc7550e181e94765321f1d04279": {
+        "captured_at": "2026-09-25T17:26:03.019218+00:00",
+        "command": "Сверка исходного Codex CLI упражнения из agent-pilots.json/md с изменённым kit/procedures/work.md; см. work-compatibility-2026-09-26.md",
+        "input_manifest_sha256": "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b",
+        "method": "manual",
+        "observation": "Автоматический маршрут проекта выбрал Planner; один Goal и один технический план охватили зависимые файлы без новой спеки. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md",
+        "scenario": "HG-0020-S1",
+        "scenario_sha256": "3d792fb6478ea0554fcd75f032ef6cdf1e4d71d9efedc837a8505db4204ab9ab"
+      },
+      "d622e6c7cdafcf72af59cf75b2308546d0cd6656787d432901983786fab659d1": {
+        "captured_at": "2026-09-25T17:26:06.017535+00:00",
+        "command": "Сверка исходного Codex CLI упражнения из agent-pilots.json/md с изменённым kit/procedures/work.md; см. work-compatibility-2026-09-26.md",
+        "input_manifest_sha256": "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b",
+        "method": "manual",
+        "observation": "После прерывания и порчи входа агент перечитал состояние и файл, восстановил BASE, затем проверил DERIVED:BASE; преждевременного завершения Goal нет. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md",
+        "scenario": "HG-0020-S5",
+        "scenario_sha256": "33814c69b23d7e6facc2cba1d51ac56b13d37d0d53e07303cbdca5b4d71ab101"
+      },
+      "d6576b735416167d6127d764d47ebb220855e995143877d0f2ad4ef55d529b77": {
+        "captured_at": "2026-09-25T17:40:35.700376+00:00",
+        "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+        "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+        "method": "manual",
+        "observation": "Разовая независимая правка выполнена напрямую; create_goal не вызван и плана нет. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+        "scenario": "HG-0020-S3",
+        "scenario_sha256": "1b927e36505c20ee57b70b3b672b3ad3026872a2cb1c71ef3d0e29b81c6e2d33"
+      },
+      "dd3b3fc3b3666d0ea7c46ca1257802127c4cc7e53781f26f9e4f869f86d2ad6a": {
+        "captured_at": "2026-09-25T17:40:34.293336+00:00",
+        "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+        "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+        "method": "manual",
+        "observation": "Автоматический маршрут проекта выбрал Planner; один Goal и один технический план охватили зависимые файлы без новой спеки. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+        "scenario": "HG-0020-S1",
+        "scenario_sha256": "3d792fb6478ea0554fcd75f032ef6cdf1e4d71d9efedc837a8505db4204ab9ab"
+      },
+      "e085a3520be1dfdeabe701ed5fa1c168e402f6dd426291bb94e645ea6786216b": {
+        "captured_at": "2026-09-25T17:40:37.858974+00:00",
+        "command": "Сверка единственной строки статуса активной версии в проектной инструкции с глобальным v0-2-17 и исходным агентным упражнением HG-0020",
+        "input_manifest_sha256": "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4",
+        "method": "manual",
+        "observation": "Новая цепочка при занятом Goal не заменила его и не создала зависимые файлы; независимая подготовка сохранена. После HG-0021 изменённый work.md адресно сверён с условиями этого сценария; поведенческий пилот не повторялся, ограничение описано в отчёте. После локальной активации изменённый статус выпуска адресно сверен; правила Planner и исходные наблюдения не изменились, агентный пилот не повторялся.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/activation-input-check.md",
+        "scenario": "HG-0020-S6",
+        "scenario_sha256": "3c32fff6d3a0834381d5c4be41a208131a7d9b86a89cfa5bcba3715dd232f253"
+      },
+      "ef4a0acd8f6b7c16912152d45de48beb8d1e9146053394da31971e2fdc0b9974": {
+        "captured_at": "1791989422",
+        "command": "spec-run --id HG-0020 --check HG-0020-C4",
+        "input_manifest_sha256": "db462dcd007b8fb71fdc47e53620392bd5c47d2ed68dac225f98f50b93382e66",
+        "method": "native_report",
+        "observation": "Результаты всех привязанных проверок сохранены в runs; подготовка и полнота входов требуют ревью",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/HG-0020-C4-1791989422769516816.log",
+        "scenario": "HG-0020-S9",
+        "scenario_sha256": "d5ed4419adbcc4fe5f930b3d18483ad5e83ae2d2b8d7ea998f489d5769cdc4df"
+      },
+      "ef7087459c2de2ddc210b71bf5c874f6336994f179d923d1b62a403bfa2f39dd": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8",
+        "method": "manual",
+        "observation": "Goal содержал поэтапный результат и барьеры; состояние имело ровно один Next до завершения всей цепочки.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S4",
+        "scenario_sha256": "3dfc393930b453be8d24a99ca0a44b77bf3f6bfa3b31a051f7a7880362d00494"
+      },
+      "f0ca92836f86e2e4ec15f2c24b07a58d2ce6ddbc152708d446b61107c8922cf3": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8",
+        "method": "manual",
+        "observation": "После прерывания и порчи входа агент перечитал состояние и файл, восстановил BASE, затем проверил DERIVED:BASE; преждевременного завершения Goal нет.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S5",
+        "scenario_sha256": "33814c69b23d7e6facc2cba1d51ac56b13d37d0d53e07303cbdca5b4d71ab101"
+      },
+      "f62e67eefcd8f026918178a1d0deb00b768a9b512db2069cd891071d02df57c7": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0",
+        "method": "manual",
+        "observation": "Новая цепочка при занятом Goal не заменила его и не создала зависимые файлы; независимая подготовка сохранена.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S6",
+        "scenario_sha256": "3c32fff6d3a0834381d5c4be41a208131a7d9b86a89cfa5bcba3715dd232f253"
+      },
+      "f8a0b8420d118c1bbd6252a5b2d8c201d843765de0445f0dad176080fe0f84fc": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8",
+        "method": "manual",
+        "observation": "Автоматический маршрут проекта выбрал Planner; один Goal и один технический план охватили зависимые файлы без новой спеки.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S1",
+        "scenario_sha256": "3d792fb6478ea0554fcd75f032ef6cdf1e4d71d9efedc837a8505db4204ab9ab"
+      },
+      "fafe1610792c050cd7a155001504f8eefecaf5a3f2cb483b4e381cbfcbf2de1a": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0",
+        "method": "manual",
+        "observation": "Один Goal охватил HG-0001-T1 и HG-0002-T1; обе спеки перечитаны, задачи проверены, второй backlog не создан.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S2",
+        "scenario_sha256": "2f6e93b00d73b742ec7eac2c3ba7126eff801a9ec2eab3367e216de0bc082256"
+      },
+      "fb319fa274cfdc48ca36d0e58866745fd0449c6855eb39d71cf757b8ffc73217": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8",
+        "method": "manual",
+        "observation": "Коммит, общая активация, push, интеграция и человеческое решение не выводились из Goal; пилоты остановлены в заданных границах.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S8",
+        "scenario_sha256": "7cae9eaf05689bd07f99bdcf9d5ff1a34cbcb0cd92067cb5f28fdbb07f41654b"
+      },
+      "fb9b412df46d87364c1babf433a4a9fd2306888408362b0191b1a5d2d91ba3f0": {
+        "captured_at": "2026-09-25T15:29:06Z",
+        "command": "Codex CLI isolated agent exercises; see agent-pilots.md and agent-pilots.json",
+        "input_manifest_sha256": "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0",
+        "method": "manual",
+        "observation": "Goal содержал поэтапный результат и барьеры; состояние имело ровно один Next до завершения всей цепочки.",
+        "outcome": "passed",
+        "report": "specs/changes/HG-0020/evidence/agent-pilots.md",
+        "scenario": "HG-0020-S4",
+        "scenario_sha256": "3dfc393930b453be8d24a99ca0a44b77bf3f6bfa3b31a051f7a7880362d00494"
+      }
+    }
+  },
+  "input_manifests": {
+    "2c32463108f0e4a92682800b2d4c214b4e0270cc126fa29cc1ce8e76ebb7f3e8": {
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "d2bd606c4021f483a03cbb5b0e99c85953dda532c13fcaf0b594080449a36257",
+        "AGENTS.md": "68b83371744eb3079a1975724be9c1e02f340e6fde45397c1fb84bb9373ee24b",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/procedures/task.md": "a3d5e7d69ba6eb862fc46adbd36d9d1f42f6340f0927094a9801cf1c3de7cb7a",
+        "kit/procedures/work.md": "b2d0e2056134dab27668628d2024a34c077367a9d1577c7da61464a24de113a8",
+        "kit/rules.md": "41de9cd5c8f2cf5e641269e6b590a8002f12285ea952ce99dec6db3a424140c3",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "kit/templates/AGENTS.md": "b42b3483f3c0983ee616b5418d1f96edf84784cc9b3fae1b6750f3a4bd035cb2",
+        "specs/changes/HG-0020/evidence/agent-pilots.json": "ecb40a1187c9957cd6d56f9e84e0d99f08e58a8ad6f6baee3690e17dcc55a448",
+        "specs/changes/HG-0020/evidence/agent-pilots.md": "f87e56f5ff6d8b866e3038d63d1c3e1d811330f25939f01221bc90a04e1f8814"
+      }
+    },
+    "2d5938f700522b4a6906713952634dfaa39d7089433bce305ac1c85839724d81": {
+      "files": {
+        "build.rs": "6cd78525443c843aeabb36db5d5c1379e129f388684b7730acbcbd50b732d3f0",
+        "kit/manifest.json": "892774a3f0e61cbf77f510ebb706901c7158be4e9b49db3eb7d799427567aa2b",
+        "kit/procedures/archive.md": "549d7d523d67ea5f9125d7947c5897c711c98fb9adf149ad26280de5d65982f8",
+        "kit/procedures/clear.md": "a3e44e3eb9452a69680930060b6e4e3d17a17c22c9a0b3ebe4d8ae356846c452",
+        "kit/procedures/commit.md": "333555909b94c1ecebc7db01cc4397cb2c01c31eb2ccaa4b83fe021a8a88711b",
+        "kit/procedures/fix.md": "40865267a94b3bdac08ad445865876266450cb858621c605cf2bee6eef1d95ae",
+        "kit/procedures/init.md": "b8a206f903cd639276343b51ee0706dc28e88c7b3e221a6e331170a37f1855bd",
+        "kit/procedures/planner.md": "64dc6cbe0b7f159495a82e5376c143328815678f101e5bdd533498d108b43ecb",
+        "kit/procedures/push.md": "a5dcff691329a50f4edc3cfd7d767fb25af97bc0329b01f50a03af83dbecd042",
+        "kit/procedures/spec.md": "8b82ceae81c29ebbc974c711c2163e4dc1c4660835a8795fa808ec903f1e9d3d",
+        "kit/procedures/task.md": "7c0ae4040cf12d4337a237bb087461e520735ee2dd56258f5329a49bb80a68d8",
+        "kit/procedures/update.md": "257c2d4eb1c1725060d017dc109282d57a204382b9c1be9b4f5a113642235f3e",
+        "kit/procedures/work.md": "f46a65cb48ece35784e4bf15e4865c70e1e2c2c8e2917e1d9d1ef5c5eb1b0d86",
+        "kit/references/audit.md": "f4d187f5053ad7f16a8b38f6ee311b824084460fab55e24f16881d499a014eeb",
+        "kit/references/clear-batches.md": "9c43b3aacc234f75a144467e74cff4ddc7374bfc2dfca25b19861937526dbfbd",
+        "kit/references/cli.md": "fb749c625fcafce54a859eaf59605ad604cc9bbe3883b9a101eac3309572368c",
+        "kit/references/documentation.md": "bf235992df204e9019e2a81a7d4392022c742d01b9214f4833910267fea6017b",
+        "kit/references/release-notes.json": "855c939e301242efe0e0bd0a93dfbb32e75515b84379117bdc9f370439ef00b6",
+        "kit/references/review.md": "647ab5b9a513171aadde4a460cbb20ad13c12ecd82fd55f98615f4c947d4e2f6",
+        "kit/references/survey-schema.json": "7d0332a5e7e409a923064b767c498234ebcd0b3b0bed41eb0ee6fafb47340f5c",
+        "kit/references/tools/diagnostics.md": "e33dbe06336b50f0b56b503b51aaab316c2e4b7ce64c3f02557a572acc71f384",
+        "kit/references/tools/installation.md": "31fba5ec9d0a696e3b13d00e7efd0dd284947054535e23f5cb35653c38753e79",
+        "kit/references/tools/issues.md": "372076f3e19cd954612c1b3683bd76ad54a5c91e53f3b100092ab4c1c1109d29",
+        "kit/references/tools/specifications.md": "b161ef5dd96b7d4c236b0e18ae51cb1778fe424dc01be5d950617bf87c88d141",
+        "kit/references/tools/survey.md": "86fd37a8e407028be4874f8f44ba7d842d7d317261a4663e453dee5b0229a093",
+        "kit/references/tools/verification.md": "4b0c6a6533e13a9a003e4bb764f2957f5cfa11dce71b95b868bec3a659c34b4c",
+        "kit/rules.md": "4000cc811d695a99bd03098c55adf7f4eacd2aba65b2bb9a9a9ac948acf566f8",
+        "kit/skills/highgrade-clear/SKILL.md": "a996860d902af29e537d0cf73742681fe2c07f67983f0a1f1532d9f1a7bad0dc",
+        "kit/skills/highgrade-commit/SKILL.md": "f5ed2d26b7cf8586db35d3d4486defb1f84d9573441af52c84447975b86be7a7",
+        "kit/skills/highgrade-init/SKILL.md": "63931637e6e374ae2f7e83a02d942fab6d3bcc39c12a3b7fd61c6ffebd0eed9c",
+        "kit/skills/highgrade-planner/SKILL.md": "0622520a8850cbdb0d9329e895a910657679feedbcd6880c9266a51735bee26a",
+        "kit/skills/highgrade-push/SKILL.md": "b799e2c3e0fc9b97da3877d201022160a30de1b5eac449578db3c81045ca1a08",
+        "kit/skills/highgrade-spec/SKILL.md": "d9501c7f5c80f2fec56effb35c943272c785444c1544e7b272ce7992592adf5e",
+        "kit/skills/highgrade-task/SKILL.md": "6bd2b92bd0a7e35ee9f6b9022c51ded9252025a0573b271c59b9dfa4a6ebea40",
+        "kit/skills/highgrade-update/SKILL.md": "8a8410ff4c12d698079f87a25073dafc5524f4c579462b1f08c1512185a44b24",
+        "kit/skills/highgrade-work/SKILL.md": "590c7d718364b0239936be5511fdc3d098de3a6f54aeff34633616aafd816bb5",
+        "kit/templates/AGENTS.md": "0ead95e09c686db0f636a617eae9452e5104d8e0a66df19e6c7ed138b884eb79",
+        "kit/templates/ARCHITECTURE.md": "6b9b1c520e39424ffa63889bc7b9dbbd6038a6197e3c19dc8a75b8fa88a1b84c",
+        "kit/templates/DEVELOPMENT.md": "123bb8902ae259b2328bcd13d979d3d440f5677ac063fceb5c24a11bbcf6789a",
+        "kit/templates/ENGINEERING.md": "c643b91ade0ffbc4f6ffdf9b2fa7594d5fce3e35f72efcbdf6eb6abd781e74c3",
+        "kit/templates/INSTRUCTIONS.md": "77e4a467629c6dc4f021ceec66dbe04414bf94acf643e87164e49ff3e7ff4b03",
+        "kit/templates/README.md": "7909d3e4414deb692cfa919ce20394be7aefa2c30323169de361f20625ee5585",
+        "kit/templates/survey.json": "5770ae47940553cf4ba2a002ed393b464aa61abf92f7fa60ae489c613735dfbd",
+        "kit/tools/clear_batch.py": "b885e32824475f20eba64693de77ae094ff18efff607b60bd521f237143ab24a",
+        "specs/changes/HG-0020/evidence/HG-0020-C4-1791989422769516816.log": "b35f7129f17701094f60c0b92835470388934ce3a1cfa0fccc695d6f8892a478",
+        "src/global.rs": "74a54e5ffd7d0e62b3f640ea89f87d6cf0f8970821f0129227cfa35ec5a052d9",
+        "src/install.rs": "c428d9e11258e0f35da2b3c1b9b2be790d7b36b1b2f34166e038e68286662c7a",
+        "src/launcher.rs": "39bb3241b0066df78c3d951fbefb14b2d8104b72c99e7aff6fe85c71aa37ac37",
+        "src/launcher/ui.cmd": "c31c2718e548db8d087b9488b09d42f3e4fe5b8256935d19c3787ee4f15c5156",
+        "src/launcher/ui.sh": "8645eb427ca8d404645241e6f78c878d850c81f15b41cf87b3a867c9bf0b158b",
+        "src/lib.rs": "d48544fe69585080d1288c14dca4520f7d648b889b18e1556a9e3b105f668a2b",
+        "src/main.rs": "1fe647567e5172c1d7cea4e4f84db28ab09e19cb779beb56f10e6944c545e4ce",
+        "src/package.rs": "7188f9454a074a626ee025bd042a6117f9ff2c05b970ff04e39a24bc190cc292",
+        "src/paths.rs": "3c74c09b4a7742c09c0ab68ed58871b42c956b56b8408bd75e00b0991aacfb00",
+        "src/release_notes.rs": "0d6364752592e14fdf1c26ff03cc70be90f84df8173038d5085db948898fc2d0",
+        "src/ui.rs": "a0d1b091355ef6353179330fa1ef02f1edf52b5816f759f954734f1fd28e3b09",
+        "src/ui/bundle.rs": "6caa17bfae762c66f8e870cd2a35b977d349299b1a726c1399d04103b8b7df3d",
+        "tests/global_contracts.rs": "2cb7807755b68bb12ba98cc5dc6281b4eb7565c66d7f82e30cba422bb147683e",
+        "tests/support/mod.rs": "a462e687c5795d30ae1d0f15a5c15b3c2568915b42e5bfd99b87595c3f5f2156",
+        "ui/dist/Manrope.ttf": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+        "ui/dist/assets/Lora-C1B0tkav.ttf": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7",
+        "ui/dist/assets/Manrope-DIRNzeTG.ttf": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+        "ui/dist/assets/index-Bl2gtMT7.js": "2771a2d02fea9c0ed5f7011a3d259a1cfedece910c01a291d8bf595f0ceb8517",
+        "ui/dist/assets/index-ODlF3-na.css": "1bf868aec19982fe5201e84e1e40ffce64f9fcd3a9eed8659b17fd329d2d7d8d",
+        "ui/dist/assets/mark-iVh24ir5.svg": "6788732e8f6b40cf62eff121bb832fce02c8f66251d6f5c6f4a0bb217d917f55",
+        "ui/dist/assets/wordmark-DaoQrXCV.svg": "0eb40589926d940784fe7c89a580b52a91b8a3435f06da77f51df747fedd2705",
+        "ui/dist/brand.svg": "0eb40589926d940784fe7c89a580b52a91b8a3435f06da77f51df747fedd2705",
+        "ui/dist/brand/mark-mono.svg": "17b4942a9d25a4ad5bb93f0d0b64425d134bc613650dbb53a08bb2fd318a3a9b",
+        "ui/dist/brand/mark.svg": "6788732e8f6b40cf62eff121bb832fce02c8f66251d6f5c6f4a0bb217d917f55",
+        "ui/dist/brand/wordmark-mono.svg": "06f834aa1a81c44fd620774c52f0fd087f6024be0fb4a4f46245e2aacbfb0401",
+        "ui/dist/brand/wordmark.svg": "0eb40589926d940784fe7c89a580b52a91b8a3435f06da77f51df747fedd2705",
+        "ui/dist/favicon.svg": "6788732e8f6b40cf62eff121bb832fce02c8f66251d6f5c6f4a0bb217d917f55",
+        "ui/dist/fonts/Lora.ttf": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7",
+        "ui/dist/fonts/Manrope.ttf": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+        "ui/dist/highgrade-ui.json": "fc0a9ae5c42cb33b3bbb7bbfab1d2f02e87024c0eba2519662e4d93d03c33732",
+        "ui/dist/icons/circle-check.svg": "9711e045a5999f8a3b0782eb88e09b04e0559bc7b379dcc0a4ae645223e10345",
+        "ui/dist/icons/clock-3.svg": "0e097d0b66278965fb53bc14900575d95f5c21b9cca932028bbb33294b56c9e2",
+        "ui/dist/icons/files.svg": "97adf06fc0511e7a40be93ecda04466ed196718ab4a5e3a62b1148cc49697775",
+        "ui/dist/icons/message-square.svg": "5812a3be783fdcd73efd2b6026e03131e4b8c6649e7d52aa2dc7bf2e2023a59d",
+        "ui/dist/index.html": "93b312eb9c64614160cc6038afd6630fca8687ae777bef6b085738ac647f4f43",
+        "ui/dist/licenses/Lora-OFL.txt": "1d9a970809ac804b582a6ce7f0ebc4e7fefcbfd7ff6299cad35ee656a21be716",
+        "ui/dist/licenses/Lucide-LICENSE.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+        "ui/dist/licenses/Manrope-OFL.txt": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+        "ui/dist/licenses/README.md": "924b72d2cea56f57e0a1ff2a77e1579ce902e8673637f99c94f7f49c3dd9ee8c",
+        "ui/dist/licenses/Radix-LICENSE.txt": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/class-variance-authority-LICENSE": "0ccbf956cffc8dcf515809433cb5242ee67c94513d46e48c261d68d0880de406",
+        "ui/dist/licenses/clsx-license": "9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97",
+        "ui/dist/licenses/get-nonce-LICENSE": "acf3b087b348d2f2e731b9d4131af185aad694c1204ce14a46909483fd42da05",
+        "ui/dist/licenses/lucide-react-LICENSE": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+        "ui/dist/licenses/node_modules-@floating-ui-core-LICENSE": "0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce",
+        "ui/dist/licenses/node_modules-@floating-ui-dom-LICENSE": "0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce",
+        "ui/dist/licenses/node_modules-@floating-ui-react-dom-LICENSE": "0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce",
+        "ui/dist/licenses/node_modules-@floating-ui-utils-LICENSE": "0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce",
+        "ui/dist/licenses/node_modules-@radix-ui-number-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-primitive-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-accessible-icon-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-accordion-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-alert-dialog-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-arrow-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-aspect-ratio-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-avatar-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-checkbox-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-collapsible-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-collection-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-compose-refs-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-context-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-context-menu-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-dialog-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-direction-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-dismissable-layer-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-dropdown-menu-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-focus-guards-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-focus-scope-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-form-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-hover-card-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-id-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-label-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-menu-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-menubar-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-navigation-menu-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-one-time-password-field-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-password-toggle-field-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-popover-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-popper-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-portal-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-presence-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-primitive-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-progress-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-radio-group-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-roving-focus-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-scroll-area-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-select-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-separator-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-slider-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-slot-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-switch-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-tabs-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-toast-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-toggle-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-toggle-group-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-toolbar-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-tooltip-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-callback-ref-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-controllable-state-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-effect-event-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-escape-keydown-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-is-hydrated-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-layout-effect-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-previous-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-rect-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-size-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-react-visually-hidden-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@radix-ui-rect-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-@types-react-LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+        "ui/dist/licenses/node_modules-@types-react-dom-LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+        "ui/dist/licenses/node_modules-aria-hidden-LICENSE": "30f0cfddf483d1128e3610205020f2041a6c5e837aa999e0aa82e5576187d4a9",
+        "ui/dist/licenses/node_modules-class-variance-authority-LICENSE": "0ccbf956cffc8dcf515809433cb5242ee67c94513d46e48c261d68d0880de406",
+        "ui/dist/licenses/node_modules-clsx-license": "9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97",
+        "ui/dist/licenses/node_modules-csstype-LICENSE": "11d55bd4541c75ee7879547ac49089c489163dae49551389713c3d026cab383e",
+        "ui/dist/licenses/node_modules-detect-node-es-LICENSE": "54b32293ea560d22cd9b62af9b2cda1a030d910a48c6601d227c5ff2338d95f8",
+        "ui/dist/licenses/node_modules-get-nonce-LICENSE": "acf3b087b348d2f2e731b9d4131af185aad694c1204ce14a46909483fd42da05",
+        "ui/dist/licenses/node_modules-lucide-react-LICENSE": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+        "ui/dist/licenses/node_modules-radix-ui-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/node_modules-react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+        "ui/dist/licenses/node_modules-react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+        "ui/dist/licenses/node_modules-react-remove-scroll-LICENSE": "30f0cfddf483d1128e3610205020f2041a6c5e837aa999e0aa82e5576187d4a9",
+        "ui/dist/licenses/node_modules-react-style-singleton-LICENSE": "30f0cfddf483d1128e3610205020f2041a6c5e837aa999e0aa82e5576187d4a9",
+        "ui/dist/licenses/node_modules-scheduler-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+        "ui/dist/licenses/node_modules-tailwind-merge-LICENSE.md": "d4c70c7ce38cea8778f0aed3fc0bef0a9dbd27f13bd8b6773cbd6d37941971e5",
+        "ui/dist/licenses/node_modules-tslib-LICENSE.txt": "210b19e543130388c68654b7497e967119ce17145f66ab7d85688fbd70f08751",
+        "ui/dist/licenses/node_modules-use-callback-ref-LICENSE": "30f0cfddf483d1128e3610205020f2041a6c5e837aa999e0aa82e5576187d4a9",
+        "ui/dist/licenses/node_modules-use-sidecar-LICENSE": "30f0cfddf483d1128e3610205020f2041a6c5e837aa999e0aa82e5576187d4a9",
+        "ui/dist/licenses/packages.json": "81c53f50672d6d5431f261cc66a4975229d0bf75baa77df40316c376ceb5d06d",
+        "ui/dist/licenses/radix-ui-LICENSE": "0e80a2d229d2fd4fc7e8636142ec5d0ff0bc031f14c15b682e2ac01dfd5b5138",
+        "ui/dist/licenses/react-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+        "ui/dist/licenses/react-dom-LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+        "ui/dist/licenses/react-remove-scroll-bar-LICENSE.txt": "e3d713ccda2c7d4974d29a7ccb050d4cd275208f68e8aaf1f08070e48e8470bf",
+        "ui/dist/licenses/shadcn-LICENSE.txt": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+        "ui/dist/licenses/tailwind-merge-LICENSE.md": "d4c70c7ce38cea8778f0aed3fc0bef0a9dbd27f13bd8b6773cbd6d37941971e5",
+        "ui/dist/mark-mono.svg": "17b4942a9d25a4ad5bb93f0d0b64425d134bc613650dbb53a08bb2fd318a3a9b",
+        "ui/dist/wordmark-mono.svg": "06f834aa1a81c44fd620774c52f0fd087f6024be0fb4a4f46245e2aacbfb0401"
+      },
+      "input_paths": [
+        "build.rs",
+        "kit/manifest.json",
+        "kit/procedures/archive.md",
+        "kit/procedures/clear.md",
+        "kit/procedures/commit.md",
+        "kit/procedures/fix.md",
+        "kit/procedures/init.md",
+        "kit/procedures/planner.md",
+        "kit/procedures/push.md",
+        "kit/procedures/spec.md",
+        "kit/procedures/task.md",
+        "kit/procedures/update.md",
+        "kit/procedures/work.md",
+        "kit/references/audit.md",
+        "kit/references/clear-batches.md",
+        "kit/references/cli.md",
+        "kit/references/documentation.md",
+        "kit/references/release-notes.json",
+        "kit/references/review.md",
+        "kit/references/survey-schema.json",
+        "kit/references/tools/diagnostics.md",
+        "kit/references/tools/installation.md",
+        "kit/references/tools/issues.md",
+        "kit/references/tools/specifications.md",
+        "kit/references/tools/survey.md",
+        "kit/references/tools/verification.md",
+        "kit/rules.md",
+        "kit/skills/highgrade-clear/SKILL.md",
+        "kit/skills/highgrade-commit/SKILL.md",
+        "kit/skills/highgrade-init/SKILL.md",
+        "kit/skills/highgrade-planner/SKILL.md",
+        "kit/skills/highgrade-push/SKILL.md",
+        "kit/skills/highgrade-spec/SKILL.md",
+        "kit/skills/highgrade-task/SKILL.md",
+        "kit/skills/highgrade-update/SKILL.md",
+        "kit/skills/highgrade-work/SKILL.md",
+        "kit/templates/AGENTS.md",
+        "kit/templates/ARCHITECTURE.md",
+        "kit/templates/DEVELOPMENT.md",
+        "kit/templates/ENGINEERING.md",
+        "kit/templates/INSTRUCTIONS.md",
+        "kit/templates/README.md",
+        "kit/templates/survey.json",
+        "kit/tools/clear_batch.py",
+        "specs/changes/HG-0020/evidence/HG-0020-C4-1791989422769516816.log",
+        "src/global.rs",
+        "src/install.rs",
+        "src/launcher.rs",
+        "src/launcher/ui.cmd",
+        "src/launcher/ui.sh",
+        "src/lib.rs",
+        "src/main.rs",
+        "src/package.rs",
+        "src/paths.rs",
+        "src/release_notes.rs",
+        "src/ui.rs",
+        "src/ui/bundle.rs",
+        "tests/global_contracts.rs",
+        "tests/support/mod.rs",
+        "ui/dist/Manrope.ttf",
+        "ui/dist/assets/Lora-C1B0tkav.ttf",
+        "ui/dist/assets/Manrope-DIRNzeTG.ttf",
+        "ui/dist/assets/index-Bl2gtMT7.js",
+        "ui/dist/assets/index-ODlF3-na.css",
+        "ui/dist/assets/mark-iVh24ir5.svg",
+        "ui/dist/assets/wordmark-DaoQrXCV.svg",
+        "ui/dist/brand.svg",
+        "ui/dist/brand/mark-mono.svg",
+        "ui/dist/brand/mark.svg",
+        "ui/dist/brand/wordmark-mono.svg",
+        "ui/dist/brand/wordmark.svg",
+        "ui/dist/favicon.svg",
+        "ui/dist/fonts/Lora.ttf",
+        "ui/dist/fonts/Manrope.ttf",
+        "ui/dist/highgrade-ui.json",
+        "ui/dist/icons/circle-check.svg",
+        "ui/dist/icons/clock-3.svg",
+        "ui/dist/icons/files.svg",
+        "ui/dist/icons/message-square.svg",
+        "ui/dist/index.html",
+        "ui/dist/licenses/Lora-OFL.txt",
+        "ui/dist/licenses/Lucide-LICENSE.txt",
+        "ui/dist/licenses/Manrope-OFL.txt",
+        "ui/dist/licenses/README.md",
+        "ui/dist/licenses/Radix-LICENSE.txt",
+        "ui/dist/licenses/class-variance-authority-LICENSE",
+        "ui/dist/licenses/clsx-license",
+        "ui/dist/licenses/get-nonce-LICENSE",
+        "ui/dist/licenses/lucide-react-LICENSE",
+        "ui/dist/licenses/node_modules-@floating-ui-core-LICENSE",
+        "ui/dist/licenses/node_modules-@floating-ui-dom-LICENSE",
+        "ui/dist/licenses/node_modules-@floating-ui-react-dom-LICENSE",
+        "ui/dist/licenses/node_modules-@floating-ui-utils-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-number-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-primitive-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-accessible-icon-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-accordion-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-alert-dialog-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-arrow-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-aspect-ratio-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-avatar-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-checkbox-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-collapsible-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-collection-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-compose-refs-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-context-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-context-menu-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-dialog-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-direction-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-dismissable-layer-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-dropdown-menu-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-focus-guards-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-focus-scope-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-form-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-hover-card-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-id-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-label-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-menu-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-menubar-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-navigation-menu-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-one-time-password-field-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-password-toggle-field-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-popover-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-popper-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-portal-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-presence-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-primitive-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-progress-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-radio-group-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-roving-focus-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-scroll-area-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-select-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-separator-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-slider-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-slot-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-switch-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-tabs-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-toast-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-toggle-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-toggle-group-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-toolbar-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-tooltip-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-callback-ref-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-controllable-state-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-effect-event-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-escape-keydown-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-is-hydrated-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-layout-effect-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-previous-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-rect-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-use-size-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-react-visually-hidden-LICENSE",
+        "ui/dist/licenses/node_modules-@radix-ui-rect-LICENSE",
+        "ui/dist/licenses/node_modules-@types-react-LICENSE",
+        "ui/dist/licenses/node_modules-@types-react-dom-LICENSE",
+        "ui/dist/licenses/node_modules-aria-hidden-LICENSE",
+        "ui/dist/licenses/node_modules-class-variance-authority-LICENSE",
+        "ui/dist/licenses/node_modules-clsx-license",
+        "ui/dist/licenses/node_modules-csstype-LICENSE",
+        "ui/dist/licenses/node_modules-detect-node-es-LICENSE",
+        "ui/dist/licenses/node_modules-get-nonce-LICENSE",
+        "ui/dist/licenses/node_modules-lucide-react-LICENSE",
+        "ui/dist/licenses/node_modules-radix-ui-LICENSE",
+        "ui/dist/licenses/node_modules-react-LICENSE",
+        "ui/dist/licenses/node_modules-react-dom-LICENSE",
+        "ui/dist/licenses/node_modules-react-remove-scroll-LICENSE",
+        "ui/dist/licenses/node_modules-react-style-singleton-LICENSE",
+        "ui/dist/licenses/node_modules-scheduler-LICENSE",
+        "ui/dist/licenses/node_modules-tailwind-merge-LICENSE.md",
+        "ui/dist/licenses/node_modules-tslib-LICENSE.txt",
+        "ui/dist/licenses/node_modules-use-callback-ref-LICENSE",
+        "ui/dist/licenses/node_modules-use-sidecar-LICENSE",
+        "ui/dist/licenses/packages.json",
+        "ui/dist/licenses/radix-ui-LICENSE",
+        "ui/dist/licenses/react-LICENSE",
+        "ui/dist/licenses/react-dom-LICENSE",
+        "ui/dist/licenses/react-remove-scroll-bar-LICENSE.txt",
+        "ui/dist/licenses/shadcn-LICENSE.txt",
+        "ui/dist/licenses/tailwind-merge-LICENSE.md",
+        "ui/dist/mark-mono.svg",
+        "ui/dist/wordmark-mono.svg"
+      ]
+    },
+    "3b60b8a2fcc703fbe73d162a2ccbd1a34bd70f8f3b7072cc39f541c32f969895": {
+      "files": {
+        "kit/manifest.json": "c78c388f2fd30b66374e9ffc17ff2381582b37878f9754c8d0ccc6bee75d1a8d",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "specs/changes/HG-0020/evidence/HG-0020-C4-1790357242968656600.log": "474cfa5b3f69ba2c3139d69242731aeeacc39d6f74d7c12ae45e79de63817219",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "0409978e8c0e3ed9642823c728978aa95bbad5c1d4a7bd1ba4177b4795123d74",
+        "tests/global_contracts.rs": "0686885af0a824cafb635cee487cb22288f2aa2fb664055cbb44231649c40fcc"
+      }
+    },
+    "4ab2b17f7305b19dc815731f1a47ea398710e3f049c24896028697c2c4b8153b": {
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "d2bd606c4021f483a03cbb5b0e99c85953dda532c13fcaf0b594080449a36257",
+        "AGENTS.md": "68b83371744eb3079a1975724be9c1e02f340e6fde45397c1fb84bb9373ee24b",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/procedures/task.md": "a3d5e7d69ba6eb862fc46adbd36d9d1f42f6340f0927094a9801cf1c3de7cb7a",
+        "kit/procedures/work.md": "1c74063dfb8b1c3c1a8db096629d9137105299eb8b34401f4182a2b95592b85c",
+        "kit/rules.md": "41de9cd5c8f2cf5e641269e6b590a8002f12285ea952ce99dec6db3a424140c3",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "kit/templates/AGENTS.md": "b42b3483f3c0983ee616b5418d1f96edf84784cc9b3fae1b6750f3a4bd035cb2",
+        "specs/changes/HG-0020/evidence/agent-pilots.json": "ecb40a1187c9957cd6d56f9e84e0d99f08e58a8ad6f6baee3690e17dcc55a448",
+        "specs/changes/HG-0020/evidence/agent-pilots.md": "f87e56f5ff6d8b866e3038d63d1c3e1d811330f25939f01221bc90a04e1f8814",
+        "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md": "13c6be121b5a127af91139003c3c4b57effb87a7df50c3aaca3eb9bfe6d9113a"
+      }
+    },
+    "7cc082c72bf514f84e4b5995b488400b71a87bef80f892a61f732538383f29d0": {
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "d2bd606c4021f483a03cbb5b0e99c85953dda532c13fcaf0b594080449a36257",
+        "AGENTS.md": "68b83371744eb3079a1975724be9c1e02f340e6fde45397c1fb84bb9373ee24b",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/procedures/task.md": "a3d5e7d69ba6eb862fc46adbd36d9d1f42f6340f0927094a9801cf1c3de7cb7a",
+        "kit/procedures/work.md": "b2d0e2056134dab27668628d2024a34c077367a9d1577c7da61464a24de113a8",
+        "kit/rules.md": "41de9cd5c8f2cf5e641269e6b590a8002f12285ea952ce99dec6db3a424140c3",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "kit/templates/AGENTS.md": "b42b3483f3c0983ee616b5418d1f96edf84784cc9b3fae1b6750f3a4bd035cb2",
+        "specs/changes/HG-0020/evidence/agent-pilots.json": "9855dfcd94213a474ba74cc7d74fed67c7efdc8335d15ed8b4538cc7eee2ebe5",
+        "specs/changes/HG-0020/evidence/agent-pilots.md": "83e0b4f9e08b7871dcc707ca0fa483c326103c6937648750b82d8d0a5fc59f79"
+      }
+    },
+    "800f1a134519c1a7f35cf0d7314adb23df8487c4adac5f53f4f19061c7b7d5d4": {
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "b3b4b5e8162022f63e6a7852358dc09900106c9117a98b11aeef22eb9be5e2cc",
+        "AGENTS.md": "68b83371744eb3079a1975724be9c1e02f340e6fde45397c1fb84bb9373ee24b",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/procedures/task.md": "a3d5e7d69ba6eb862fc46adbd36d9d1f42f6340f0927094a9801cf1c3de7cb7a",
+        "kit/procedures/work.md": "1c74063dfb8b1c3c1a8db096629d9137105299eb8b34401f4182a2b95592b85c",
+        "kit/rules.md": "41de9cd5c8f2cf5e641269e6b590a8002f12285ea952ce99dec6db3a424140c3",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "kit/templates/AGENTS.md": "b42b3483f3c0983ee616b5418d1f96edf84784cc9b3fae1b6750f3a4bd035cb2",
+        "specs/changes/HG-0020/evidence/activation-input-check.md": "c585aeae2fa6a5554ce3ee9d6fe37e209d459c753526e8519561c114dd71a6c5",
+        "specs/changes/HG-0020/evidence/agent-pilots.json": "ecb40a1187c9957cd6d56f9e84e0d99f08e58a8ad6f6baee3690e17dcc55a448",
+        "specs/changes/HG-0020/evidence/agent-pilots.md": "f87e56f5ff6d8b866e3038d63d1c3e1d811330f25939f01221bc90a04e1f8814",
+        "specs/changes/HG-0020/evidence/work-compatibility-2026-09-26.md": "13c6be121b5a127af91139003c3c4b57effb87a7df50c3aaca3eb9bfe6d9113a"
+      }
+    },
+    "8c24ce869199c62bf599bc8bfdc67bf855ffd0c140e4fbf565d8b171acb36aa0": {
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "d2bd606c4021f483a03cbb5b0e99c85953dda532c13fcaf0b594080449a36257",
+        "AGENTS.md": "68b83371744eb3079a1975724be9c1e02f340e6fde45397c1fb84bb9373ee24b",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/procedures/task.md": "a3d5e7d69ba6eb862fc46adbd36d9d1f42f6340f0927094a9801cf1c3de7cb7a",
+        "kit/procedures/work.md": "b2d0e2056134dab27668628d2024a34c077367a9d1577c7da61464a24de113a8",
+        "kit/rules.md": "41de9cd5c8f2cf5e641269e6b590a8002f12285ea952ce99dec6db3a424140c3",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "kit/templates/AGENTS.md": "b42b3483f3c0983ee616b5418d1f96edf84784cc9b3fae1b6750f3a4bd035cb2",
+        "specs/changes/HG-0020/evidence/agent-pilots.json": "9fa0d2360a818e283db3b660f71257aa4afd0b73060ea900286953223220d9be",
+        "specs/changes/HG-0020/evidence/agent-pilots.md": "83e0b4f9e08b7871dcc707ca0fa483c326103c6937648750b82d8d0a5fc59f79"
+      }
+    },
+    "a825fb4f613bcd61df80c72eff7f8d43c6fbb30dc36808223e8479660a231d1a": {
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "d2bd606c4021f483a03cbb5b0e99c85953dda532c13fcaf0b594080449a36257",
+        "AGENTS.md": "68b83371744eb3079a1975724be9c1e02f340e6fde45397c1fb84bb9373ee24b",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/procedures/task.md": "a3d5e7d69ba6eb862fc46adbd36d9d1f42f6340f0927094a9801cf1c3de7cb7a",
+        "kit/procedures/work.md": "b2d0e2056134dab27668628d2024a34c077367a9d1577c7da61464a24de113a8",
+        "kit/rules.md": "41de9cd5c8f2cf5e641269e6b590a8002f12285ea952ce99dec6db3a424140c3",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "kit/templates/AGENTS.md": "b42b3483f3c0983ee616b5418d1f96edf84784cc9b3fae1b6750f3a4bd035cb2",
+        "specs/changes/HG-0020/evidence/agent-pilots.json": "ca230f34fba451f82385191dcf244646efde521536717d062b253b178913b003",
+        "specs/changes/HG-0020/evidence/agent-pilots.md": "f97a970eddc4a748efb694280f27f5dd65247f8c233dcafeed00eb6abe7e19e1"
+      }
+    },
+    "db462dcd007b8fb71fdc47e53620392bd5c47d2ed68dac225f98f50b93382e66": {
+      "files": {
+        "kit/manifest.json": "892774a3f0e61cbf77f510ebb706901c7158be4e9b49db3eb7d799427567aa2b",
+        "kit/procedures/planner.md": "64dc6cbe0b7f159495a82e5376c143328815678f101e5bdd533498d108b43ecb",
+        "kit/skills/highgrade-planner/SKILL.md": "0622520a8850cbdb0d9329e895a910657679feedbcd6880c9266a51735bee26a",
+        "specs/changes/HG-0020/evidence/HG-0020-C4-1791989422769516816.log": "b35f7129f17701094f60c0b92835470388934ce3a1cfa0fccc695d6f8892a478",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "74a54e5ffd7d0e62b3f640ea89f87d6cf0f8970821f0129227cfa35ec5a052d9",
+        "tests/global_contracts.rs": "2cb7807755b68bb12ba98cc5dc6281b4eb7565c66d7f82e30cba422bb147683e"
+      },
+      "input_paths": [
+        "kit/manifest.json",
+        "kit/procedures/planner.md",
+        "kit/skills/highgrade-planner/SKILL.md",
+        "specs/runners.json",
+        "src/global.rs",
+        "tests/global_contracts.rs"
+      ]
+    },
+    "f09f0c51c7c39e34dd17dc0ab6309a252318f25776e8723e5094151f1e770dc6": {
+      "files": {
+        "kit/manifest.json": "2353a061bdd484d5b4320cd11b7f76ea2c554ef8e011cdc807fa5f367c6f1926",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "specs/changes/HG-0020/evidence/HG-0020-C4-1790348195363601700.log": "fd789dd6e6a9a22dcaf43d546bb60c45674e37bfeabb787c3f1886a246d4da74",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "0409978e8c0e3ed9642823c728978aa95bbad5c1d4a7bd1ba4177b4795123d74",
+        "tests/global_contracts.rs": "0686885af0a824cafb635cee487cb22288f2aa2fb664055cbb44231649c40fcc"
+      }
+    }
+  },
+  "review": {
+    "change_sha256": "6b992990450fed102ad40d954f37f6b21cf312f3ba658c5d87359d32bf8d5771",
+    "conclusion": "Повторное независимое REVIEW_GO: после локальной активации изменена только строка статуса версии в проектной инструкции; правила Planner не менялись. S1-S8 исходные агентные пилоты плюс две адресные смысловые сверки, S9 свежий spec-run; все хеши актуальны. Ограничение: пилоты не гарантируют будущий выбор модели.",
+    "reviewer": "/root/planner_review",
+    "verdict": "go"
+  },
+  "runs": [
+    {
+      "check": "HG-0020-C4",
+      "check_sha256": "21760bfcb119c727664080bd0333b0fdb20192de55daf24ed45a8c88d38cda04",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--test",
+        "global_contracts",
+        "planner_router_is_portable",
+        "--",
+        "--exact"
+      ],
+      "cwd": "\\\\?\\D:\\my_projects\\MyCodex",
+      "files": {
+        "kit/manifest.json": "2353a061bdd484d5b4320cd11b7f76ea2c554ef8e011cdc807fa5f367c6f1926",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "specs/changes/HG-0020/evidence/HG-0020-C4-1790348195363601700.log": "fd789dd6e6a9a22dcaf43d546bb60c45674e37bfeabb787c3f1886a246d4da74",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "0409978e8c0e3ed9642823c728978aa95bbad5c1d4a7bd1ba4177b4795123d74",
+        "tests/global_contracts.rs": "0686885af0a824cafb635cee487cb22288f2aa2fb664055cbb44231649c40fcc"
+      },
+      "inputs_after": {
+        "kit/manifest.json": "2353a061bdd484d5b4320cd11b7f76ea2c554ef8e011cdc807fa5f367c6f1926",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "0409978e8c0e3ed9642823c728978aa95bbad5c1d4a7bd1ba4177b4795123d74",
+        "tests/global_contracts.rs": "0686885af0a824cafb635cee487cb22288f2aa2fb664055cbb44231649c40fcc"
+      },
+      "observation": "Process status: Some(ExitStatus(ExitStatus(0)))",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/HG-0020-C4-1790348195363601700.log",
+      "started_at": 1790348195
+    },
+    {
+      "check": "HG-0020-C4",
+      "check_sha256": "21760bfcb119c727664080bd0333b0fdb20192de55daf24ed45a8c88d38cda04",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--test",
+        "global_contracts",
+        "planner_router_is_portable",
+        "--",
+        "--exact"
+      ],
+      "cwd": "\\\\?\\D:\\my_projects\\MyCodex",
+      "files": {
+        "kit/manifest.json": "c78c388f2fd30b66374e9ffc17ff2381582b37878f9754c8d0ccc6bee75d1a8d",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "specs/changes/HG-0020/evidence/HG-0020-C4-1790357242968656600.log": "474cfa5b3f69ba2c3139d69242731aeeacc39d6f74d7c12ae45e79de63817219",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "0409978e8c0e3ed9642823c728978aa95bbad5c1d4a7bd1ba4177b4795123d74",
+        "tests/global_contracts.rs": "0686885af0a824cafb635cee487cb22288f2aa2fb664055cbb44231649c40fcc"
+      },
+      "inputs_after": {
+        "kit/manifest.json": "c78c388f2fd30b66374e9ffc17ff2381582b37878f9754c8d0ccc6bee75d1a8d",
+        "kit/procedures/planner.md": "341e06281197694864a00db6482ba25eb038f4866cd0a388f47269aa1b876dcc",
+        "kit/skills/highgrade-planner/SKILL.md": "61f68ea789987657f789159c6472bec4b85eca958d1d759560bf02f56c39ec8a",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "0409978e8c0e3ed9642823c728978aa95bbad5c1d4a7bd1ba4177b4795123d74",
+        "tests/global_contracts.rs": "0686885af0a824cafb635cee487cb22288f2aa2fb664055cbb44231649c40fcc"
+      },
+      "observation": "Process status: Some(ExitStatus(ExitStatus(0)))",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/HG-0020-C4-1790357242968656600.log",
+      "started_at": 1790357242
+    },
+    {
+      "check": "HG-0020-C4",
+      "check_sha256": "21760bfcb119c727664080bd0333b0fdb20192de55daf24ed45a8c88d38cda04",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--test",
+        "global_contracts",
+        "planner_router_is_portable",
+        "--",
+        "--exact"
+      ],
+      "cwd": "/home/lainterus/Projects/High Grade",
+      "duration_ms": 2251,
+      "files": {
+        "kit/manifest.json": "892774a3f0e61cbf77f510ebb706901c7158be4e9b49db3eb7d799427567aa2b",
+        "kit/procedures/planner.md": "64dc6cbe0b7f159495a82e5376c143328815678f101e5bdd533498d108b43ecb",
+        "kit/skills/highgrade-planner/SKILL.md": "0622520a8850cbdb0d9329e895a910657679feedbcd6880c9266a51735bee26a",
+        "specs/changes/HG-0020/evidence/HG-0020-C4-1791989422769516816.log": "b35f7129f17701094f60c0b92835470388934ce3a1cfa0fccc695d6f8892a478",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "74a54e5ffd7d0e62b3f640ea89f87d6cf0f8970821f0129227cfa35ec5a052d9",
+        "tests/global_contracts.rs": "2cb7807755b68bb12ba98cc5dc6281b4eb7565c66d7f82e30cba422bb147683e"
+      },
+      "inputs_after": {
+        "kit/manifest.json": "892774a3f0e61cbf77f510ebb706901c7158be4e9b49db3eb7d799427567aa2b",
+        "kit/procedures/planner.md": "64dc6cbe0b7f159495a82e5376c143328815678f101e5bdd533498d108b43ecb",
+        "kit/skills/highgrade-planner/SKILL.md": "0622520a8850cbdb0d9329e895a910657679feedbcd6880c9266a51735bee26a",
+        "specs/runners.json": "69e06b84a78731a960966832d9ff75195a99efc0eda50349c7682df6b5c508ab",
+        "src/global.rs": "74a54e5ffd7d0e62b3f640ea89f87d6cf0f8970821f0129227cfa35ec5a052d9",
+        "tests/global_contracts.rs": "2cb7807755b68bb12ba98cc5dc6281b4eb7565c66d7f82e30cba422bb147683e"
+      },
+      "observation": "Process status: Some(ExitStatus(unix_wait_status(0)))",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0020/evidence/HG-0020-C4-1791989422769516816.log",
+      "started_at": 1791989422
+    }
+  ]
+}

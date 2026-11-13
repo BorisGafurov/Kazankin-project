@@ -1,0 +1,190 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-header);
+  padding: 18px 0;
+  background-color: rgba(16, 13, 12, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(200, 189, 176, 0.12);
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.brandTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: var(--tracking-tight);
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.brandSubtitle {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-light-beige);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+}
+
+.navLink {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #B5A99C;
+  padding: 8px 14px;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  transition: color var(--transition-fast);
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* RDR2 Feathered Brush Hover on Nav Links (Diagonal Dry-Brush Stroke) */
+.navLink::before {
+  content: '';
+  position: absolute;
+  inset: -6px -16px;
+  background-image: url('/rdr-brush.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  z-index: -1;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(184, 20, 27, 0.45));
+  transform: scale(0.96) rotate(-1.2deg);
+}
+
+.navLink:hover::before {
+  opacity: 1;
+  transform: scale(1) rotate(-1.5deg);
+}
+
+.navLink:hover {
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+/* ACTIVE CATEGORY: Distinct from hover! Pure white text + RDR2 thick brush underline */
+.navLinkActive {
+  color: #FFFFFF !important;
+  font-weight: 700;
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 4px;
+  right: 4px;
+  height: 6px; /* Prominent crimson line */
+  background-image: url('/rdr-brush.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-xs);
+  filter: drop-shadow(0 0 8px rgba(184, 20, 27, 0.95));
+  pointer-events: none;
+}
+
+.navLinkActive:hover::before {
+  opacity: 1;
+}
+
+/* Hamburger for Mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+}
+
+.bar {
+  width: 24px;
+  height: 2px;
+  background-color: #FFFFFF;
+  transition: transform var(--transition-fast);
+}
+
+.barOpen1 {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.barOpen2 {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.mobileDrawer {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  background-color: rgba(16, 13, 12, 0.98);
+  border-bottom: 1px solid rgba(200, 189, 176, 0.2);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobileNavLink {
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: left;
+  padding: 10px 0;
+  color: #D6CBC0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobileNavActive {
+  color: var(--color-rdr-red);
+}

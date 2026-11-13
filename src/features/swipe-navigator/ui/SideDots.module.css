@@ -1,0 +1,32 @@
+.dots {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--z-side-dots);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .dots {
+    display: none;
+  }
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: rgba(200, 189, 176, 0.35);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.dot:hover,
+.active {
+  background-color: var(--color-rdr-red);
+  transform: scale(1.4);
+  box-shadow: 0 0 10px rgba(184, 20, 27, 0.6);
+}

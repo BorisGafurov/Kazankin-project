@@ -1,0 +1,45 @@
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.heroContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: var(--space-md);
+}
+
+.footerBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(200, 189, 176, 0.15);
+  font-size: 0.85rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-weight: 600;
+  color: #A0988E;
+}
+
+.nextLink {
+  color: var(--color-light-beige);
+  font-weight: 700;
+  transition: color var(--transition-fast);
+  cursor: pointer;
+}
+
+.nextLink:hover {
+  color: #FFFFFF;
+}

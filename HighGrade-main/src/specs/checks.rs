@@ -1,0 +1,672 @@
+//! Explicit execution of configured project runners; no shell and no execution
+//! while reading specifications. Reports prove observations, not authenticity.
+use super::*;
+use std::{
+    process::{Command, Stdio},
+    time::{Duration, Instant},
+};
+
+#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct Check {
+    pub id: String,
+    pub scenario_ids: BTreeSet<String>,
+    pub runner: Option<String>,
+    pub file: String,
+    pub selector: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub launch_selector: Option<String>,
+    pub preparation: String,
+    pub action: String,
+    pub observation: String,
+    pub inputs: BTreeSet<String>,
+}
+#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct Runner {
+    pub program: String,
+    pub args: Vec<String>,
+    pub cwd: String,
+    pub format: String,
+    pub timeout_seconds: u64,
+}
+#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema, PartialEq)]
+#[serde(deny_unknown_fields)]
+pub struct Run {
+    pub check: String,
+    pub started_at: u64,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub duration_ms: Option<u64>,
+    pub command: Vec<String>,
+    pub cwd: String,
+    pub inputs_after: Option<BTreeMap<String, String>>,
+    pub check_sha256: String,
+    pub outcome: Outcome,
+    pub observation: String,
+    pub files: BTreeMap<String, String>,
+    pub report: String,
+}
+pub fn statistics(root: &Path, s: &Store, id: &str) -> Result<Value> {
+    let change = s.changes.get(id).ok_or("ChangeMissing")?;
+    let mut checks = Vec::new();
+    for check in &change.checks {
+        let current_revision = revision(s, check);
+        let attempts: Vec<_> = change
+            .runs
+            .iter()
+            .filter(|run| run.check == check.id)
+            .collect();
+        let current_attempts: Vec<_> = attempts
+            .iter()
+            .filter(|run| run.check_sha256 == current_revision)
+            .collect();
+        let current_inputs = check
+            .runner
+            .as_ref()
+            .and_then(|id| s.runners.get(id))
+            .and_then(|runner| inputs(root, check, runner, &change.shared_inputs).ok());
+        let comparable = |run: &Run| {
+            run.check_sha256 == current_revision
+                && current_inputs.as_ref().is_some_and(|now| {
+                    run.inputs_after.as_ref() == Some(now)
+                        && now
+                            .iter()
+                            .all(|(path, hash)| run.files.get(path) == Some(hash))
+                })
+        };
+        let comparable_attempts: Vec<_> = attempts.iter().filter(|run| comparable(run)).collect();
+        let mut durations: Vec<_> = comparable_attempts
+            .iter()
+            .filter_map(|run| run.duration_ms)
+            .collect();
+        durations.sort_unstable();
+        let latest = attempts.last();
+        let measured_total = attempts
+            .iter()
+            .filter(|run| run.duration_ms.is_some())
+            .count();
+        checks.push(json!({
+            "check": check.id,
+            "runner": check.runner,
+            "attempts": attempts.len(),
+            "measured_attempts": measured_total,
+            "unmeasured_attempts": attempts.len() - measured_total,
+            "current_revision_attempts": current_attempts.len(),
+            "comparable_attempts": comparable_attempts.len(),
+            "comparable_measured_attempts": durations.len(),
+            "current_inputs_available": current_inputs.is_some(),
+            "latest_current_revision": latest.is_some_and(|run| run.check_sha256 == current_revision),
+            "latest_comparable": latest.is_some_and(|run| comparable(run)),
+            "latest_outcome": latest.map(|run| &run.outcome),
+            "latest_duration_ms": latest.and_then(|run| run.duration_ms),
+            "median_duration_ms": durations.get(durations.len() / 2).copied(),
+            "max_duration_ms": durations.last().copied(),
+        }));
+    }
+    Ok(json!({"id":id,"checks":checks}))
+}
+pub fn validate(s: &Store) -> Result<()> {
+    if s.schema_version < 3
+        && (!s.runners.is_empty()
+            || s.changes
+                .values()
+                .any(|c| !c.checks.is_empty() || !c.runs.is_empty()))
+    {
+        return Err("MigrationRequired: structured checks".into());
+    }
+    for (id, r) in &s.runners {
+        check_id(id, "runner")?;
+        if r.program.trim().is_empty()
+            || !(1..=3600).contains(&r.timeout_seconds)
+            || !matches!(r.format.as_str(), "junit" | "cargo-test")
+            || !r.args.iter().any(|a| a.contains("{selector}"))
+            || (r.format == "junit" && !r.args.iter().any(|a| a.contains("{report}")))
+        {
+            return Err(
+                "InvalidRunner: program, selector/report arguments, format or timeout".into(),
+            );
+        }
+        if r.cwd != "." {
+            paths::relative(&r.cwd)?;
+        }
+        // A project-relative executable is resolved within root. Bare tool names
+        // are resolved by PATH; executable configuration is reviewed project code.
+        if r.program.contains(['/', '\\', ':']) {
+            paths::relative(&r.program)?;
+        }
+    }
+    for c in s.changes.values() {
+        for path in &c.shared_inputs {
+            paths::relative(path)?;
+        }
+        let scenarios: BTreeSet<_> = c
+            .operations
+            .iter()
+            .filter_map(Delta::requirement)
+            .flat_map(|r| r.scenarios.iter().map(|s| s.id.as_str()))
+            .collect();
+        let mut seen = BTreeSet::new();
+        for b in &c.checks {
+            check_id(&b.id, "check")?;
+            if b.launch_selector
+                .as_ref()
+                .is_some_and(|v| v.trim().is_empty() || v.contains('\0'))
+            {
+                return Err("InvalidLaunchSelector".into());
+            }
+            if !seen.insert(&b.id)
+                || b.scenario_ids.is_empty()
+                || b.scenario_ids
+                    .iter()
+                    .any(|id| !scenarios.contains(id.as_str()))
+            {
+                return Err("InvalidCheckScenarios".into());
+            }
+            if [&b.preparation, &b.action, &b.observation]
+                .iter()
+                .any(|s| s.trim().is_empty())
+            {
+                return Err("CheckProcedureIncomplete".into());
+            }
+            if let Some(r) = &b.runner {
+                if !s.runners.contains_key(r) || b.selector.trim().is_empty() || b.inputs.is_empty()
+                {
+                    return Err("InvalidCheckRunnerOrInputs".into());
+                }
+                paths::relative(&b.file)?;
+            } else if !b.file.is_empty() {
+                paths::relative(&b.file)?;
+            }
+            for rel in &b.inputs {
+                paths::relative(rel)?;
+            }
+        }
+    }
+    Ok(())
+}
+fn revision(s: &Store, b: &Check) -> String {
+    digest(&(b, b.runner.as_ref().and_then(|r| s.runners.get(r))))
+}
+pub fn fresh(root: &Path, s: &Store, c: &Change, b: &Check) -> bool {
+    stale_reason(root, s, c, b).is_none()
+}
+pub fn stale_reason(root: &Path, s: &Store, c: &Change, b: &Check) -> Option<Value> {
+    if b.runner.is_none() {
+        return None; // manual observation uses spec-evidence
+    }
+    let Some(run) = c.runs.iter().rev().find(|r| r.check == b.id) else {
+        return Some(json!({"kind":"check","id":b.id,"reason":"missing_run","next":"rerun_check"}));
+    };
+    if run.check_sha256 != revision(s, b) {
+        return Some(
+            json!({"kind":"check","id":b.id,"reason":"check_changed","next":"rerun_check"}),
+        );
+    }
+    if run.outcome != Outcome::Passed {
+        return Some(
+            json!({"kind":"check","id":b.id,"reason":"outcome_not_passed","next":"rerun_check"}),
+        );
+    }
+    if run.files.is_empty() {
+        return Some(
+            json!({"kind":"check","id":b.id,"reason":"inputs_missing","next":"rerun_check"}),
+        );
+    }
+    for (path, expected) in &run.files {
+        let reason = match fingerprint(root, path) {
+            Ok(actual) if actual == *expected => continue,
+            Ok(_) => "input_changed",
+            Err(_) => "input_unavailable",
+        };
+        return Some(
+            json!({"kind":"check","id":b.id,"reason":reason,"path":path,"next":"rerun_check"}),
+        );
+    }
+    if let Some(runner) = b.runner.as_ref().and_then(|id| s.runners.get(id)) {
+        match inputs(root, b, runner, &c.shared_inputs) {
+            Ok(current) if run.inputs_after.as_ref() == Some(&current) => {}
+            _ => {
+                return Some(
+                    json!({"kind":"check","id":b.id,"reason":"input_set_changed_or_unavailable","next":"rerun_check"}),
+                );
+            }
+        }
+    }
+    None
+}
+
+// Substitute only tokens in the configured template, never tokens inside values.
+fn expand_argument(template: &str, values: &[(&str, &str)]) -> String {
+    let mut output = String::new();
+    let mut rest = template;
+    while !rest.is_empty() {
+        if let Some((token, value)) = values.iter().find(|(token, _)| rest.starts_with(token)) {
+            output.push_str(value);
+            rest = &rest[token.len()..];
+        } else {
+            let c = rest.chars().next().unwrap();
+            output.push(c);
+            rest = &rest[c.len_utf8()..];
+        }
+    }
+    output
+}
+
+fn parse(format: &str, text: &str, selector: &str) -> Outcome {
+    if format == "cargo-test" {
+        let selected = text
+            .lines()
+            .any(|l| l.trim() == format!("test {selector} ... ok"));
+        let summary = text
+            .lines()
+            .any(|l| l.starts_with("test result: ok. 1 passed; 0 failed; 0 ignored;"));
+        return if selected && summary {
+            Outcome::Passed
+        } else {
+            Outcome::Unknown
+        };
+    }
+    let Ok(doc) = roxmltree::Document::parse(text) else {
+        return Outcome::Unknown;
+    };
+    let selected: Vec<_> = doc
+        .descendants()
+        .filter(|n| {
+            n.has_tag_name("testcase")
+                && (n.attribute("name") == Some(selector)
+                    || format!(
+                        "{}::{}",
+                        n.attribute("classname").unwrap_or(""),
+                        n.attribute("name").unwrap_or("")
+                    ) == selector)
+        })
+        .collect();
+    if selected.len() != 1 {
+        return Outcome::Unknown;
+    }
+    let node = selected[0];
+    if node.children().any(|n| {
+        [
+            "failure",
+            "error",
+            "rerunFailure",
+            "flakyFailure",
+            "rerunError",
+            "flakyError",
+        ]
+        .contains(&n.tag_name().name())
+    }) {
+        Outcome::Failed
+    } else if node.children().any(|n| n.has_tag_name("skipped")) {
+        Outcome::Skipped
+    } else {
+        Outcome::Passed
+    }
+}
+fn inputs(
+    root: &Path,
+    b: &Check,
+    r: &Runner,
+    shared: &BTreeSet<String>,
+) -> Result<BTreeMap<String, String>> {
+    let mut rels = b.inputs.union(shared).cloned().collect::<BTreeSet<_>>();
+    rels.insert(b.file.clone());
+    if r.program.contains('/') {
+        rels.insert(r.program.clone());
+    }
+    rels.insert(format!("{}/runners.json", storage::directory(root)?));
+    rels.into_iter()
+        .map(|p| Ok((p.clone(), fingerprint(root, &p)?)))
+        .collect()
+}
+pub fn execute(
+    root: &Path,
+    s: &mut Store,
+    id: &str,
+    selected: &str,
+    report: &mut Report,
+) -> Result<()> {
+    validate(s)?;
+    let c = s.changes.get(id).ok_or("ChangeMissing")?;
+    if c.abandoned_reason.is_some() {
+        return Err("AbandonedChange".into());
+    }
+    let bindings: Vec<_> = c
+        .checks
+        .iter()
+        .filter(|b| selected == "all" || b.id == selected)
+        .cloned()
+        .collect();
+    if bindings.is_empty() {
+        return Err("EmptyCheckSelection".into());
+    }
+    let mut observed = Vec::new();
+    for b in bindings {
+        let Some(runner_id) = &b.runner else {
+            report.finding(
+                "unknown",
+                "ManualCheckRequired",
+                &b.id,
+                &format!("{}; {}; {}", b.preparation, b.action, b.observation),
+            );
+            continue;
+        };
+        let r = &s.runners[runner_id];
+        let result = (|| -> Result<Run> {
+            let before = inputs(root, &b, r, &c.shared_inputs)?;
+            let stamp = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .map_err(|e| e.to_string())?
+                .as_nanos();
+            let rel = format!(
+                "{}/changes/{id}/evidence/{}-{stamp}",
+                storage::directory(root)?,
+                b.id
+            );
+            let xml = format!("{rel}.xml");
+            let log = format!("{rel}.log");
+            let xml_path = paths::safe(root, &xml)?;
+            let log_path = paths::safe(root, &log)?;
+            fs::create_dir_all(log_path.parent().unwrap()).map_err(|e| e.to_string())?;
+            let output = OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&log_path)
+                .map_err(|e| e.to_string())?;
+            let cwd = if r.cwd == "." {
+                root.to_path_buf()
+            } else {
+                paths::safe(root, &r.cwd)?
+            };
+            let file = paths::safe(root, &b.file)?;
+            let target = Path::new(&b.file)
+                .file_stem()
+                .and_then(|s| s.to_str())
+                .ok_or("InvalidTestFile")?;
+            let args: Vec<_> = r
+                .args
+                .iter()
+                .map(|a| {
+                    expand_argument(
+                        a,
+                        &[
+                            ("{file}", &file.to_string_lossy()),
+                            ("{target}", target),
+                            (
+                                "{selector}",
+                                b.launch_selector.as_deref().unwrap_or(&b.selector),
+                            ),
+                            ("{report}", &xml_path.to_string_lossy()),
+                        ],
+                    )
+                })
+                .collect();
+            let program = if r.program.contains('/') {
+                paths::safe(root, &r.program)?
+                    .to_string_lossy()
+                    .into_owned()
+            } else {
+                r.program.clone()
+            };
+            let started_at = progress::now()?;
+            let started = Instant::now();
+            let mut timed_out = false;
+            let process = Command::new(&program)
+                .args(&args)
+                .current_dir(&cwd)
+                .stdin(Stdio::null())
+                .stdout(output.try_clone().map_err(|e| e.to_string())?)
+                .stderr(output)
+                .spawn();
+            let (successful, note, spawned) = match process {
+                Err(e) => (false, format!("RunnerStartFailed: {e}"), false),
+                Ok(mut child) => {
+                    let status = loop {
+                        if let Some(status) = child.try_wait().map_err(|e| e.to_string())? {
+                            break Some(status);
+                        }
+                        if started.elapsed() >= Duration::from_secs(r.timeout_seconds) {
+                            timed_out = true;
+                            #[cfg(windows)]
+                            {
+                                let _ = Command::new("taskkill.exe")
+                                    .args(["/PID", &child.id().to_string(), "/T", "/F"])
+                                    .stdout(Stdio::null())
+                                    .stderr(Stdio::null())
+                                    .status();
+                            }
+                            let _ = child.kill();
+                            let _ = child.wait();
+                            break None;
+                        }
+                        std::thread::sleep(Duration::from_millis(20));
+                    };
+                    (
+                        status.is_some_and(|s| s.success()),
+                        if timed_out {
+                            "RunnerTimeout".into()
+                        } else {
+                            format!("Process status: {status:?}")
+                        },
+                        true,
+                    )
+                }
+            };
+            let source = if r.format == "junit" { &xml } else { &log };
+            let mut outcome = if !spawned {
+                Outcome::Unknown
+            } else if successful {
+                paths::read_limited(&paths::safe(root, source)?, 64 * 1024 * 1024)
+                    .ok()
+                    .and_then(|b| String::from_utf8(b).ok())
+                    .map(|text| parse(&r.format, &text, &b.selector))
+                    .unwrap_or(Outcome::Unknown)
+            } else {
+                Outcome::Failed
+            };
+            let after = inputs(root, &b, r, &c.shared_inputs);
+            let mut note = note;
+            if !after.as_ref().is_ok_and(|a| *a == before) {
+                outcome = Outcome::Unknown;
+                note.push_str("; InputsChangedDuringRun");
+            }
+            let mut files = before;
+            files.insert(log.clone(), fingerprint(root, &log)?);
+            if xml_path.exists() {
+                files.insert(xml.clone(), fingerprint(root, &xml)?);
+            }
+            let report_path = if xml_path.exists() { xml } else { log };
+            Ok(Run {
+                check: b.id.clone(),
+                started_at,
+                duration_ms: spawned
+                    .then(|| started.elapsed().as_millis().min(u128::from(u64::MAX)) as u64),
+                command: std::iter::once(program.clone()).chain(args).collect(),
+                cwd: cwd.to_string_lossy().into_owned(),
+                inputs_after: after.ok(),
+                check_sha256: revision(s, &b),
+                outcome,
+                observation: note,
+                files,
+                report: report_path,
+            })
+        })();
+        let run=result.unwrap_or_else(|e| Run {check:b.id.clone(),started_at:progress::now().unwrap_or(0),duration_ms:None,check_sha256:revision(s,&b),command:std::iter::once(r.program.clone()).chain(r.args.clone()).collect(),cwd:r.cwd.clone(),inputs_after:None,outcome:Outcome::Unknown,observation:format!("CheckNotCompleted: {e}; command contains configured placeholders if execution did not start"),files:BTreeMap::new(),report:String::new()});
+        observed.push((b.clone(), run));
+    }
+    record_runs(root, s, id, selected, observed, report)
+}
+
+fn record_runs(
+    root: &Path,
+    s: &mut Store,
+    id: &str,
+    selected: &str,
+    observed: Vec<(Check, Run)>,
+    report: &mut Report,
+) -> Result<()> {
+    // Retain every result, including failures. All bindings for a scenario must
+    // be fresh and passing; a later successful sibling cannot hide a failure.
+    let c = result_mut(s, id)?;
+    for (_, run) in &observed {
+        c.runs.push(run.clone());
+    }
+    let scenarios: BTreeSet<_> = observed
+        .iter()
+        .flat_map(|(b, _)| b.scenario_ids.iter().cloned())
+        .collect();
+    for scenario in scenarios {
+        let c = &s.changes[id];
+        let bindings: Vec<_> = c
+            .checks
+            .iter()
+            .filter(|b| b.scenario_ids.contains(&scenario))
+            .collect();
+        let passed = bindings
+            .iter()
+            .all(|b| b.runner.is_some() && fresh(root, s, c, b));
+        let mut files = BTreeMap::new();
+        let mut input_paths = BTreeSet::new();
+        for b in &bindings {
+            if let Some(run) = c.runs.iter().rev().find(|r| r.check == b.id) {
+                input_paths.extend(
+                    run.inputs_after
+                        .as_ref()
+                        .map(|m| m.keys().cloned().collect::<BTreeSet<_>>())
+                        .unwrap_or_else(|| run.files.keys().cloned().collect()),
+                );
+                files.extend(run.files.clone());
+            }
+        }
+        let r = c
+            .operations
+            .iter()
+            .filter_map(Delta::requirement)
+            .find(|r| r.scenarios.iter().any(|sc| sc.id == scenario))
+            .unwrap();
+        let sc = r.scenarios.iter().find(|sc| sc.id == scenario).unwrap();
+        let newest = &observed
+            .iter()
+            .rev()
+            .find(|(b, _)| b.scenario_ids.contains(&scenario))
+            .unwrap()
+            .1;
+        let e=Evidence{command:format!("spec-run --id {id} --check {selected}"),captured_at:newest.started_at.to_string(),method:"native_report".into(),scenario:scenario.clone(),outcome:if passed {Outcome::Passed} else {Outcome::Unknown},observation:"Результаты всех привязанных проверок сохранены в runs; подготовка и полнота входов требуют ревью".into(),scenario_sha256:scenario_revision(r,sc),files,input_paths:Some(input_paths),report:newest.report.clone()};
+        s.changes.get_mut(id).unwrap().evidence.insert(scenario, e);
+    }
+    for (b, run) in observed {
+        if run.outcome != Outcome::Passed {
+            report.finding("failed", "CheckNotPassed", &b.id, &run.observation);
+        }
+        report.measurements.push(json!({"check":b.id,"run":run}));
+    }
+    Ok(())
+}
+
+#[derive(Serialize, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct RunInputs {
+    id: String,
+    captured_at: u64,
+    checks: BTreeMap<String, CheckInputs>,
+}
+#[derive(Serialize, Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+struct CheckInputs {
+    revision: String,
+    inputs: BTreeMap<String, String>,
+}
+#[derive(Deserialize, JsonSchema)]
+#[serde(deny_unknown_fields)]
+pub struct ImportReport {
+    snapshot: RunInputs,
+    report: String,
+    command: Vec<String>,
+}
+pub fn capture_inputs(root: &Path, s: &Store, id: &str, selected: &str) -> Result<RunInputs> {
+    validate(s)?;
+    let c = s.changes.get(id).ok_or("ChangeMissing")?;
+    let mut checks = BTreeMap::new();
+    for b in c
+        .checks
+        .iter()
+        .filter(|b| selected == "all" || selected == b.id)
+    {
+        let runner = b
+            .runner
+            .as_ref()
+            .and_then(|r| s.runners.get(r))
+            .ok_or("ManualCheckRequired")?;
+        checks.insert(
+            b.id.clone(),
+            CheckInputs {
+                revision: revision(s, b),
+                inputs: inputs(root, b, runner, &c.shared_inputs)?,
+            },
+        );
+    }
+    if checks.is_empty() {
+        return Err("EmptyCheckSelection".into());
+    }
+    Ok(RunInputs {
+        id: id.into(),
+        captured_at: progress::now()?,
+        checks,
+    })
+}
+pub fn import_report(root: &Path, s: &mut Store, input: &Path, report: &mut Report) -> Result<()> {
+    let v: ImportReport = decode(&paths::read_limited(input, LIMIT)?, "report import")?;
+    validate(s)?;
+    if v.command.is_empty()
+        || v.command.iter().any(|x| x.trim().is_empty())
+        || v.snapshot.checks.is_empty()
+        || v.snapshot.captured_at > progress::now()?
+    {
+        return Err("InvalidReportImport".into());
+    }
+    let id = &v.snapshot.id;
+    let c = s.changes.get(id).ok_or("ChangeMissing")?;
+    if c.abandoned_reason.is_some() {
+        return Err("AbandonedChange".into());
+    }
+    let bytes = paths::read_limited(&paths::safe(root, &v.report)?, LIMIT)?;
+    let text = std::str::from_utf8(&bytes).map_err(|e| e.to_string())?;
+    let mut observed = Vec::new();
+    for (check, snapshot) in v.snapshot.checks {
+        let b = c
+            .checks
+            .iter()
+            .find(|b| b.id == check)
+            .ok_or("CheckMissing")?;
+        let runner = b
+            .runner
+            .as_ref()
+            .and_then(|r| s.runners.get(r))
+            .ok_or("ManualCheckRequired")?;
+        let current = inputs(root, b, runner, &c.shared_inputs)?;
+        if snapshot.revision != revision(s, b) || snapshot.inputs != current {
+            return Err("ImportedInputsStale".into());
+        }
+        // JUnit supports a native suite report with exact, unique selectors.
+        if runner.format != "junit" {
+            return Err("ReportImportRequiresJUnit".into());
+        }
+        let outcome = parse(&runner.format, text, &b.selector);
+        if outcome != Outcome::Passed {
+            return Err(format!("ImportedCheckNotPassed: {check}"));
+        }
+        let mut files = current.clone();
+        files.insert(v.report.clone(), hash(&bytes));
+        let run = Run {check:check.clone(), started_at:v.snapshot.captured_at, duration_ms:None, command:v.command.clone(), cwd:runner.cwd.clone(), inputs_after:Some(current),check_sha256:snapshot.revision,outcome,observation:"Imported native JUnit result; input provenance is declared, authenticity requires review".into(),files,report:v.report.clone()};
+        if c.runs.iter().rev().find(|r| r.check == check) != Some(&run) {
+            observed.push((b.clone(), run));
+        }
+    }
+    if observed.is_empty() {
+        report
+            .measurements
+            .push(json!({"updated":[],"reused":true}));
+        return Ok(());
+    }
+    record_runs(root, s, id, "import", observed, report)
+}

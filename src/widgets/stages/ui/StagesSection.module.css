@@ -1,0 +1,18 @@
+.stagesSection {
+  background-color: var(--color-milk);
+}
+
+.header {
+  margin-bottom: var(--space-md);
+}
+
+.description {
+  margin-top: var(--space-xs);
+  color: var(--color-gray-brown);
+}
+
+.grid {
+  row-gap: 8px;
+  column-gap: 16px;
+  align-items: start;
+}

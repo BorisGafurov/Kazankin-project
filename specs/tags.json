@@ -1,0 +1,36 @@
+{
+  "tags": [
+    {
+      "id": "design-tokens",
+      "description": "Цветовые токены, шрифты и CSS-переменные дизайн-системы"
+    },
+    {
+      "id": "fsd-architecture",
+      "description": "Архитектура Feature-Sliced Design и компонентное расщепление"
+    },
+    {
+      "id": "landing-sections",
+      "description": "Секции лендинга: Hero, Работа, Этапы, Отзывы, Связаться"
+    },
+    {
+      "id": "i18n",
+      "description": "Двуязычная локализация RU / EN всего контента сайта"
+    },
+    {
+      "id": "animation-scroll",
+      "description": "Плавная анимация, полноэкранный переход по секциям и Scroll-Spy шапки"
+    },
+    {
+      "id": "accessibility-seo",
+      "description": "Доступность для скринридеров (a11y/ARIA) и SEO-оптимизация"
+    },
+    {
+      "id": "storybook",
+      "description": "Изолированная разработка и документация компонентов в Storybook"
+    },
+    {
+      "id": "responsive-mobile",
+      "description": "Адаптивность для мобильных устройств, планшетов и экранов с малым разрешением (320px–1024px)"
+    }
+  ]
+}

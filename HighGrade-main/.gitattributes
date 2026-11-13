@@ -1,0 +1,92 @@
+kit/** text eol=lf
+src/launcher/** text eol=lf
+"HighGrade UI.sh" text eol=lf
+"HighGrade UI.cmd" text eol=crlf
+bundle/** text eol=lf
+tests/fixtures/p0p2-bundle/** text eol=lf
+docs/evidence/executable-scenarios/** text eol=lf
+docs/DEVELOPMENT.md text eol=lf
+tests/fixtures/native-v1/** -text
+.highgrade/specs/backups/** -text
+docs/evidence/spec-progress/** -text
+
+.highgrade/specs/store.json -text
+specs-backup-*.json -text
+specs/** -text
+docs/evidence/spec-catalog/** -text
+docs/evidence/tools-cli/** -text -whitespace
+specs/**/evidence/*.log -whitespace
+
+docs/archive/data/** -text
+docs/archive/legacy-openspec/** -text
+docs/archive/evidence/** -text
+docs/archive/examples/native-specification/**/*.json -text
+docs/archive/plans/2026-09-24/** -text
+docs/archive/legacy-workflow/** -text
+docs/archive/examples/** -text
+docs/archive/reviews/** -text
+docs/evidence/repository-hygiene/** -text
+docs/archive/evidence/** -whitespace
+docs/archive/examples/native-specification/** -whitespace
+docs/evidence/repository-hygiene/** -whitespace
+
+docs/evidence/docs-specs/** -text -whitespace
+
+docs/evidence/issues-fixer/** -text -whitespace
+
+docs/evidence/v0-3/** -text -whitespace
+
+docs/evidence/init-redesign/** -text -whitespace
+
+docs/evidence/pilot-followup/** -text -whitespace
+
+docs/evidence/pilot-release-v032/** -text -whitespace
+
+docs/evidence/init-routes/** -text -whitespace
+
+# Preserve exact bytes of UI verification inputs and immutable reports.
+ui/** -text whitespace=cr-at-eol
+Cargo.toml -text whitespace=cr-at-eol
+Cargo.lock -text whitespace=cr-at-eol
+docs/UI.md -text whitespace=cr-at-eol
+docs/evidence/specification-ui/** -text -whitespace
+docs/evidence/portable-document-budget/** -text -whitespace
+
+# Preserve upstream license wording and whitespace verbatim.
+ui/licenses/** -whitespace
+ui/public/licenses/** -whitespace
+
+# Preserve immutable JUnit retry verification evidence.
+docs/evidence/junit-retry-evidence/** -text -whitespace
+# Preserve immutable readiness verification evidence.
+docs/evidence/readiness-single-gate/** -text -whitespace
+# Preserve immutable resume-context verification evidence.
+docs/evidence/resume-attention-context/** -text -whitespace
+# Preserve exact bytes of verification freshness evidence and source reports.
+docs/evidence/verification-report-freshness/** -text -whitespace
+
+# Preserve HG-0066 evidence bytes across Windows and Linux checkouts.
+docs/evidence/test-before-implementation/** -text -whitespace
+docs/reviews/test-before-implementation-original.txt -text -whitespace
+docs/reviews/test-before-implementation-publication.md -text -whitespace
+docs/workflow/QUALITY.md text eol=lf
+scripts/render-skills.py text eol=lf
+
+# Content-addressed evidence objects must retain their exact bytes.
+docs/evidence/objects/** -text -whitespace
+
+# Raw machine evidence is reviewable on demand, not as source-line changes.
+[attr]highgrade-evidence -text -diff -whitespace
+docs/evidence/objects/*.blob highgrade-evidence
+docs/evidence/result-acceptance/nextest-junit.xml highgrade-evidence
+docs/evidence/result-acceptance/ui-reviewed.json highgrade-evidence
+docs/evidence/editorial/** highgrade-evidence
+docs/evidence/ui-cache/** highgrade-evidence
+docs/evidence/ui-performance/** highgrade-evidence
+docs/evidence/ui-catalog-read/** highgrade-evidence
+docs/evidence/ui-launcher/** highgrade-evidence
+docs/evidence/editorial/*.md diff
+docs/evidence/ui-cache/*.md diff
+docs/evidence/ui-performance/*.md diff
+docs/evidence/ui-catalog-read/*.md diff
+docs/evidence/ui-launcher/*.md diff

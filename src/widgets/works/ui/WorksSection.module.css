@@ -1,0 +1,48 @@
+.worksSection {
+  background-color: var(--color-milk);
+}
+
+.header {
+  margin-bottom: var(--space-md);
+}
+
+.description {
+  margin-top: var(--space-xs);
+  color: var(--color-gray-brown);
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 56px 48px 56px;
+  margin: -36px -48px -28px;
+}
+
+.sliderTrack {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 8px;
+}
+
+.navBtns {
+  display: flex;
+  gap: 14px;
+}
+
+.counter {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-dark-text);
+  letter-spacing: var(--tracking-wide);
+}

@@ -1,0 +1,44 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  letter-spacing: var(--tracking-normal);
+  line-height: 1.2;
+}
+
+.take {
+  background-color: var(--color-rdr-red);
+  color: #FFFFFF;
+}
+
+.agree {
+  background-color: var(--color-badge-neutral-bg);
+  color: var(--color-badge-neutral-text);
+}
+
+.none {
+  background-color: #E2DDD6;
+  color: #8C847C;
+}
+
+.card {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 8px 18px 8px;
+  background-image: url('/rdr-brush.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: var(--tracking-widest);
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  z-index: 4;
+  filter: drop-shadow(0 2px 8px rgba(184, 20, 27, 0.45));
+}

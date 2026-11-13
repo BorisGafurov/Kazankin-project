@@ -1,0 +1,182 @@
+name: Verify source
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify (${{ matrix.platform }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: Windows
+            os: windows-2025
+            previous_sha: e60b6d4d4c3631c7140b037581f0bcdb2573befd
+          - platform: Linux
+            os: ubuntu-24.04
+            previous_sha: fda4117312ca4c5af4388c960081dac94c10ea8f
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    env:
+      HIGHGRADE_UI_SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      HIGHGRADE_OLD_SOURCE_SHA: ${{ matrix.previous_sha }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.HIGHGRADE_UI_SOURCE_SHA }}
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: ui/package-lock.json
+      - name: Check generated skills
+        if: runner.os == 'Linux'
+        run: python scripts/render-skills.py --check
+      - name: Check repository structure
+        if: runner.os == 'Linux'
+        run: node scripts/check-repository.mjs
+      - name: Install pinned Rust
+        run: rustup show active-toolchain
+      - name: Check format
+        if: runner.os == 'Linux'
+        run: cargo fmt --all -- --check
+      - name: Install UI dependencies
+        working-directory: ui
+        run: npm ci --no-audit --no-fund
+      - name: Build embedded interface
+        working-directory: ui
+        run: npm run build
+      - name: Build Storybook
+        if: runner.os == 'Linux'
+        working-directory: ui
+        run: npm run build-storybook
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target/debug
+            target/highgrade/build-cache
+          key: ${{ runner.os }}-${{ runner.arch }}-rust-v2-${{ hashFiles('rust-toolchain.toml') }}-${{ hashFiles('Cargo.lock') }}-${{ env.HIGHGRADE_UI_SOURCE_SHA }}
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-rust-v2-${{ hashFiles('rust-toolchain.toml') }}-${{ hashFiles('Cargo.lock') }}-
+            ${{ runner.os }}-${{ runner.arch }}-rust-v2-${{ hashFiles('rust-toolchain.toml') }}-
+      - name: Fetch locked Rust dependencies for offline lifecycle fixtures
+        run: cargo fetch --locked
+      - name: Check release build lifecycle
+        run: python -m unittest discover -s scripts/tests -v
+      - name: Install native Rust test reporter
+        uses: taiki-e/install-action@v2
+        with:
+          tool: nextest@0.9.146
+          fallback: none
+      - name: Test and verify kit hashes
+        run: python scripts/verify.py tests
+      - name: Validate active specifications
+        if: runner.os == 'Linux'
+        run: python scripts/verify.py specs
+      - name: Inspect registered project context
+        if: runner.os == 'Linux'
+        run: python scripts/verify.py inspect
+      - name: Verify executable scenario links
+        run: python scripts/verify.py scenarios
+      - name: Check selective context with 100 and 200 specs
+        if: runner.os == 'Linux'
+        run: node scripts/check-scenario-scale.mjs
+      - name: Check scenario report reuse guard
+        if: runner.os == 'Linux'
+        run: node scripts/check-scenario-reuse.mjs
+      - name: Check UI report routing and fixture guards
+        run: node --test ui/scripts/tests/*.test.mjs
+      - name: Install Playwright Chromium and libraries on Linux
+        if: runner.os == 'Linux'
+        working-directory: ui
+        run: npx playwright install --with-deps chromium
+      - name: Install Playwright Chromium on Windows
+        if: runner.os == 'Windows'
+        working-directory: ui
+        run: npx playwright install chromium
+      - name: Check native interface
+        if: runner.os == 'Linux'
+        working-directory: ui
+        env:
+          HIGHGRADE_UI_REPORT: ${{ github.workspace }}/target/highgrade/reports/native-playwright.json
+        run: npx playwright test native.spec.ts decision.spec.ts edit.spec.ts api-client.spec.ts --fail-on-flaky-tests --output ../target/highgrade/ui-playwright/native
+      - name: Build exact current candidate
+        run: python scripts/build-release.py ${{ env.HIGHGRADE_UI_SOURCE_SHA }}
+      - name: Check out pinned platform predecessor
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ env.HIGHGRADE_OLD_SOURCE_SHA }}
+          path: target/highgrade/tmp/installed-previous
+          persist-credentials: false
+      - name: Restore authentic predecessor candidate
+        id: predecessor
+        uses: actions/cache@v4
+        with:
+          path: target/highgrade/tmp/installed-previous/target/highgrade/candidate
+          key: ${{ runner.os }}-${{ runner.arch }}-predecessor-v1-${{ env.HIGHGRADE_OLD_SOURCE_SHA }}
+      - name: Build authentic previous release with its own builder
+        if: steps.predecessor.outputs.cache-hit != 'true'
+        working-directory: target/highgrade/tmp/installed-previous
+        run: python scripts/build-release.py ${{ env.HIGHGRADE_OLD_SOURCE_SHA }}
+      - name: Configure mandatory exact-version installed fixtures
+        shell: python
+        run: |
+          import os, pathlib, subprocess, tomllib
+          root = pathlib.Path.cwd()
+          current = root / 'target/highgrade/candidate'
+          previous_root = root / 'target/highgrade/tmp/installed-previous'
+          previous = previous_root / 'target/highgrade/candidate'
+          binary = 'highgrade.exe' if os.name == 'nt' else 'highgrade'
+          def version(repository, sha):
+              source = subprocess.check_output(['git', 'show', f'{sha}:Cargo.toml'], cwd=repository)
+              return tomllib.loads(source.decode('utf-8'))['package']['version']
+          values = {
+              'HIGHGRADE_UI_REQUIRED': 'true',
+              'HIGHGRADE_UI_CANDIDATE': current,
+              'HIGHGRADE_UI_SOURCE_SHA': os.environ['HIGHGRADE_UI_SOURCE_SHA'],
+              'HIGHGRADE_UI_VERSION': version(root, os.environ['HIGHGRADE_UI_SOURCE_SHA']),
+              'HIGHGRADE_OLD_SOURCE': previous / 'kit',
+              'HIGHGRADE_OLD_EXE': previous / binary,
+              'HIGHGRADE_OLD_VERSION': version(previous_root, os.environ['HIGHGRADE_OLD_SOURCE_SHA']),
+              'HIGHGRADE_UI_REPORT': root / 'target/highgrade/reports/installed-playwright.json',
+          }
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as output:
+              for key, value in values.items():
+                  output.write(f'{key}={value}\n')
+      - name: Verify installed current and previous releases
+        working-directory: ui
+        run: npx playwright test installed.spec.ts --fail-on-flaky-tests --output ../target/highgrade/ui-playwright/installed
+      - name: Preserve verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-${{ matrix.platform }}
+          path: |
+            target/highgrade/reports/installed-playwright.json
+            target/highgrade/reports/native-playwright.json
+            target/highgrade/reports/release-build.log
+            target/highgrade/tmp/installed-previous/target/highgrade/reports/release-build.log
+            target/highgrade/ui-playwright
+            target/nextest/highgrade/junit.xml
+            target/nextest/highgrade/list.json
+            target/nextest/highgrade/attempt.json
+            target/nextest/highgrade/completion.json
+            target/nextest/highgrade/run.json
+            target/nextest/highgrade/trace.json
+          if-no-files-found: warn
