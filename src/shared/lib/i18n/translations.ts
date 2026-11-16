@@ -44,7 +44,7 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'works.item7.category': 'Альтернативная обложка / визуальная концепция',
 
     'stages.overline': '03 / ЭТАПЫ РАБОТЫ',
-    'stages.title': 'ГДЕ Я МОГУ ВАМ ПОМОЧЬ.',
+    'stages.title': 'ЧЕМ Я МОГУ ВАМ ПОМОЧЬ.',
     'stages.description': 'Подключусь на этапе идеи или к готовым исходникам. Основная работа — монтаж и постобработка.',
     'stages.callout': 'Съёмка — на вашей стороне. С подготовкой материалов помогу.',
     'stages.group.before': 'До монтажа',
@@ -145,7 +145,7 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'works.item7.category': 'Alternate cover / visual concept',
 
     'stages.overline': '03 / WORKFLOW',
-    'stages.title': 'WHERE I CAN HELP.',
+    'stages.title': 'WHAT I CAN HELP WITH.',
     'stages.description': 'I can join at the idea stage or work from finished footage. Editing and post-production are my core work.',
     'stages.callout': 'You handle filming. I can help you prepare the material.',
     'stages.group.before': 'Before the edit',

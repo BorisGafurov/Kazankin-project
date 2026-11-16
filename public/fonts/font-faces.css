@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Druk Wide Cyr';
+  src: url('./DrukWideCyr-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Cyr';
+  src: url('./DrukTextWideCyr-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Find Sans Pro';
+  src: url('./FindSansPro-Light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Find Sans Pro';
+  src: url('./FindSansPro-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Find Sans Pro';
+  src: url('./FindSansPro-Medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Find Sans Pro';
+  src: url('./FindSansPro-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}

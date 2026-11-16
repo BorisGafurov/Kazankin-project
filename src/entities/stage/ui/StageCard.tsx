@@ -17,32 +17,47 @@ export const StageCard: React.FC<StageCardProps> = ({ stage, expanded, onToggle 
 
   return (
     <article className={clsx(styles.card, expanded && styles.expanded)}>
-      <button
-        type="button"
-        className={styles.trigger}
-        aria-expanded={expanded}
-        aria-controls={detailsId}
-        onClick={onToggle}
-      >
-        <span className={styles.number}>{stage.number}</span>
-        <span className={styles.title} data-sand-target="true">
-          {t(stage.titleKey)}
-        </span>
-        <span className={styles.icon} aria-hidden="true">
-          {expanded ? '−' : '+'}
-        </span>
-      </button>
+      {expanded && (
+        <div
+          className={clsx(styles.trigger, styles.placeholder)}
+          aria-hidden="true"
+        >
+          <span className={styles.number}>{stage.number}</span>
+          <span className={styles.title}>{t(stage.titleKey)}</span>
+          <span className={styles.icon}>−</span>
+        </div>
+      )}
 
-      <div id={detailsId} className={styles.details} hidden={!expanded}>
-        <Badge variant={stage.badgeVariant}>{t(stage.badgeKey)}</Badge>
-        <p className={styles.desc} data-sand-target="true">
-          {t(stage.descKey)}
-        </p>
-        {stage.noteKey && (
-          <p className={styles.note} data-sand-target="true">
-            {t(stage.noteKey)}
-          </p>
-        )}
+      <div className={styles.overlayContent}>
+        <button
+          type="button"
+          className={styles.trigger}
+          aria-expanded={expanded}
+          aria-controls={detailsId}
+          onClick={onToggle}
+        >
+          <span className={styles.number}>{stage.number}</span>
+          <span className={styles.title} data-sand-target="true">
+            {t(stage.titleKey)}
+          </span>
+          <span className={styles.icon} aria-hidden="true">
+            {expanded ? '−' : '+'}
+          </span>
+        </button>
+
+        <div id={detailsId} className={styles.details} aria-hidden={!expanded}>
+          <div className={styles.detailsContent}>
+            <Badge variant={stage.badgeVariant}>{t(stage.badgeKey)}</Badge>
+            <p className={styles.desc} data-sand-target="true">
+              {t(stage.descKey)}
+            </p>
+            {stage.noteKey && (
+              <p className={styles.note} data-sand-target="true">
+                {t(stage.noteKey)}
+              </p>
+            )}
+          </div>
+        </div>
       </div>
     </article>
   );

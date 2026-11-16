@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -8,9 +9,18 @@
   transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
+.overlayContent {
+  display: contents;
+}
+
+.placeholder {
+  display: none;
+}
+
 .expanded {
+  z-index: 20;
   border-color: var(--color-wine);
-  background-color: #FFFEFC;
+  background-color: var(--color-card-bg);
 }
 
 .trigger {
@@ -67,14 +77,43 @@
 }
 
 .details {
+  position: absolute;
+  top: calc(100% - 1px);
+  left: -1px;
+  z-index: 1;
+  width: calc(100% + 2px);
   display: grid;
-  gap: 7px;
-  padding: 0 12px 12px 42px;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  border: 1px solid var(--color-rule-light);
+  border-top: 0;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow-lg);
   color: var(--color-gray-brown);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transform-origin: top;
+  transition:
+    grid-template-rows var(--transition-normal),
+    opacity var(--transition-normal),
+    transform var(--transition-normal);
 }
 
-.details[hidden] {
-  display: none;
+.expanded .details {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.detailsContent {
+  display: grid;
+  min-height: 0;
+  gap: 7px;
+  overflow: hidden;
+  padding: 12px 12px 12px 42px;
 }
 
 .desc {
@@ -112,8 +151,12 @@
   }
 
   .details {
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+
+  .detailsContent {
     gap: 5px;
-    padding: 0 8px 8px;
+    padding: 8px;
   }
 
   .desc {
@@ -130,20 +173,75 @@
 
 @media (prefers-reduced-motion: reduce) {
   .card,
-  .trigger {
+  .trigger,
+  .details {
     transition: none;
   }
 }
 
 @media (max-height: 700px) {
   .expanded {
+    position: static;
+    z-index: 20;
+    width: auto;
+    min-height: var(--touch-target-min);
+    max-height: none;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .expanded .placeholder {
+    display: grid;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .expanded .overlayContent {
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 20;
+    z-index: 21;
     width: min(560px, calc(100vw - 32px));
-    max-height: calc(100dvh - 32px);
     transform: translate(-50%, -50%);
+    border: 1px solid var(--color-wine);
+    border-radius: var(--radius-sm);
+    background: var(--color-card-bg);
     box-shadow: var(--shadow-lg);
+    animation: stage-card-center-in var(--transition-normal) both;
+  }
+
+  .expanded .details {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--color-rule-light);
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .detailsContent {
+    padding: 10px 12px 12px;
+  }
+}
+
+@keyframes stage-card-center-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expanded .overlayContent {
+    animation: none;
   }
 }

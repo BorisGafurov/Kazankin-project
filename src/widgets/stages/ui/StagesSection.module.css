@@ -53,13 +53,25 @@
   align-items: start;
 }
 
-.hasExpandedStage::before {
+.stagesSection::before {
   position: absolute;
   inset: 0;
   z-index: 10;
   background: rgba(16, 13, 12, 0.18);
   content: '';
+  opacity: 0;
   pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.hasExpandedStage::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagesSection::before {
+    transition: none;
+  }
 }
 
 @media (max-width: 720px) {
@@ -97,14 +109,6 @@
   .stagesSection .grid {
     row-gap: 6px;
     column-gap: 8px;
-  }
-
-  .hasExpandedStage .header {
-    margin-bottom: 6px;
-  }
-
-  .hasExpandedStage .description {
-    display: none;
   }
 }
 

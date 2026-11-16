@@ -47,6 +47,6 @@ src/
 ## Ресурсы и стили
 
 - Цветовые и типографические токены: `src/shared/styles/variables.css`.
-- Локальные `@font-face`: `src/shared/styles/global.css`; сами файлы — `public/fonts/`.
+- Файлы локальных шрифтов находятся в `public/fonts/`. Первые две гарнитуры предварительно загружаются в `index.html`; встроенные `@font-face` используют относительные URL, чтобы сохранить работу в GitHub Pages project subpath. Storybook подключает шрифты через `.storybook/preview-head.html` и `public/fonts/font-faces.css`.
 - Адаптивные правила секций: CSS Modules соответствующих виджетов и `shared/ui/section/`.
 - Фокус и reduced motion задаются глобально; интерактивные элементы остаются управляемыми с клавиатуры и сенсорного экрана.
