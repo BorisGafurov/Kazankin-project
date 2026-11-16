@@ -74,6 +74,8 @@ export type TranslationKey =
   | 'reviews.overline'
   | 'reviews.title'
   | 'reviews.description'
+  | 'reviews.mockLabel'
+  | 'reviews.ratingAria'
   | 'reviews.metric1'
   | 'reviews.metric2'
   | 'reviews.metric3'

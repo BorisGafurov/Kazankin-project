@@ -5,12 +5,14 @@ import styles from './StarRating.module.css';
 export interface StarRatingProps {
   score?: number;
   maxScore?: number;
+  ariaLabel: string;
   className?: string;
 }
 
 export const StarRating: React.FC<StarRatingProps> = ({
   score = 5,
   maxScore = 5,
+  ariaLabel,
   className,
 }) => {
   const stars = Array.from({ length: maxScore }, (_, i) => i < score);
@@ -19,7 +21,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
     <div
       className={clsx(styles.starRating, className)}
       role="img"
-      aria-label={`${score} из ${maxScore} звёзд`}
+      aria-label={ariaLabel}
     >
       {stars.map((filled, index) => (
         <span

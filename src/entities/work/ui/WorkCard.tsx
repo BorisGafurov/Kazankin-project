@@ -14,6 +14,7 @@ export interface WorkCardProps {
 export const WorkCard: React.FC<WorkCardProps> = ({ work, index, isActive, onClick }) => {
   const { t } = useI18n();
   const title = t(work.titleKey);
+  const imageSrc = `${import.meta.env.BASE_URL}${work.imageSrc.replace(/^\/+/, '')}`;
 
   return (
     <button
@@ -27,7 +28,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({ work, index, isActive, onCli
     >
       <span className={styles.poster}>
         <img
-          src={work.imageSrc}
+          src={imageSrc}
           alt=""
           width="850"
           height="1050"

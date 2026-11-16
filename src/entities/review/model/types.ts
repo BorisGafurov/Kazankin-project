@@ -1,37 +1,25 @@
 import { TranslationKey } from '@/shared/lib/i18n';
 
+export type ReviewScore = 1 | 2 | 3 | 4 | 5;
+
 export interface ReviewItem {
   id: string;
   avatar: string;
-  score: number;
+  score: ReviewScore;
   textKey: TranslationKey;
   nameKey: TranslationKey;
   projectKey: TranslationKey;
+  isMock?: boolean;
 }
 
 export const REVIEWS_LIST: ReviewItem[] = [
   {
-    id: 'rev-1',
-    avatar: 'AK',
+    id: 'mock-review',
+    avatar: 'DEMO',
     score: 5,
     textKey: 'reviews.r1.text',
     nameKey: 'reviews.r1.name',
     projectKey: 'reviews.r1.project',
-  },
-  {
-    id: 'rev-2',
-    avatar: 'EB',
-    score: 5,
-    textKey: 'reviews.r2.text',
-    nameKey: 'reviews.r2.name',
-    projectKey: 'reviews.r2.project',
-  },
-  {
-    id: 'rev-3',
-    avatar: 'MP',
-    score: 5,
-    textKey: 'reviews.r3.text',
-    nameKey: 'reviews.r3.name',
-    projectKey: 'reviews.r3.project',
+    isMock: true,
   },
 ];

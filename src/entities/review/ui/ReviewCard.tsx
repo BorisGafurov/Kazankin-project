@@ -10,21 +10,29 @@ export interface ReviewCardProps {
 
 export const ReviewCard: React.FC<ReviewCardProps> = ({ review }) => {
   const { t } = useI18n();
+  const maxScore = 5;
+  const ratingAriaLabel = t('reviews.ratingAria')
+    .replace('{score}', String(review.score))
+    .replace('{maxScore}', String(maxScore));
 
   return (
     <article className={styles.card}>
+      {review.isMock && <p className={styles.mockBadge}>{t('reviews.mockLabel')}</p>}
       <div className={styles.top}>
-        <StarRating score={review.score} />
+        <div className={styles.rating}>
+          <StarRating score={review.score} maxScore={maxScore} ariaLabel={ratingAriaLabel} />
+          <span className={styles.score}>{review.score} / {maxScore}</span>
+        </div>
         <p className={styles.text} data-sand-target="true">
           {t(review.textKey)}
         </p>
       </div>
       <div className={styles.authorBlock}>
-        <div className={styles.avatar}>{review.avatar}</div>
+        <div className={styles.avatar} aria-hidden="true">{review.avatar}</div>
         <div>
-          <h4 className={styles.authorName} data-sand-target="true">
+          <h3 className={styles.authorName} data-sand-target="true">
             {t(review.nameKey)}
-          </h4>
+          </h3>
           <span className={styles.authorProject} data-sand-target="true">
             {t(review.projectKey)}
           </span>

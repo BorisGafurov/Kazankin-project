@@ -1,5 +1,6 @@
 import React from 'react';
 import { useI18n } from '@/shared/lib/i18n';
+import { ReviewCard, REVIEWS_LIST } from '@/entities/review';
 import { Container, Heading, Section, Text } from '@/shared/ui';
 import styles from './ReviewsSection.module.css';
 
@@ -23,13 +24,15 @@ export const ReviewsSection: React.FC = () => {
             <Heading level={2} id="reviews-title" className={styles.title}>
               {t('reviews.title')}
             </Heading>
-          </div>
-
-          <div className={styles.emptyState}>
-            <span className={styles.accentLine} aria-hidden="true" />
             <Text className={styles.description}>
               {t('reviews.description')}
             </Text>
+          </div>
+
+          <div className={styles.reviewList}>
+            {REVIEWS_LIST.map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
           </div>
         </div>
       </Container>
