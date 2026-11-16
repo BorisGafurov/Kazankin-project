@@ -12,8 +12,9 @@ export interface HeaderProps {
 
 const NAV_ITEMS = [
   { index: 1, labelKey: 'nav.works' as const },
-  { index: 2, labelKey: 'nav.stages' as const },
-  { index: 3, labelKey: 'nav.contact' as const },
+  { index: 2, labelKey: 'nav.reviews' as const },
+  { index: 3, labelKey: 'nav.stages' as const },
+  { index: 4, labelKey: 'nav.contact' as const },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate }) => {

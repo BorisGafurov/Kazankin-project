@@ -3,11 +3,12 @@ import { useDiscreteSwipe, SideDots } from '@/features/swipe-navigator';
 import { Header } from '@/widgets/header';
 import { HeroSection } from '@/widgets/hero';
 import { WorksSection } from '@/widgets/works';
+import { ReviewsSection } from '@/widgets/reviews';
 import { StagesSection } from '@/widgets/stages';
 import { ContactSection } from '@/widgets/contact';
 import styles from './LandingPage.module.css';
 
-const TOTAL_SECTIONS = 4;
+const TOTAL_SECTIONS = 5;
 
 export const LandingPage: React.FC = () => {
   const { currentIndex, goToSection } = useDiscreteSwipe(TOTAL_SECTIONS);
@@ -22,6 +23,7 @@ export const LandingPage: React.FC = () => {
       >
         <HeroSection onNavigate={goToSection} />
         <WorksSection />
+        <ReviewsSection />
         <StagesSection />
         <ContactSection />
       </main>

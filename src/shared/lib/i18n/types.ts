@@ -3,6 +3,7 @@ export type Language = 'ru' | 'en';
 export type TranslationKey =
   | 'nav.home'
   | 'nav.works'
+  | 'nav.reviews'
   | 'nav.stages'
   | 'nav.contact'
   | 'nav.language'

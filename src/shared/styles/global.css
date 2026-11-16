@@ -83,22 +83,14 @@ body {
 }
 
 * {
-  scrollbar-color: var(--color-scroll-thumb) transparent;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 *::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: var(--color-scroll-thumb);
-  border-radius: var(--radius-full);
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 button {

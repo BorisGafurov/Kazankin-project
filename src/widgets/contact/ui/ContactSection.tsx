@@ -8,7 +8,7 @@ export const ContactSection: React.FC = () => {
   const { t } = useI18n();
 
   return (
-    <Section id="contact" theme="contact" sectionIndex={3} className={styles.contactSection}>
+    <Section id="contact" theme="contact" sectionIndex={4} className={styles.contactSection}>
       <Container size="md" className={styles.mainContainer}>
         <div className={styles.box}>
           <Heading

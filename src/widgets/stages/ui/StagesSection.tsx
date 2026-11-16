@@ -10,7 +10,7 @@ export const StagesSection: React.FC = () => {
   const postProductionStages = STAGES_LIST.filter((stage) => stage.group === 'post');
 
   return (
-    <Section id="stages" theme="milk" sectionIndex={2} className={styles.stagesSection}>
+    <Section id="stages" theme="milk" sectionIndex={3} className={styles.stagesSection}>
       <Container size="md">
         <div className={styles.header}>
           <Heading level={2} overline={t('stages.overline')}>

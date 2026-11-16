@@ -4,6 +4,7 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
   ru: {
     'nav.home': 'На главную',
     'nav.works': 'Работы',
+    'nav.reviews': 'Отзывы',
     'nav.stages': 'Этапы',
     'nav.contact': 'Контакт',
     'nav.language': 'Выбор языка интерфейса',
@@ -42,7 +43,7 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'works.item7.title': 'Искупление · вариант 2',
     'works.item7.category': 'Альтернативная обложка / визуальная концепция',
 
-    'stages.overline': '02 / ЭТАПЫ РАБОТЫ',
+    'stages.overline': '03 / ЭТАПЫ РАБОТЫ',
     'stages.title': 'ГДЕ Я МОГУ ВАМ ПОМОЧЬ.',
     'stages.description': 'Подключусь на этапе идеи или к готовым исходникам. Основная работа — монтаж и постобработка.',
     'stages.callout': 'Съёмка — на вашей стороне. С подготовкой материалов помогу.',
@@ -75,9 +76,9 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'stages.s9.desc': 'Добавлю титры, подписи и субтитры, оформлю важные акценты.',
     'stages.s9.note': 'Сложную анимацию обсуждаем отдельно.',
 
-    'reviews.overline': '03 / РАЗДЕЛ НЕ АКТИВЕН',
-    'reviews.title': 'ОТЗЫВЫ НЕ ПУБЛИКУЮТСЯ.',
-    'reviews.description': 'Отзывы и количественные показатели не входят в текущую версию сайта.',
+    'reviews.overline': '02 / ОТЗЫВЫ',
+    'reviews.title': 'ОТЗЫВЫ КЛИЕНТОВ',
+    'reviews.description': 'Здесь появятся реальные отзывы после получения материалов для публикации.',
     'reviews.metric1': 'Не опубликовано',
     'reviews.metric2': 'Не опубликовано',
     'reviews.metric3': 'Не опубликовано',
@@ -91,7 +92,7 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'reviews.r3.name': 'Отзыв не опубликован',
     'reviews.r3.project': '—',
 
-    'contact.overline': '03 / НАЧНЁМ С ЗАДАЧИ',
+    'contact.overline': '04 / НАЧНЁМ С ЗАДАЧИ',
     'contact.titleLine1': 'ЕСТЬ МАТЕРИАЛ?',
     'contact.titleLine2': 'ЕСТЬ ИДЕЯ?',
     'contact.text': 'Расскажите, какое видео хотите получить, что уже готово и когда нужен результат.',
@@ -102,6 +103,7 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
   en: {
     'nav.home': 'Home',
     'nav.works': 'Works',
+    'nav.reviews': 'Reviews',
     'nav.stages': 'Process',
     'nav.contact': 'Contact',
     'nav.language': 'Choose interface language',
@@ -140,7 +142,7 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'works.item7.title': 'Redemption · variant 2',
     'works.item7.category': 'Alternate cover / visual concept',
 
-    'stages.overline': '02 / WORKFLOW',
+    'stages.overline': '03 / WORKFLOW',
     'stages.title': 'WHERE I CAN HELP.',
     'stages.description': 'I can join at the idea stage or work from finished footage. Editing and post-production are my core work.',
     'stages.callout': 'You handle filming. I can help you prepare the material.',
@@ -173,9 +175,9 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'stages.s9.desc': 'I add titles, captions and subtitles, and emphasize key moments.',
     'stages.s9.note': 'Complex animation is discussed separately.',
 
-    'reviews.overline': '03 / INACTIVE SECTION',
-    'reviews.title': 'REVIEWS NOT PUBLISHED.',
-    'reviews.description': 'Reviews and numerical claims are not part of the current website.',
+    'reviews.overline': '02 / CLIENT REVIEWS',
+    'reviews.title': 'CLIENT REVIEWS',
+    'reviews.description': 'Real client reviews will appear here once the publication materials are available.',
     'reviews.metric1': 'Not published',
     'reviews.metric2': 'Not published',
     'reviews.metric3': 'Not published',
@@ -189,7 +191,7 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'reviews.r3.name': 'Review not published',
     'reviews.r3.project': '—',
 
-    'contact.overline': '03 / START WITH A BRIEF',
+    'contact.overline': '04 / START WITH A BRIEF',
     'contact.titleLine1': 'HAVE FOOTAGE?',
     'contact.titleLine2': 'HAVE AN IDEA?',
     'contact.text': 'Tell me what you want the video to do, what you already have and when you need it.',
