@@ -1,5 +1,5 @@
 .pageWrapper {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   height: 100dvh;
   position: relative;
@@ -14,4 +14,10 @@
   flex-direction: column;
   transition: transform var(--transition-swipe);
   will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fullpageTrack {
+    transition: none;
+  }
 }

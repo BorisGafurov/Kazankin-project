@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import styles from './Badge.module.css';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: 'take' | 'agree' | 'none' | 'card';
+  variant?: 'take' | 'agree' | 'help' | 'none' | 'card';
   children: ReactNode;
   className?: string;
   sandTarget?: boolean;

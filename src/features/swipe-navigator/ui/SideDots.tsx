@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useI18n } from '@/shared/lib/i18n';
 import styles from './SideDots.module.css';
 
 export interface SideDotsProps {
@@ -9,16 +10,18 @@ export interface SideDotsProps {
 }
 
 export const SideDots: React.FC<SideDotsProps> = ({ total, current, onSelect }) => {
+  const { t } = useI18n();
+
   return (
-    <aside className={styles.dots} aria-label="Быстрая навигация по секциям">
-      {Array.from({ length: total }, (_, i) => (
+    <aside className={styles.dots} aria-label={t('nav.quick')}>
+      {Array.from({ length: total }, (_, index) => (
         <button
-          key={i}
+          key={index}
           type="button"
-          className={clsx(styles.dot, current === i && styles.active)}
-          onClick={() => onSelect(i)}
-          aria-label={`Перейти к экрану ${i + 1}`}
-          aria-current={current === i ? 'true' : undefined}
+          className={clsx(styles.dot, current === index && styles.active)}
+          onClick={() => onSelect(index)}
+          aria-label={`${t('nav.screen')} ${index + 1}`}
+          aria-current={current === index ? 'page' : undefined}
         />
       ))}
     </aside>

@@ -1,36 +1,38 @@
 .footer {
   width: 100%;
-  background-color: rgba(16, 13, 12, 0.98);
-  border-top: 1px solid rgba(200, 189, 176, 0.15);
-  padding: 24px 0;
-  color: var(--color-gray-brown);
-  font-size: 0.85rem;
+  padding: 20px 0 22px;
+  color: var(--color-muted-on-dark-soft);
+  font-size: 0.8rem;
+  background: var(--color-glass-dark-footer);
+  border-top: 1px solid var(--color-rule-dark);
 }
 
 .inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-@media (max-width: 640px) {
-  .inner {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-  }
+  gap: 12px;
 }
 
 .brand {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  letter-spacing: var(--tracking-wider);
-  color: #E0D8D0;
+  color: var(--color-card-bg);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .geo {
-  font-size: 0.8rem;
-  color: #8C847C;
+  color: var(--color-muted-on-dark-soft);
+  font-size: 0.76rem;
   letter-spacing: var(--tracking-wide);
+}
+
+@media (max-width: 640px) {
+  .inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
 }

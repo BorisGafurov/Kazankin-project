@@ -2,12 +2,12 @@ import React from 'react';
 import { useI18n } from '@/shared/lib/i18n';
 import { Section, Container, Heading, Text, Grid } from '@/shared/ui';
 import { STAGES_LIST, StageCard } from '@/entities/stage';
-import { useStageAccordion } from '@/features/stage-accordion';
 import styles from './StagesSection.module.css';
 
 export const StagesSection: React.FC = () => {
   const { t } = useI18n();
-  const { expandedId, toggle } = useStageAccordion('08');
+  const preEditStages = STAGES_LIST.filter((stage) => stage.group === 'before');
+  const postProductionStages = STAGES_LIST.filter((stage) => stage.group === 'post');
 
   return (
     <Section id="stages" theme="milk" sectionIndex={2} className={styles.stagesSection}>
@@ -19,18 +19,22 @@ export const StagesSection: React.FC = () => {
           <Text variant="body" className={styles.description}>
             {t('stages.description')}
           </Text>
+          <p className={styles.callout}>{t('stages.callout')}</p>
         </div>
 
-        <Grid cols={2} gap="sm" className={styles.grid}>
-          {STAGES_LIST.map((stage) => (
-            <StageCard
-              key={stage.number}
-              stage={stage}
-              isExpanded={expandedId === stage.number}
-              onToggle={() => toggle(stage.number)}
-            />
-          ))}
-        </Grid>
+        <div className={styles.group}>
+          <h3 className={styles.groupTitle}>{t('stages.group.before')}</h3>
+          <Grid cols={2} gap="sm" className={styles.grid}>
+            {preEditStages.map((stage) => <StageCard key={stage.number} stage={stage} />)}
+          </Grid>
+        </div>
+
+        <div className={styles.group}>
+          <h3 className={styles.groupTitle}>{t('stages.group.post')}</h3>
+          <Grid cols={2} gap="sm" className={styles.grid}>
+            {postProductionStages.map((stage) => <StageCard key={stage.number} stage={stage} />)}
+          </Grid>
+        </div>
       </Container>
     </Section>
   );

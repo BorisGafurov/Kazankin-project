@@ -1,39 +1,104 @@
 @import './variables.css';
 
-/* ==========================================================================
-   RESET & BOX SIZING
-   ========================================================================== */
-*, *::before, *::after {
+@font-face {
+  font-family: 'Druk Wide Cyr';
+  src: url('/fonts/DrukWideCyr-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Druk Text Wide Cyr';
+  src: url('/fonts/DrukTextWideCyr-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Find Sans Pro';
+  src: url('/fonts/FindSansPro-Light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Find Sans Pro';
+  src: url('/fonts/FindSansPro-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Find Sans Pro';
+  src: url('/fonts/FindSansPro-Medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Find Sans Pro';
+  src: url('/fonts/FindSansPro-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
-  background-color: var(--color-warm-black);
-  color-scheme: dark;
+  min-height: 100%;
+}
+
+html,
+body {
+  background: var(--color-warm-black);
   color: var(--color-dark-text);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden; /* Scroll controlled by discrete swipe engine */
+  overflow: hidden;
   position: relative;
+  overscroll-behavior: none;
 }
 
-/* Zero Scrollbar Rules across all browsers */
+body {
+  font-weight: 400;
+}
+
 * {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
+  scrollbar-color: var(--color-scroll-thumb) transparent;
+  scrollbar-width: thin;
 }
 
 *::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-scroll-thumb);
+  border-radius: var(--radius-full);
 }
 
 button {
@@ -42,7 +107,11 @@ button {
   font: inherit;
   color: inherit;
   cursor: pointer;
-  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 a {
@@ -50,88 +119,38 @@ a {
   text-decoration: none;
 }
 
-img, video {
+img,
+video {
   max-width: 100%;
   display: block;
 }
 
-/* ==========================================================================
-   RDR2 TEXTURED RED BRUSH HIGHLIGHT (COMPLETE OVERLAP)
-   ========================================================================== */
-.rdr-brush-element {
-  position: relative;
-  z-index: 1;
-  overflow: visible !important;
-}
-
-.rdr-brush-element::before {
-  content: '';
-  position: absolute;
-  inset: -12px -26px;
-  background-image: url('/rdr-brush.svg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: -1;
-  pointer-events: none;
-  filter: drop-shadow(0 4px 18px var(--color-rdr-glow));
-  transform: scale(0.96);
-  will-change: opacity, transform;
-}
-
-.rdr-brush-element:hover {
-  background-color: transparent !important;
-  background-image: none !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  color: #FFFFFF !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95);
-  transform: translateY(-2px);
-}
-
-.rdr-brush-element:hover::before {
-  opacity: 1;
-  transform: scale(1.04);
-  filter: drop-shadow(0 8px 30px rgba(220, 20, 30, 0.95)) brightness(1.15);
-}
-
-/* ==========================================================================
-   SILKY SMOOTH LANGUAGE TRANSITION (Zero Jitter, Zero Layout Shift)
-   ========================================================================== */
 @keyframes i18nFadeOut {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0px);
-  }
-  100% {
-    opacity: 0.05;
-    transform: translateY(-2px);
-    filter: blur(1px);
-  }
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0.12; transform: translateY(-2px); }
 }
 
 @keyframes i18nFadeIn {
-  0% {
-    opacity: 0.05;
-    transform: translateY(2px);
-    filter: blur(1px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0px);
-  }
+  from { opacity: 0.12; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .i18n-transition-out {
-  animation: i18nFadeOut 0.15s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
-  will-change: opacity, transform, filter;
+  animation: i18nFadeOut 0.15s ease-out forwards !important;
   pointer-events: none;
 }
 
 .i18n-transition-in {
-  animation: i18nFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-  will-change: opacity, transform, filter;
+  animation: i18nFadeIn 0.2s ease-out forwards !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

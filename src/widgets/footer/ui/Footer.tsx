@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
     <footer className={styles.footer}>
       <Container size="md">
         <div className={styles.inner}>
-          <span className={styles.brand}>KAZANKIN / VIDEO EDIT & SMM</span>
+          <span className={styles.brand}>{t('footer.brand')}</span>
           <span className={styles.geo} data-sand-target="true">
             {t('footer.geo')}
           </span>

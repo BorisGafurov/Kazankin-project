@@ -8,19 +8,16 @@ export const ContactSection: React.FC = () => {
   const { t } = useI18n();
 
   return (
-    <Section id="contact" theme="contact" sectionIndex={4} className={styles.contactSection}>
+    <Section id="contact" theme="contact" sectionIndex={3} className={styles.contactSection}>
       <Container size="md" className={styles.mainContainer}>
         <div className={styles.box}>
           <Heading
             level={2}
             overline={t('contact.overline')}
+            highlight={t('contact.titleLine2')}
             className={styles.title}
           >
-            {t('contact.title').includes('<br>') ? (
-              <span dangerouslySetInnerHTML={{ __html: t('contact.title') }} />
-            ) : (
-              t('contact.title')
-            )}
+            {t('contact.titleLine1')}
           </Heading>
 
           <Text variant="lead" className={styles.text}>
@@ -28,7 +25,6 @@ export const ContactSection: React.FC = () => {
           </Text>
 
           <div className={styles.actions}>
-            {/* Contact Button with Complete RDR2 Overlap (Screen 1 Fix) */}
             <Button
               as="a"
               href="https://t.me"
@@ -38,12 +34,6 @@ export const ContactSection: React.FC = () => {
             >
               {t('contact.btn')}
             </Button>
-
-            <div className={styles.channels}>
-              <span className={styles.channelPill}>Telegram</span>
-              <span className={styles.channelPill}>WhatsApp</span>
-              <span className={styles.channelPill}>Email</span>
-            </div>
           </div>
         </div>
       </Container>

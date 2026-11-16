@@ -10,16 +10,15 @@ export interface HeaderProps {
   onNavigate: (index: number) => void;
 }
 
+const NAV_ITEMS = [
+  { index: 1, labelKey: 'nav.works' as const },
+  { index: 2, labelKey: 'nav.stages' as const },
+  { index: 3, labelKey: 'nav.contact' as const },
+];
+
 export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate }) => {
   const { t } = useI18n();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navItems = [
-    { index: 1, labelKey: 'nav.works' as const },
-    { index: 2, labelKey: 'nav.stages' as const },
-    { index: 3, labelKey: 'nav.reviews' as const },
-    { index: 4, labelKey: 'nav.contact' as const },
-  ];
 
   const handleNavClick = (index: number) => {
     onNavigate(index);
@@ -30,22 +29,19 @@ export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate 
     <header className={styles.header}>
       <Container size="md">
         <div className={styles.inner}>
-          {/* Brand */}
-          <div
+          <button
+            type="button"
             className={styles.brand}
             onClick={() => handleNavClick(0)}
-            role="button"
-            tabIndex={0}
-            aria-label="Перейти на главный экран"
+            aria-label={t('nav.home')}
           >
-            <span className={styles.brandTitle}>Дмитрий Казанкин</span>
-            <span className={styles.brandSubtitle}>ВИДЕОМОНТАЖ</span>
-          </div>
+            <span className={styles.brandTitle}>KAZANKIN</span>
+            <span className={styles.brandSubtitle}>{t('brand.role')}</span>
+          </button>
 
-          {/* Desktop Controls */}
           <div className={styles.controls}>
-            <nav className={styles.nav} aria-label="Основное меню">
-              {navItems.map((item) => (
+            <nav className={styles.nav} aria-label={t('nav.quick')}>
+              {NAV_ITEMS.map((item) => (
                 <button
                   key={item.index}
                   type="button"
@@ -54,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate 
                     currentSectionIndex === item.index && styles.navLinkActive
                   )}
                   onClick={() => handleNavClick(item.index)}
-                  data-sand-target="true"
+                  aria-current={currentSectionIndex === item.index ? 'page' : undefined}
                 >
                   {t(item.labelKey)}
                 </button>
@@ -63,13 +59,13 @@ export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate 
 
             <LanguageSwitcher />
 
-            {/* Mobile Hamburger Button */}
             <button
               type="button"
               className={styles.hamburger}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              aria-label={t(mobileMenuOpen ? 'nav.closeMenu' : 'nav.openMenu')}
               aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               <span className={clsx(styles.bar, mobileMenuOpen && styles.barOpen1)} />
               <span className={clsx(styles.bar, mobileMenuOpen && styles.barOpen2)} />
@@ -78,11 +74,10 @@ export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate 
         </div>
       </Container>
 
-      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className={styles.mobileDrawer}>
-          <nav className={styles.mobileNav}>
-            {navItems.map((item) => (
+          <nav id="mobile-navigation" className={styles.mobileNav} aria-label={t('nav.quick')}>
+            {NAV_ITEMS.map((item) => (
               <button
                 key={item.index}
                 type="button"
@@ -91,6 +86,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate 
                   currentSectionIndex === item.index && styles.mobileNavActive
                 )}
                 onClick={() => handleNavClick(item.index)}
+                aria-current={currentSectionIndex === item.index ? 'page' : undefined}
               >
                 {t(item.labelKey)}
               </button>

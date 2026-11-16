@@ -1,5 +1,4 @@
 .contactSection {
-  background: radial-gradient(ellipse at 50% 35%, #221715 0%, #0F0C0B 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -15,43 +14,34 @@
 
 .box {
   max-width: 780px;
-  padding: 10px 0;
+  padding: 18px 0 32px;
 }
 
 .title {
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.75);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  font-size: clamp(2.6rem, 6.5vw, 5rem);
 }
 
 .text {
-  font-size: 1.2rem;
-  line-height: 1.65;
-  color: #D6CBC0;
+  max-width: 600px;
   margin-bottom: var(--space-xl);
-  max-width: 620px;
+  color: var(--color-muted-on-dark);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
 }
 
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: flex-start;
 }
 
-.channels {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+@media (max-width: 640px) {
+  .box {
+    padding: 10px 0 24px;
+  }
 
-.channelPill {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: #B5A99C;
-  padding: 6px 14px;
-  border: 1px solid rgba(200, 189, 176, 0.2);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.04);
+  .title {
+    font-size: clamp(2.45rem, 12vw, 3.5rem);
+  }
 }

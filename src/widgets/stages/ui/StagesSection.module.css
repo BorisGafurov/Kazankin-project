@@ -1,18 +1,48 @@
 .stagesSection {
+  justify-content: flex-start;
   background-color: var(--color-milk);
 }
 
 .header {
-  margin-bottom: var(--space-md);
+  max-width: 880px;
+  margin-bottom: clamp(24px, 4vh, 42px);
 }
 
 .description {
-  margin-top: var(--space-xs);
+  max-width: 780px;
+  margin-top: var(--space-sm);
   color: var(--color-gray-brown);
 }
 
+.callout {
+  max-width: 780px;
+  margin-top: 18px;
+  padding: 13px 16px;
+  color: var(--color-dark-text);
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.45vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.45;
+  background: var(--color-callout-bg);
+  border-left: 3px solid var(--color-deep-burgundy);
+}
+
+.group + .group {
+  margin-top: clamp(28px, 4vh, 44px);
+}
+
+.groupTitle {
+  margin-bottom: 14px;
+  color: var(--color-gray-brown);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+}
+
 .grid {
-  row-gap: 8px;
-  column-gap: 16px;
-  align-items: start;
+  row-gap: 10px;
+  column-gap: 14px;
+  align-items: stretch;
 }

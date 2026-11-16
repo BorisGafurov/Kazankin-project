@@ -9,6 +9,9 @@ dist-ssr/
 build/
 storybook-static/
 
+# User-provided source/reference materials
+/Referens/
+
 # Environment
 .env
 .env.local

@@ -1,44 +1,47 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: var(--radius-xs);
-  letter-spacing: var(--tracking-normal);
+  min-height: 24px;
+  padding: 4px 8px;
+  color: var(--color-dark-text);
+  font-size: 0.67rem;
+  font-weight: 600;
   line-height: 1.2;
+  letter-spacing: 0.025em;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs);
 }
 
 .take {
-  background-color: var(--color-rdr-red);
-  color: #FFFFFF;
+  color: var(--color-milk);
+  background: var(--color-wine-deep);
 }
 
 .agree {
-  background-color: var(--color-badge-neutral-bg);
   color: var(--color-badge-neutral-text);
+  background: var(--color-badge-neutral-bg);
+}
+
+.help {
+  color: var(--color-dark-text);
+  background: var(--color-badge-help-bg);
 }
 
 .none {
-  background-color: #E2DDD6;
-  color: #8C847C;
+  color: var(--color-gray-brown);
+  background: var(--color-milk);
 }
 
 .card {
   position: absolute;
   top: 14px;
   right: 14px;
-  padding: 8px 18px 8px;
-  background-image: url('/rdr-brush.svg');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  padding: 6px 10px;
+  color: var(--color-milk);
   font-family: var(--font-heading);
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: var(--tracking-widest);
-  color: #FFFFFF;
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
-  z-index: 4;
-  filter: drop-shadow(0 2px 8px rgba(184, 20, 27, 0.45));
+  background: var(--color-wine-deep);
 }

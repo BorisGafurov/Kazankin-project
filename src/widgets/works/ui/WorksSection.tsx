@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useI18n } from '@/shared/lib/i18n';
 import { Section, Container, Heading, Text, Button } from '@/shared/ui';
 import { WORK_CASES, WorkCard } from '@/entities/work';
@@ -7,15 +7,18 @@ import styles from './WorksSection.module.css';
 export const WorksSection: React.FC = () => {
   const { t } = useI18n();
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-
+  const carouselRef = useRef<HTMLDivElement>(null);
   const totalSlides = WORK_CASES.length;
 
-  const handlePrev = () => {
-    setActiveSlideIndex((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
-  };
+  const selectSlide = (index: number) => {
+    const nextIndex = (index + totalSlides) % totalSlides;
+    setActiveSlideIndex(nextIndex);
 
-  const handleNext = () => {
-    setActiveSlideIndex((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
+    requestAnimationFrame(() => {
+      carouselRef.current
+        ?.querySelector<HTMLElement>(`[data-work-index="${nextIndex}"]`)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
   };
 
   return (
@@ -30,44 +33,47 @@ export const WorksSection: React.FC = () => {
           </Text>
         </div>
 
-        {/* Works Slider */}
-        <div className={styles.sliderContainer}>
-          <div
-            className={styles.sliderTrack}
-            style={{
-              transform: `translateX(calc(-${activeSlideIndex} * (100% / 3 + 8px)))`,
-            }}
-          >
+        <div
+          id="works-carousel"
+          ref={carouselRef}
+          className={styles.sliderContainer}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label={t('works.title')}
+        >
+          <div className={styles.sliderTrack}>
             {WORK_CASES.map((work, index) => (
               <WorkCard
                 key={work.id}
                 work={work}
+                index={index}
                 isActive={activeSlideIndex === index}
-                onClick={() => setActiveSlideIndex(index)}
+                onClick={() => selectSlide(index)}
               />
             ))}
           </div>
         </div>
 
-        {/* Controls Bar */}
         <div className={styles.controls}>
           <div className={styles.navBtns}>
             <Button
               variant="circular"
-              onClick={handlePrev}
-              aria-label="Предыдущая работа"
+              onClick={() => selectSlide(activeSlideIndex - 1)}
+              aria-label={t('works.previous')}
+              aria-controls="works-carousel"
             >
-              ←
+              <span aria-hidden="true">←</span>
             </Button>
             <Button
               variant="circular"
-              onClick={handleNext}
-              aria-label="Следующая работа"
+              onClick={() => selectSlide(activeSlideIndex + 1)}
+              aria-label={t('works.next')}
+              aria-controls="works-carousel"
             >
-              →
+              <span aria-hidden="true">→</span>
             </Button>
           </div>
-          <div className={styles.counter}>
+          <div className={styles.counter} aria-live="polite" aria-atomic="true">
             {String(activeSlideIndex + 1).padStart(2, '0')} / {String(totalSlides).padStart(2, '0')}
           </div>
         </div>

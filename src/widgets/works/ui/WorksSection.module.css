@@ -3,46 +3,50 @@
 }
 
 .header {
-  margin-bottom: var(--space-md);
+  margin-bottom: clamp(20px, 3vh, 32px);
 }
 
 .description {
-  margin-top: var(--space-xs);
+  max-width: 660px;
+  margin-top: var(--space-sm);
   color: var(--color-gray-brown);
 }
 
 .sliderContainer {
-  position: relative;
   width: 100%;
-  overflow: hidden;
-  padding: 56px 48px 56px;
-  margin: -36px -48px -28px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 2px 14px;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 2px;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sliderTrack {
   display: flex;
-  gap: 24px;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
+  width: max-content;
+  gap: clamp(14px, 2vw, 24px);
 }
 
 .controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 18px;
-  padding-top: 8px;
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-rule-light);
 }
 
 .navBtns {
   display: flex;
-  gap: 14px;
+  gap: 10px;
 }
 
 .counter {
+  color: var(--color-gray-brown);
   font-family: var(--font-heading);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--color-dark-text);
+  font-size: 0.95rem;
+  font-weight: 500;
   letter-spacing: var(--tracking-wide);
 }

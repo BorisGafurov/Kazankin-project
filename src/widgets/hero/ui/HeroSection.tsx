@@ -13,7 +13,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   return (
     <Section id="hero" theme="dark" sectionIndex={0} className={styles.heroSection}>
       <Container size="md" className={styles.heroContent}>
-        <Stack gap="xl">
+        <Stack gap="xl" className={styles.copy}>
           <Heading
             level={1}
             overline={t('hero.category')}
@@ -22,27 +22,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
             {t('hero.titleLine1')}
           </Heading>
 
-          <Text variant="lead">
-            {t('hero.description').includes('<br>') ? (
-              <span
-                dangerouslySetInnerHTML={{ __html: t('hero.description') }}
-              />
-            ) : (
-              t('hero.description')
-            )}
+          <Text variant="lead" className={styles.description}>
+            {t('hero.description')}
           </Text>
 
           <div className={styles.actions}>
-            <Button
-              variant="primary"
-              onClick={() => onNavigate(1)}
-            >
+            <Button variant="primary" onClick={() => onNavigate(1)}>
               {t('hero.btnWorks')}
             </Button>
-            <Button
-              variant="secondary"
-              onClick={() => onNavigate(4)}
-            >
+            <Button variant="secondary" onClick={() => onNavigate(3)}>
               {t('hero.btnContact')}
             </Button>
           </div>

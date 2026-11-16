@@ -5,30 +5,39 @@
 
 .overline {
   display: block;
+  margin-bottom: var(--space-sm);
+  color: var(--color-gray-brown);
   font-size: var(--text-caption);
   font-weight: 700;
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--color-gray-brown);
-  margin-bottom: var(--space-xs);
 }
 
 .heading {
+  margin: 0;
+  color: var(--color-dark-text);
   font-family: var(--font-heading);
-  font-weight: 900;
-  line-height: 1.05;
+  font-weight: 500;
+  line-height: 1.08;
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
-  margin: 0;
+}
+
+.h1,
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 .h1 {
+  color: var(--color-card-bg);
   font-size: var(--text-h1);
-  color: #FFFFFF;
+  line-height: 0.98;
 }
 
 .h2 {
   font-size: var(--text-h2);
+  line-height: 1.04;
 }
 
 .h3 {

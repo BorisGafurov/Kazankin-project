@@ -4,7 +4,7 @@ import { useI18n, Language } from '@/shared/lib/i18n';
 import styles from './LanguageSwitcher.module.css';
 
 export const LanguageSwitcher: React.FC = () => {
-  const { lang, setLang, isSwitching } = useI18n();
+  const { lang, setLang, isSwitching, t } = useI18n();
 
   const handleSwitch = (newLang: Language) => {
     if (newLang !== lang && !isSwitching) {
@@ -13,11 +13,7 @@ export const LanguageSwitcher: React.FC = () => {
   };
 
   return (
-    <div
-      className={styles.switcher}
-      role="group"
-      aria-label="Переключение языка интерфейса"
-    >
+    <div className={styles.switcher} role="group" aria-label={t('nav.language')}>
       <button
         type="button"
         className={clsx(styles.btn, lang === 'ru' && styles.active)}
