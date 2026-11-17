@@ -47,17 +47,6 @@ export const StageCard: React.FC<StageCardProps> = ({ stage, expanded, onToggle 
 
   return (
     <article className={clsx(styles.card, expanded && styles.expanded, closing && styles.closing)}>
-      {expanded && (
-        <div
-          className={clsx(styles.trigger, styles.placeholder)}
-          aria-hidden="true"
-        >
-          <span className={styles.number}>{stage.number}</span>
-          <span className={styles.title}>{t(stage.titleKey)}</span>
-          <span className={styles.icon}>−</span>
-        </div>
-      )}
-
       <div className={styles.overlayContent} data-stage-dialog={expanded ? stage.number : undefined}>
         <button
           type="button"

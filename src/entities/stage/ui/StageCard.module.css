@@ -13,10 +13,6 @@
   display: contents;
 }
 
-.placeholder {
-  display: none;
-}
-
 .expanded {
   z-index: 20;
   border-color: var(--color-wine);
@@ -219,12 +215,6 @@
     border-color: transparent;
     background-color: transparent;
     box-shadow: none;
-  }
-
-  .expanded .placeholder {
-    display: grid;
-    visibility: hidden;
-    pointer-events: none;
   }
 
   .expanded .overlayContent {
