@@ -98,6 +98,13 @@
   --transition-normal: 0.28s ease-out;
   --transition-slow: 0.55s ease-out;
   --transition-swipe: 0.58s cubic-bezier(0.22, 0.75, 0.22, 1);
+  --transition-work-hover: 0.45s ease-out;
+  --transition-i18n-out: 0.15s ease-out;
+  --transition-i18n-in: 0.2s ease-out;
+  --transition-language-switcher: color 0.18s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  --transition-fade: opacity var(--transition-normal);
+  --motion-will-change-fade: opacity;
+  --motion-will-change-transform: transform;
 
   --z-base: 1;
   --z-card-active: 10;

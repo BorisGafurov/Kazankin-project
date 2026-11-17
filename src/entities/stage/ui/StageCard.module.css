@@ -23,6 +23,12 @@
   background-color: var(--color-card-bg);
 }
 
+.closing {
+  z-index: 20;
+  border-color: var(--color-wine);
+  background-color: var(--color-card-bg);
+}
+
 .trigger {
   width: 100%;
   min-height: var(--touch-target-min);
@@ -82,8 +88,7 @@
   left: -1px;
   z-index: 1;
   width: calc(100% + 2px);
-  display: grid;
-  grid-template-rows: 0fr;
+  display: block;
   overflow: hidden;
   border: 1px solid var(--color-rule-light);
   border-top: 0;
@@ -91,21 +96,30 @@
   background: var(--color-card-bg);
   box-shadow: var(--shadow-lg);
   color: var(--color-gray-brown);
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-6px);
-  transform-origin: top;
   transition:
-    grid-template-rows var(--transition-normal),
-    opacity var(--transition-normal),
-    transform var(--transition-normal);
+    var(--transition-fade),
+    visibility 0s linear var(--transition-normal);
+}
+
+.expanded .details,
+.closing .details {
+  will-change: var(--motion-will-change-fade);
 }
 
 .expanded .details {
-  grid-template-rows: 1fr;
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.closing .details {
+  visibility: visible;
+  opacity: 0;
+  animation: stage-details-fade-out var(--transition-normal) both;
 }
 
 .detailsContent {
@@ -177,10 +191,26 @@
   .details {
     transition: none;
   }
+
+  .closing .details {
+    animation: none;
+    visibility: hidden;
+  }
 }
 
 @media (max-height: 700px) {
   .expanded {
+    position: static;
+    z-index: 20;
+    width: auto;
+    min-height: var(--touch-target-min);
+    max-height: none;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .closing {
     position: static;
     z-index: 20;
     width: auto;
@@ -210,6 +240,23 @@
     background: var(--color-card-bg);
     box-shadow: var(--shadow-lg);
     animation: stage-card-center-in var(--transition-normal) both;
+    will-change: var(--motion-will-change-fade);
+  }
+
+  .closing .overlayContent {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 21;
+    width: min(560px, calc(100vw - 32px));
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--color-wine);
+    border-radius: var(--radius-sm);
+    background: var(--color-card-bg);
+    box-shadow: var(--shadow-lg);
+    animation: stage-card-center-out var(--transition-normal) both;
+    will-change: var(--motion-will-change-fade);
   }
 
   .expanded .details {
@@ -223,6 +270,20 @@
     box-shadow: none;
   }
 
+  .closing .details {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--color-rule-light);
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    animation: none;
+    will-change: auto;
+  }
+
   .detailsContent {
     padding: 10px 12px 12px;
   }
@@ -231,17 +292,47 @@
 @keyframes stage-card-center-in {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.97);
   }
 
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes stage-card-center-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes stage-details-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .expanded .overlayContent {
     animation: none;
+  }
+
+  .closing .overlayContent {
+    animation: none;
+    opacity: 0;
+  }
+
+  .expanded .details,
+  .closing .details,
+  .expanded .overlayContent,
+  .closing .overlayContent {
+    will-change: auto;
   }
 }

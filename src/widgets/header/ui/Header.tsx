@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useI18n } from '@/shared/lib/i18n';
 import { Container } from '@/shared/ui';
@@ -17,13 +17,65 @@ const NAV_ITEMS = [
   { index: 4, labelKey: 'nav.contact' as const },
 ];
 
+const MOBILE_MENU_ANIMATION_MS = 280;
+
 export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate }) => {
   const { t } = useI18n();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuClosing, setMobileMenuClosing] = useState(false);
+  const mobileMenuTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mobileMenuButton = useRef<HTMLButtonElement>(null);
+
+  const closeMobileMenu = () => {
+    if (!mobileMenuOpen) return;
+
+    setMobileMenuOpen(false);
+    setMobileMenuClosing(true);
+    if (mobileMenuTimer.current !== null) clearTimeout(mobileMenuTimer.current);
+    mobileMenuTimer.current = setTimeout(() => {
+      setMobileMenuClosing(false);
+      mobileMenuTimer.current = null;
+    }, MOBILE_MENU_ANIMATION_MS);
+  };
+
+  const toggleMobileMenu = () => {
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+      return;
+    }
+
+    if (mobileMenuTimer.current !== null) {
+      clearTimeout(mobileMenuTimer.current);
+      mobileMenuTimer.current = null;
+    }
+    setMobileMenuClosing(false);
+    setMobileMenuOpen(true);
+  };
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      closeMobileMenu();
+      mobileMenuButton.current?.focus();
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [mobileMenuOpen]);
+
+  useEffect(() => () => {
+    if (mobileMenuTimer.current !== null) clearTimeout(mobileMenuTimer.current);
+  }, []);
 
   const handleNavClick = (index: number) => {
     onNavigate(index);
-    setMobileMenuOpen(false);
+    if (mobileMenuOpen) {
+      closeMobileMenu();
+      mobileMenuButton.current?.focus();
+    }
   };
 
   return (
@@ -62,8 +114,9 @@ export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate 
 
             <button
               type="button"
+              ref={mobileMenuButton}
               className={styles.hamburger}
-              onClick={() => setMobileMenuOpen((open) => !open)}
+              onClick={toggleMobileMenu}
               aria-label={t(mobileMenuOpen ? 'nav.closeMenu' : 'nav.openMenu')}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -75,25 +128,38 @@ export const Header: React.FC<HeaderProps> = ({ currentSectionIndex, onNavigate 
         </div>
       </Container>
 
-      {mobileMenuOpen && (
-        <div className={styles.mobileDrawer}>
-          <nav id="mobile-navigation" className={styles.mobileNav} aria-label={t('nav.quick')}>
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.index}
-                type="button"
-                className={clsx(
-                  styles.mobileNavLink,
-                  currentSectionIndex === item.index && styles.mobileNavActive
-                )}
-                onClick={() => handleNavClick(item.index)}
-                aria-current={currentSectionIndex === item.index ? 'page' : undefined}
-              >
-                {t(item.labelKey)}
-              </button>
-            ))}
-          </nav>
-        </div>
+      {(mobileMenuOpen || mobileMenuClosing) && (
+        <>
+          <button
+            type="button"
+            className={clsx(styles.mobileBackdrop, mobileMenuClosing && styles.mobileBackdropClosing)}
+            aria-hidden="true"
+            tabIndex={-1}
+            onClick={closeMobileMenu}
+          />
+          <div
+            className={clsx(styles.mobileDrawer, mobileMenuClosing && styles.mobileDrawerClosing)}
+            aria-hidden={!mobileMenuOpen}
+          >
+            <nav id="mobile-navigation" className={styles.mobileNav} aria-label={t('nav.quick')}>
+              {NAV_ITEMS.map((item) => (
+                <button
+                  key={item.index}
+                  type="button"
+                  className={clsx(
+                    styles.mobileNavLink,
+                    currentSectionIndex === item.index && styles.mobileNavActive
+                  )}
+                  onClick={() => handleNavClick(item.index)}
+                  aria-current={currentSectionIndex === item.index ? 'page' : undefined}
+                  tabIndex={mobileMenuOpen ? 0 : -1}
+                >
+                  {t(item.labelKey)}
+                </button>
+              ))}
+            </nav>
+          </div>
+        </>
       )}
     </header>
   );

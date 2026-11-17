@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { useI18n } from '@/shared/lib/i18n';
 import { useStageAccordion } from '@/features/stage-accordion';
@@ -11,6 +11,33 @@ export const StagesSection: React.FC = () => {
   const { expandedId, toggle } = useStageAccordion();
   const preEditStages = STAGES_LIST.filter((stage) => stage.group === 'before');
   const postProductionStages = STAGES_LIST.filter((stage) => stage.group === 'post');
+  const handleBackdropClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (!expandedId) return;
+
+    const target = event.target;
+    const clickedInsideDialog = target instanceof Element
+      && target.closest(`[data-stage-dialog="${expandedId}"]`);
+
+    if (!clickedInsideDialog) toggle(expandedId);
+  };
+
+  useEffect(() => {
+    if (!expandedId) return undefined;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.defaultPrevented) return;
+      const mobileMenuOpen = document.querySelector(
+        '[aria-controls="mobile-navigation"][aria-expanded="true"]'
+      );
+      if (mobileMenuOpen) return;
+
+      event.preventDefault();
+      toggle(expandedId);
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [expandedId, toggle]);
 
   const renderStages = (stages: StageStep[]) => stages.map((stage) => (
     <StageCard
@@ -28,6 +55,7 @@ export const StagesSection: React.FC = () => {
       sectionIndex={3}
       className={clsx(styles.stagesSection, expandedId && styles.hasExpandedStage)}
       aria-labelledby="stages-title"
+      onClickCapture={handleBackdropClick}
     >
       <Container size="md">
         <div className={styles.header}>

@@ -80,12 +80,12 @@ video {
 }
 
 .i18n-transition-out {
-  animation: i18nFadeOut 0.15s ease-out forwards !important;
+  animation: i18nFadeOut var(--transition-i18n-out) forwards !important;
   pointer-events: none;
 }
 
 .i18n-transition-in {
-  animation: i18nFadeIn 0.2s ease-out forwards !important;
+  animation: i18nFadeIn var(--transition-i18n-in) forwards !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
