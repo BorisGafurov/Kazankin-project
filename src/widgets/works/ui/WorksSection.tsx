@@ -23,7 +23,7 @@ export const WorksSection: React.FC = () => {
 
   return (
     <Section id="works" theme="milk" sectionIndex={1} className={styles.worksSection}>
-      <Container size="md">
+      <Container size="md" className={styles.content}>
         <div className={styles.header}>
           <Heading level={2} overline={t('works.overline')}>
             {t('works.title')}

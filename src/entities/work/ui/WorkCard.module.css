@@ -80,6 +80,13 @@
   .card {
     flex-basis: min(82vw, 360px);
     width: min(82vw, 360px);
+    height: 100%;
+    min-height: 0;
+  }
+
+  .poster {
+    flex: 0 1 auto;
+    min-height: 0;
   }
 }
 
