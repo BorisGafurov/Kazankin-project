@@ -35,7 +35,18 @@
 
 .activeCard .poster {
   border-color: var(--color-wine);
-  box-shadow: 0 0 0 1px var(--color-wine);
+  animation: work-selection-breathe var(--animation-work-breathe);
+}
+
+@keyframes work-selection-breathe {
+  0%,
+  100% {
+    border-width: 3px;
+  }
+
+  50% {
+    border-width: 9px;
+  }
 }
 
 .info {
@@ -75,6 +86,15 @@
 @media (prefers-reduced-motion: reduce) {
   .poster img {
     transition: none;
+  }
+
+  .poster {
+    transition: none;
+  }
+
+  .activeCard .poster {
+    animation: none;
+    border-width: 6px;
   }
 
   .card:hover .poster img {
