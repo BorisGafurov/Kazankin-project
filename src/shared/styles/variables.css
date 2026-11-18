@@ -16,6 +16,7 @@
   --color-glass-dark: rgba(16, 13, 12, 0.92);
   --color-glass-dark-strong: rgba(16, 13, 12, 0.98);
   --color-glass-dark-footer: rgba(16, 13, 12, 0.96);
+  --color-player-backdrop: rgba(16, 13, 12, 0.88);
   --color-border-on-dark: rgba(209, 179, 156, 0.42);
   --color-outline-on-dark: rgba(243, 239, 231, 0.52);
   --color-overlay-light: rgba(255, 255, 255, 0.04);
@@ -68,6 +69,8 @@
   --tracking-widest: 0.15em;
 
   --container-max-width: 1200px;
+  --player-dialog-max-width: 1200px;
+  --player-controls-overlap: -26px;
   --container-padding-mobile: 20px;
   --container-padding-tablet: 28px;
   --container-padding-desktop: 36px;

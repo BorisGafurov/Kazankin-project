@@ -22,7 +22,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({ work, index, isActive, onCli
       type="button"
       className={clsx(styles.card, isActive && styles.activeCard)}
       onClick={onClick}
-      aria-label={`${title} — ${t(work.categoryKey)}`}
+      aria-label={`${title} — ${t(work.categoryKey)}. ${t('works.openPlayer')}`}
       aria-pressed={isActive}
       data-work-index={index}
     >
@@ -35,6 +35,7 @@ export const WorkCard: React.FC<WorkCardProps> = ({ work, index, isActive, onCli
           loading={index === 0 ? 'eager' : 'lazy'}
           decoding="async"
         />
+        <span className={styles.playIndicator} aria-hidden="true" />
       </span>
       <span className={styles.info}>
         <span className={styles.title} data-sand-target="true">{title}</span>

@@ -1,0 +1,524 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-drawer) + 10);
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 4vw, 56px);
+  background: var(--color-player-backdrop);
+  overscroll-behavior: contain;
+  animation: player-backdrop-in var(--transition-normal) both;
+  will-change: opacity;
+}
+
+.backdrop[data-open='false'] {
+  animation: player-backdrop-out var(--transition-normal) both;
+}
+
+.dialog {
+  width: min(100%, var(--player-dialog-max-width));
+  color: var(--color-milk);
+  outline: none;
+  animation: player-dialog-in var(--transition-normal) both;
+  will-change: opacity, transform;
+}
+
+.backdrop[data-open='false'] .dialog {
+  animation: player-dialog-out var(--transition-normal) both;
+  pointer-events: none;
+}
+
+.playerFrame {
+  position: relative;
+  width: 100%;
+}
+
+.videoViewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-warm-black);
+  border: 1px solid var(--color-border-on-dark);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-warm-black);
+  object-fit: contain;
+  object-position: center;
+}
+
+.placeholderPoster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.mediaHeading {
+  position: absolute;
+  top: clamp(16px, 3vw, 34px);
+  left: clamp(18px, 3vw, 38px);
+  max-width: calc(100% - 120px);
+  color: var(--color-milk);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.72);
+  pointer-events: none;
+}
+
+.mediaHeading h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.6vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.mediaHeading p {
+  margin-top: 4px;
+  color: var(--color-muted-on-dark);
+  font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+}
+
+.mediaMessage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max-content;
+  max-width: min(80%, 520px);
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-milk);
+  text-align: center;
+  background: var(--color-glass-dark-strong);
+  border: 1px solid var(--color-border-on-dark);
+  border-radius: var(--radius-sm);
+  transform: translate(-50%, -50%);
+}
+
+.closeButton {
+  position: absolute;
+  top: clamp(10px, 2vw, 20px);
+  right: clamp(10px, 2vw, 20px);
+  z-index: 2;
+  display: grid;
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  place-items: center;
+  color: var(--color-milk);
+  background: var(--color-glass-dark-strong);
+  border: 1px solid var(--color-border-on-dark);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.closeButton:hover:not(:disabled) {
+  background: var(--color-wine-deep);
+  transform: scale(1.04);
+}
+
+.closeButton svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 1.8;
+}
+
+.controlsDock {
+  position: relative;
+  z-index: 3;
+  width: calc(100% + clamp(20px, 8vw, 84px));
+  margin-top: var(--player-controls-overlap);
+  margin-inline: clamp(-42px, -4vw, -10px);
+  padding: 7px clamp(12px, 2.5vw, 28px) 8px;
+  color: var(--color-milk);
+  background: linear-gradient(180deg, var(--color-wine), var(--color-wine-deep));
+  border: 1px solid rgba(16, 13, 12, 0.42);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0 -10px 24px rgba(87, 25, 29, 0.5),
+    0 26px 64px rgba(0, 0, 0, 0.58),
+    0 9px 22px rgba(16, 13, 12, 0.4);
+  transform: translateY(-2px);
+}
+
+.timeline,
+.volumeSlider {
+  display: block;
+  height: 14px;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.timeline {
+  width: 100%;
+  margin: 0 0 2px;
+}
+
+.timeline::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--color-light-beige) 0 var(--progress),
+    rgba(243, 239, 231, 0.28) var(--progress) 100%
+  );
+  border-radius: var(--radius-full);
+}
+
+.timeline::-moz-range-track {
+  height: 4px;
+  background: rgba(243, 239, 231, 0.28);
+  border-radius: var(--radius-full);
+}
+
+.timeline::-moz-range-progress {
+  height: 4px;
+  background: var(--color-light-beige);
+  border-radius: var(--radius-full);
+}
+
+.timeline::-webkit-slider-thumb,
+.volumeSlider::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  appearance: none;
+  background: var(--color-milk);
+  border: 1px solid var(--color-border-on-dark);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline::-moz-range-thumb,
+.volumeSlider::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  background: var(--color-milk);
+  border: 1px solid var(--color-border-on-dark);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+}
+
+.controlRow,
+.transportControls,
+.audioControls {
+  display: flex;
+  align-items: center;
+}
+
+.controlRow {
+  justify-content: space-between;
+  gap: clamp(2px, 0.8vw, var(--space-sm));
+}
+
+.transportControls,
+.audioControls {
+  min-width: 0;
+  gap: clamp(1px, 0.35vw, var(--space-xs));
+}
+
+.transportControls {
+  flex: 0 0 auto;
+}
+
+.audioControls {
+  flex: 0 1 auto;
+  justify-content: flex-end;
+}
+
+.controlButton {
+  display: grid;
+  flex: 0 0 var(--touch-target-min);
+  width: var(--touch-target-min);
+  height: var(--touch-target-min);
+  place-items: center;
+  color: var(--color-milk);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.controlButton:hover:not(:disabled) {
+  color: var(--color-light-beige);
+  background: var(--color-overlay-medium);
+}
+
+.controlButton svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.controlButton .filledIcon {
+  fill: currentColor;
+  stroke: none;
+}
+
+.transportControls > .controlButton:first-child {
+  flex-basis: 52px;
+  width: 52px;
+  height: 52px;
+  background: rgba(243, 239, 231, 0.1);
+  border: 1px solid rgba(243, 239, 231, 0.24);
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.transportControls > .controlButton:first-child svg {
+  width: 29px;
+  height: 29px;
+}
+
+.transportControls > .controlButton:first-child:hover:not(:disabled) {
+  background: rgba(243, 239, 231, 0.18);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.42);
+}
+
+.skipButton svg {
+  width: 30px;
+  height: 27px;
+}
+
+.skipButton text {
+  fill: currentColor;
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 700;
+  stroke: none;
+}
+
+.timeReadout {
+  flex: 0 0 auto;
+  margin-left: 2px;
+  color: var(--color-muted-on-dark);
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 1vw, 0.88rem);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.volumeSlider {
+  flex: 0 1 100px;
+  width: clamp(38px, 8vw, 100px);
+  min-width: 34px;
+  height: 14px;
+  margin-right: clamp(6px, 1vw, 12px);
+}
+
+.volumeSlider::-webkit-slider-runnable-track {
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--color-light-beige) 0 var(--volume),
+    rgba(243, 239, 231, 0.3) var(--volume),
+    rgba(243, 239, 231, 0.3) 100%
+  );
+  border-radius: var(--radius-full);
+}
+
+.volumeSlider::-moz-range-track {
+  height: 4px;
+  background: rgba(243, 239, 231, 0.3);
+  border-radius: var(--radius-full);
+}
+
+.volumeSlider::-moz-range-progress {
+  height: 4px;
+  background: var(--color-light-beige);
+  border-radius: var(--radius-full);
+}
+
+.controlButton:disabled,
+.timeline:disabled,
+.volumeSlider:disabled,
+.closeButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.44;
+}
+
+.playerFrame:fullscreen {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(12px, 3vw, 40px);
+  background: var(--color-warm-black);
+}
+
+.playerFrame:fullscreen .videoViewport {
+  width: 100%;
+  max-height: calc(100vh - 160px);
+  margin: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.playerFrame:fullscreen .controlsDock {
+  flex: 0 0 auto;
+  margin-top: var(--player-controls-overlap);
+}
+
+@keyframes player-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes player-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes player-dialog-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes player-dialog-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(8px) scale(0.995); }
+}
+
+@media (max-width: 640px) {
+  .backdrop {
+    padding: 14px;
+  }
+
+  .controlsDock {
+    width: calc(100% + 22px);
+    margin-top: -12px;
+    margin-inline: -11px;
+    padding: 6px 10px 7px;
+  }
+
+  .controlRow {
+    flex-wrap: nowrap;
+    gap: 3px;
+  }
+
+  .transportControls,
+  .audioControls {
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  .audioControls {
+    justify-content: flex-end;
+    gap: 1px;
+  }
+
+  .transportControls {
+    gap: 0;
+  }
+
+  .timeReadout {
+    margin-left: 0;
+    font-size: 0.62rem;
+  }
+
+  .volumeSlider {
+    flex: 0 1 68px;
+    width: clamp(34px, 12vw, 68px);
+    min-width: 30px;
+    margin-right: 7px;
+  }
+
+  .controlButton {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .transportControls > .controlButton:first-child {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .transportControls > .controlButton:first-child svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .controlButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .skipButton svg {
+    width: 27px;
+    height: 24px;
+  }
+
+  .mediaMessage {
+    font-size: var(--text-body-sm);
+  }
+
+  .playerFrame:fullscreen {
+    padding: 10px;
+  }
+
+  .playerFrame:fullscreen .videoViewport {
+    max-height: calc(100vh - 170px);
+  }
+}
+
+@media (max-width: 380px) {
+  .controlsDock {
+    padding-inline: 7px;
+  }
+
+  .controlRow {
+    gap: 1px;
+  }
+
+  .controlButton {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .transportControls > .controlButton:first-child {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .transportControls > .controlButton:first-child svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .volumeSlider {
+    width: 30px;
+    min-width: 28px;
+    margin-right: 5px;
+  }
+
+  .timeReadout {
+    font-size: 0.58rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .dialog {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    will-change: auto;
+  }
+
+  .closeButton,
+  .controlButton {
+    transition: none;
+  }
+}

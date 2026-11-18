@@ -12,6 +12,7 @@
 }
 
 .poster {
+  position: relative;
   display: block;
   width: 100%;
   aspect-ratio: 0.81;
@@ -26,6 +27,39 @@
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-work-hover);
+}
+
+.playIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 58px;
+  aspect-ratio: 1;
+  place-items: center;
+  color: var(--color-milk);
+  background: var(--color-glass-dark);
+  border: 1px solid var(--color-outline-on-dark);
+  border-radius: var(--radius-full);
+  transform: translate(-50%, -50%);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  pointer-events: none;
+}
+
+.playIndicator::before {
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid currentColor;
+  content: '';
+}
+
+.card:hover .playIndicator,
+.card:focus-visible .playIndicator {
+  background: var(--color-wine-deep);
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 .card:hover .poster img {
@@ -92,6 +126,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .poster img {
+    transition: none;
+  }
+
+  .playIndicator {
     transition: none;
   }
 

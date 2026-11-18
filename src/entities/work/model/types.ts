@@ -3,6 +3,8 @@ import { TranslationKey } from '@/shared/lib/i18n';
 export interface WorkCase {
   id: string;
   imageSrc: string;
+  /** Относительный путь к ролику в public/; пока источник не задан, плеер показывает обложку-заглушку. */
+  videoSrc?: string;
   titleKey: TranslationKey;
   categoryKey: TranslationKey;
 }
