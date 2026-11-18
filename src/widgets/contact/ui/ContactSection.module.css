@@ -13,6 +13,8 @@
 }
 
 .box {
+  width: 100%;
+  min-width: 0;
   max-width: 780px;
   padding: 18px 0 32px;
 }
@@ -42,6 +44,10 @@
   }
 
   .title {
-    font-size: clamp(2.45rem, 12vw, 3.5rem);
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .text {
+    font-size: clamp(1rem, 4vw, 1.15rem);
   }
 }
