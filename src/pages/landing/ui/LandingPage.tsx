@@ -21,7 +21,7 @@ export const LandingPage: React.FC = () => {
         className={styles.fullpageTrack}
         style={{ transform: `translate3d(0, -${currentIndex * 100}dvh, 0)` }}
       >
-        <HeroSection onNavigate={goToSection} />
+        <HeroSection onNavigate={goToSection} isActive={currentIndex === 0} />
         <WorksSection />
         <ReviewsSection />
         <StagesSection />

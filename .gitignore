@@ -12,6 +12,14 @@ storybook-static/
 # User-provided source/reference materials
 /Referens/
 
+# Videos are hosted externally; do not commit local video files
+*.mp4
+*.mov
+*.webm
+*.m4v
+*.avi
+*.mkv
+
 # Environment
 .env
 .env.local
