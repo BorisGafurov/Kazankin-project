@@ -22,7 +22,6 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'hero.btnContact': 'Обсудить проект →',
     'hero.tagline': 'ВЫ СНИМАЕТЕ. Я СОБИРАЮ ИСТОРИЮ.',
     'hero.nextLink': 'СМОТРЕТЬ РАБОТЫ ↓',
-    'hero.editingLabel': 'видеомонтаж',
 
     'works.overline': '01 / ВИЗУАЛЬНЫЕ РАБОТЫ',
     'works.title': 'КАДРЫ, СОБРАННЫЕ В ИСТОРИИ.',
@@ -140,7 +139,6 @@ export const translations: Record<'ru' | 'en', Record<TranslationKey, string>> =
     'hero.btnContact': 'Discuss a project →',
     'hero.tagline': 'YOU SHOOT. I ASSEMBLE THE STORY.',
     'hero.nextLink': 'VIEW SELECTED WORK ↓',
-    'hero.editingLabel': 'video edit',
 
     'works.overline': '01 / SELECTED WORK',
     'works.title': 'FRAMES, SHAPED INTO STORIES.',

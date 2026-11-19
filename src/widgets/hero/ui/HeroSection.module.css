@@ -81,14 +81,6 @@
   color: var(--color-muted-on-dark-soft);
 }
 
-.editingLabel {
-  color: var(--color-light-beige);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: var(--tracking-wider);
-  text-transform: none;
-}
-
 .nextLink {
   color: var(--color-light-beige);
   font-weight: 600;

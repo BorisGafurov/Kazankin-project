@@ -106,9 +106,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, isActive }
             <span className={styles.tagline} data-sand-target="true">
               {t('hero.tagline')}
             </span>
-            <span className={styles.editingLabel} data-sand-target="true">
-              {t('hero.editingLabel')}
-            </span>
           </div>
           <button
             type="button"
