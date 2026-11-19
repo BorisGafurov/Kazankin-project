@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/shared/lib/i18n';
 import { Section, Container, Heading, Text, Button, Stack } from '@/shared/ui';
 import styles from './HeroSection.module.css';
@@ -13,6 +13,7 @@ export interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, isActive }) => {
   const { t } = useI18n();
+  const backgroundVideoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches
   );
@@ -36,17 +37,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, isActive }
     };
   }, []);
 
-  const showBackgroundVideo = isActive && !prefersReducedMotion;
+  const showBackgroundVideo = !prefersReducedMotion;
   const videoSrc = `https://s3.twcstorage.ru/c8925614-a849-4c93-a31d-76171d3611b7/videos/hero/${isMobile ? 'hero-mobile.mp4' : 'hero-desktop.mp4'}`;
+
+  useEffect(() => {
+    const video = backgroundVideoRef.current;
+    if (!video) return;
+
+    if (isActive) {
+      void video.play().catch(() => undefined);
+    } else {
+      video.pause();
+    }
+  }, [isActive, videoSrc]);
 
   return (
     <Section id="hero" theme="dark" sectionIndex={0} className={styles.heroSection}>
       {showBackgroundVideo && (
         <video
+          ref={backgroundVideoRef}
           key={videoSrc}
           className={styles.backgroundVideo}
           src={videoSrc}
-          autoPlay
+          autoPlay={isActive}
           muted
           loop
           playsInline
