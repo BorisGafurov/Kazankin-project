@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useI18n } from '@/shared/lib/i18n';
+import { signalSplashVideoReady } from '@/shared/lib/media/splashVideoReady';
 import { Section, Container, Heading, Text, Button, Stack } from '@/shared/ui';
 import styles from './HeroSection.module.css';
 
@@ -42,14 +43,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, isActive }
 
   useEffect(() => {
     const video = backgroundVideoRef.current;
-    if (!video) return;
+    if (!video) {
+      if (prefersReducedMotion) signalSplashVideoReady();
+      return;
+    }
 
     if (isActive) {
       void video.play().catch(() => undefined);
     } else {
       video.pause();
     }
-  }, [isActive, videoSrc]);
+  }, [isActive, prefersReducedMotion, videoSrc]);
 
   return (
     <Section id="hero" theme="dark" sectionIndex={0} className={styles.heroSection}>
@@ -63,9 +67,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, isActive }
           muted
           loop
           playsInline
-          preload="none"
+          preload="auto"
           aria-hidden="true"
           tabIndex={-1}
+          onLoadedData={signalSplashVideoReady}
+          onError={signalSplashVideoReady}
         />
       )}
 
@@ -96,9 +102,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, isActive }
 
       <Container size="md">
         <div className={styles.footerBar}>
-          <span className={styles.tagline} data-sand-target="true">
-            {t('hero.tagline')}
-          </span>
+          <div className={styles.footerCopy}>
+            <span className={styles.tagline} data-sand-target="true">
+              {t('hero.tagline')}
+            </span>
+            <span className={styles.editingLabel} data-sand-target="true">
+              {t('hero.editingLabel')}
+            </span>
+          </div>
           <button
             type="button"
             className={styles.nextLink}

@@ -70,9 +70,23 @@
   z-index: 1;
 }
 
+.footerCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .tagline {
   font-weight: 500;
   color: var(--color-muted-on-dark-soft);
+}
+
+.editingLabel {
+  color: var(--color-light-beige);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: none;
 }
 
 .nextLink {

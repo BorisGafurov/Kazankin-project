@@ -11,19 +11,27 @@ interface I18nContextType {
 
 const I18nContext = createContext<I18nContextType | null>(null);
 
+const getInitialLanguage = (): Language => {
+  if (typeof window === 'undefined') return 'ru';
+
+  try {
+    const saved = window.localStorage.getItem('kazankin_lang');
+    if (saved === 'ru' || saved === 'en') return saved;
+  } catch {
+    // Continue with the browser language when localStorage is unavailable.
+  }
+
+  const browserLanguage = window.navigator.languages?.[0] ?? window.navigator.language ?? '';
+  return browserLanguage.toLowerCase().startsWith('ru') ? 'ru' : 'en';
+};
+
 export const I18nProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [lang, setLangState] = useState<Language>('ru');
+  const [lang, setLangState] = useState<Language>(getInitialLanguage);
   const [isSwitching, setIsSwitching] = useState<boolean>(false);
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem('kazankin_lang') as Language;
-      if (saved === 'ru' || saved === 'en') {
-        setLangState(saved);
-        document.documentElement.lang = saved;
-      }
-    } catch (_) {}
-  }, []);
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const setLang = useCallback((nextLang: Language) => {
     if (nextLang === lang || isSwitching) return;
@@ -31,7 +39,9 @@ export const I18nProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     try {
       localStorage.setItem('kazankin_lang', nextLang);
-    } catch (_) {}
+    } catch {
+      // Language switching remains available when localStorage is unavailable.
+    }
 
     document.documentElement.lang = nextLang;
 

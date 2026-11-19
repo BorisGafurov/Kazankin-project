@@ -31,12 +31,14 @@
 .playerFrame {
   position: relative;
   width: 100%;
+  margin-inline: auto;
 }
 
 .videoViewport {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: var(--video-ratio, 16 / 9);
+  max-height: calc(100dvh - 220px);
   overflow: hidden;
   background: var(--color-warm-black);
   border: 1px solid var(--color-border-on-dark);
@@ -57,7 +59,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
@@ -351,16 +353,17 @@
   width: 100vw;
   height: 100vh;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: clamp(12px, 3vw, 40px);
   background: var(--color-warm-black);
 }
 
 .playerFrame:fullscreen .videoViewport {
-  width: 100%;
-  max-height: calc(100vh - 160px);
+  width: var(--fullscreen-video-width, 100%);
+  max-height: max(120px, calc(100dvh - 180px));
   margin: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: var(--video-ratio, 16 / 9);
 }
 
 .playerFrame:fullscreen .controlsDock {
@@ -468,7 +471,7 @@
   }
 
   .playerFrame:fullscreen .videoViewport {
-    max-height: calc(100vh - 170px);
+    max-height: max(120px, calc(100dvh - 180px));
   }
 }
 

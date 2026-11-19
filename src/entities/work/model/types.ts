@@ -1,18 +1,35 @@
-import { TranslationKey } from '@/shared/lib/i18n';
+import { Language, TranslationKey } from '@/shared/lib/i18n';
 
 export interface WorkCase {
   id: string;
   imageSrc: string;
-  /** Относительный путь к ролику в public/; пока источник не задан, плеер показывает обложку-заглушку. */
+  imageSrcByLanguage?: Partial<Record<Language, string>>;
+  /** Публичный URL полноценного видео, открываемого по нажатию на карточку. */
   videoSrc?: string;
+  /** Публичный URL короткого/предпросмотрового видео карточки. */
+  previewVideoSrc?: string;
+  /** Известное соотношение сторон основного ролика для правильной геометрии до загрузки metadata. */
+  videoAspectRatio?: number;
   titleKey: TranslationKey;
   categoryKey: TranslationKey;
 }
 
+const WORK_VIDEO_BASE = 'https://s3.twcstorage.ru/c8925614-a849-4c93-a31d-76171d3611b7/videos/works';
+
+export const getWorkImageSrc = (work: WorkCase, language: Language): string =>
+  work.imageSrcByLanguage?.[language] ?? work.imageSrc;
+
 export const WORK_CASES: WorkCase[] = [
   {
-    id: 'redemption',
-    imageSrc: '/images/works/redemption.jpg',
+    id: 'kate-kravchenko',
+    imageSrc: '/images/works/kate-kravchenko-ru.jpg',
+    imageSrcByLanguage: {
+      ru: '/images/works/kate-kravchenko-ru.jpg',
+      en: '/images/works/kate-kravchenko-en.jpg',
+    },
+    previewVideoSrc: `${WORK_VIDEO_BASE}/kate-kravchenko-preview.mp4`,
+    videoSrc: `${WORK_VIDEO_BASE}/kate-kravchenko-full.mp4`,
+    videoAspectRatio: 9 / 16,
     titleKey: 'works.item1.title',
     categoryKey: 'works.item1.category',
   },

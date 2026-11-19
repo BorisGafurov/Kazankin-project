@@ -20,6 +20,7 @@ export type TranslationKey =
   | 'hero.btnContact'
   | 'hero.tagline'
   | 'hero.nextLink'
+  | 'hero.editingLabel'
   | 'works.overline'
   | 'works.title'
   | 'works.description'

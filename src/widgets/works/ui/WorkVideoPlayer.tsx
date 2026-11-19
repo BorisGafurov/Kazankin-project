@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { WorkCase } from '@/entities/work/model/types';
+import { WorkCase, getWorkImageSrc } from '@/entities/work/model/types';
 import { useI18n } from '@/shared/lib/i18n';
 import styles from './WorkVideoPlayer.module.css';
 
@@ -66,13 +66,33 @@ const resolveAssetUrl = (path: string) => {
   return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
 };
 
+interface ViewportSize {
+  width: number;
+  height: number;
+}
+
+const readViewportSize = (): ViewportSize => typeof window === 'undefined'
+  ? { width: 1200, height: 900 }
+  : { width: window.innerWidth, height: window.innerHeight };
+
+const getPlayerWidth = (ratio: number, viewport: ViewportSize, fullscreen: boolean): number => {
+  const padding = fullscreen
+    ? (viewport.width <= 640 ? 10 : Math.min(40, Math.max(12, viewport.width * 0.03)))
+    : Math.min(56, Math.max(14, viewport.width * 0.04));
+  const maxWidth = fullscreen
+    ? viewport.width - padding * 2
+    : Math.min(1200, viewport.width - padding * 2);
+  const maxHeight = Math.max(120, viewport.height - (fullscreen ? 180 : 260));
+  return Math.max(0, Math.min(maxWidth, maxHeight * ratio));
+};
+
 export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
   work,
   isOpen,
   onClose,
   onCloseComplete,
 }) => {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const titleId = useId();
   const videoRef = useRef<HTMLVideoElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -86,9 +106,16 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasMediaError, setHasMediaError] = useState(false);
+  const [viewportSize, setViewportSize] = useState<ViewportSize>(readViewportSize);
+  const [detectedVideoRatio, setDetectedVideoRatio] = useState<{ src: string; ratio: number } | null>(null);
 
   const videoSrc = work?.videoSrc ? resolveAssetUrl(work.videoSrc) : undefined;
-  const posterSrc = work ? resolveAssetUrl(work.imageSrc) : undefined;
+  const posterSrc = work ? resolveAssetUrl(getWorkImageSrc(work, lang)) : undefined;
+  const videoAspectRatio = detectedVideoRatio && detectedVideoRatio.src === videoSrc
+    ? detectedVideoRatio.ratio
+    : (work?.videoAspectRatio ?? 16 / 9);
+  const playerWidth = getPlayerWidth(videoAspectRatio, viewportSize, isFullscreen);
+  const fullscreenVideoWidth = getPlayerWidth(videoAspectRatio, viewportSize, true);
   const canControlVideo = Boolean(videoSrc) && !hasMediaError;
   const canSeek = canControlVideo && duration > 0;
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
@@ -100,6 +127,16 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
       // Storage can be unavailable in private or restricted browsing contexts.
     }
   }, [audioPreferences]);
+
+  useEffect(() => {
+    const updateViewportSize = () => setViewportSize(readViewportSize());
+    window.addEventListener('resize', updateViewportSize);
+    window.addEventListener('orientationchange', updateViewportSize);
+    return () => {
+      window.removeEventListener('resize', updateViewportSize);
+      window.removeEventListener('orientationchange', updateViewportSize);
+    };
+  }, []);
 
   useEffect(() => {
     if (!work || !isOpen) return undefined;
@@ -124,6 +161,7 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
     setDuration(0);
     setIsPlaying(false);
     setHasMediaError(false);
+    setDetectedVideoRatio(null);
   }, [work?.id, videoSrc]);
 
   useEffect(() => {
@@ -318,7 +356,15 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
         tabIndex={-1}
         onKeyDownCapture={handleKeyDownCapture}
       >
-        <div ref={playerFrameRef} className={styles.playerFrame}>
+        <div
+          ref={playerFrameRef}
+          className={styles.playerFrame}
+          style={{
+            '--video-ratio': videoAspectRatio,
+            '--fullscreen-video-width': `${fullscreenVideoWidth}px`,
+            width: isFullscreen ? '100vw' : `${playerWidth}px`,
+          } as React.CSSProperties}
+        >
           <div className={styles.videoViewport}>
             {videoSrc ? (
               <video
@@ -333,7 +379,13 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
                   setCurrentTime(0);
                   setHasMediaError(false);
                 }}
-                onLoadedMetadata={(event) => setDuration(Number.isFinite(event.currentTarget.duration) ? event.currentTarget.duration : 0)}
+                onLoadedMetadata={(event) => {
+                  const video = event.currentTarget;
+                  setDuration(Number.isFinite(video.duration) ? video.duration : 0);
+                  if (videoSrc && video.videoWidth > 0 && video.videoHeight > 0) {
+                    setDetectedVideoRatio({ src: videoSrc, ratio: video.videoWidth / video.videoHeight });
+                  }
+                }}
                 onDurationChange={(event) => setDuration(Number.isFinite(event.currentTarget.duration) ? event.currentTarget.duration : 0)}
                 onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
                 onPlay={() => setIsPlaying(true)}
