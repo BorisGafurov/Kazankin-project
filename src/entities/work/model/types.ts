@@ -37,6 +37,10 @@ export const WORK_CASES: WorkCase[] = [
   {
     id: 'choreography',
     imageSrc: `${WORK_COVER_BASE}/horeo%20RU.png`,
+    imageSrcByLanguage: {
+      ru: `${WORK_COVER_BASE}/horeo%20RU.png`,
+      en: `${WORK_COVER_BASE}/horeo%20EN.png`,
+    },
     titleKey: 'works.item2.title',
     categoryKey: 'works.item2.category',
   },
