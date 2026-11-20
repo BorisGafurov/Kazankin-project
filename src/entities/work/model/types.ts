@@ -29,7 +29,7 @@ export const WORK_CASES: WorkCase[] = [
       en: `${WORK_COVER_BASE}/KateKravchenko_EN.png`,
     },
     previewVideoSrc: `${WORK_VIDEO_BASE}/kate-kravchenko-preview.mp4`,
-    videoSrc: `${WORK_VIDEO_BASE}/vo-pole-bereza-full.mp4`,
+    videoSrc: `${WORK_VIDEO_BASE}/kate-kravchenko-full.mp4`,
     videoAspectRatio: 9 / 16,
     titleKey: 'works.item1.title',
     categoryKey: 'works.item1.category',
