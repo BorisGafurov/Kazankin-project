@@ -36,6 +36,8 @@ const DEFAULT_AUDIO_PREFERENCES: AudioPreferences = {
   lastVolume: 0.8,
 };
 
+const PLAYBACK_OVERLAY_HIDE_DELAY_MS = 1500;
+
 const readAudioPreferences = (): AudioPreferences => {
   if (typeof window === 'undefined') return DEFAULT_AUDIO_PREFERENCES;
 
@@ -94,8 +96,13 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
 }) => {
   const { t, lang } = useI18n();
   const titleId = useId();
+  const volumeSliderId = useId();
   const videoRef = useRef<HTMLVideoElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const playbackOverlayButtonRef = useRef<HTMLButtonElement>(null);
+  const controlsPlaybackButtonRef = useRef<HTMLButtonElement>(null);
+  const volumeControlRef = useRef<HTMLDivElement>(null);
+  const volumeButtonRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLElement>(null);
   const playerFrameRef = useRef<HTMLDivElement>(null);
   const [audioPreferences, setAudioPreferences] = useState<AudioPreferences>(readAudioPreferences);
@@ -104,10 +111,15 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isVideoPointerActive, setIsVideoPointerActive] = useState(false);
+  const [isVolumeSliderOpen, setIsVolumeSliderOpen] = useState(false);
+  const [isPlaybackButtonFocused, setIsPlaybackButtonFocused] = useState(false);
+  const isPlaybackButtonFocusedRef = useRef(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasMediaError, setHasMediaError] = useState(false);
   const [viewportSize, setViewportSize] = useState<ViewportSize>(readViewportSize);
   const [detectedVideoRatio, setDetectedVideoRatio] = useState<{ src: string; ratio: number } | null>(null);
+  const playbackOverlayHideTimerRef = useRef<number | null>(null);
 
   const videoSrc = work?.videoSrc ? resolveAssetUrl(work.videoSrc) : undefined;
   const posterSrc = work ? resolveAssetUrl(getWorkImageSrc(work, lang)) : undefined;
@@ -119,6 +131,25 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
   const canControlVideo = Boolean(videoSrc) && !hasMediaError;
   const canSeek = canControlVideo && duration > 0;
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
+  const isPlaybackOverlayVisible = isOpen
+    && canControlVideo
+    && (!isPlaying || isVideoPointerActive || isPlaybackButtonFocused);
+
+  const clearPlaybackOverlayHideTimer = () => {
+    if (playbackOverlayHideTimerRef.current === null) return;
+    window.clearTimeout(playbackOverlayHideTimerRef.current);
+    playbackOverlayHideTimerRef.current = null;
+  };
+
+  const closeVolumeSlider = () => {
+    if (
+      volumeControlRef.current?.contains(document.activeElement)
+      && document.activeElement !== volumeButtonRef.current
+    ) {
+      volumeButtonRef.current?.focus();
+    }
+    setIsVolumeSliderOpen(false);
+  };
 
   useEffect(() => {
     try {
@@ -137,6 +168,25 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
       window.removeEventListener('orientationchange', updateViewportSize);
     };
   }, []);
+
+  useEffect(() => () => {
+    if (playbackOverlayHideTimerRef.current !== null) {
+      window.clearTimeout(playbackOverlayHideTimerRef.current);
+      playbackOverlayHideTimerRef.current = null;
+    }
+  }, [isOpen, work?.id, videoSrc, canControlVideo]);
+
+  useEffect(() => {
+    if (!isVolumeSliderOpen) return undefined;
+
+    const closeOnOutsidePointerDown = (event: PointerEvent) => {
+      if (event.target instanceof Node && volumeControlRef.current?.contains(event.target)) return;
+      closeVolumeSlider();
+    };
+
+    document.addEventListener('pointerdown', closeOnOutsidePointerDown, true);
+    return () => document.removeEventListener('pointerdown', closeOnOutsidePointerDown, true);
+  }, [isVolumeSliderOpen]);
 
   useEffect(() => {
     if (!work || !isOpen) return undefined;
@@ -160,6 +210,14 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
     setCurrentTime(0);
     setDuration(0);
     setIsPlaying(false);
+    if (playbackOverlayHideTimerRef.current !== null) {
+      window.clearTimeout(playbackOverlayHideTimerRef.current);
+      playbackOverlayHideTimerRef.current = null;
+    }
+    setIsVideoPointerActive(false);
+    setIsVolumeSliderOpen(false);
+    isPlaybackButtonFocusedRef.current = false;
+    setIsPlaybackButtonFocused(false);
     setHasMediaError(false);
     setDetectedVideoRatio(null);
   }, [work?.id, videoSrc]);
@@ -179,8 +237,13 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
   if (!work || typeof document === 'undefined') return null;
 
   const requestClose = () => {
+    clearPlaybackOverlayHideTimer();
     videoRef.current?.pause();
     setIsPlaying(false);
+    setIsVideoPointerActive(false);
+    setIsVolumeSliderOpen(false);
+    isPlaybackButtonFocusedRef.current = false;
+    setIsPlaybackButtonFocused(false);
     setIsFullscreen(false);
     if (document.fullscreenElement === playerFrameRef.current) {
       void document.exitFullscreen().catch(() => undefined);
@@ -261,6 +324,27 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
     } else {
       video.pause();
     }
+  };
+
+  const handleVideoPointerEnter = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch') return;
+    clearPlaybackOverlayHideTimer();
+    if (!isOpen || !canControlVideo) return;
+    setIsVideoPointerActive(true);
+  };
+
+  const handleVideoPointerLeave = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch') return;
+    clearPlaybackOverlayHideTimer();
+    if (!isOpen || !canControlVideo) return;
+    playbackOverlayHideTimerRef.current = window.setTimeout(() => {
+      const overlayButton = playbackOverlayButtonRef.current;
+      if (!isPlaybackButtonFocusedRef.current && overlayButton === document.activeElement) {
+        controlsPlaybackButtonRef.current?.focus();
+      }
+      setIsVideoPointerActive(false);
+      playbackOverlayHideTimerRef.current = null;
+    }, PLAYBACK_OVERLAY_HIDE_DELAY_MS);
   };
 
   const seekBy = (offset: number) => {
@@ -365,7 +449,11 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
             width: isFullscreen ? '100vw' : `${playerWidth}px`,
           } as React.CSSProperties}
         >
-          <div className={styles.videoViewport}>
+          <div
+            className={styles.videoViewport}
+            onPointerEnter={handleVideoPointerEnter}
+            onPointerLeave={handleVideoPointerLeave}
+          >
             {videoSrc ? (
               <video
                 ref={videoRef}
@@ -375,6 +463,7 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
                 poster={posterSrc}
                 preload="metadata"
                 playsInline
+                onClick={() => { void togglePlayback(); }}
                 onLoadStart={() => {
                   setCurrentTime(0);
                   setHasMediaError(false);
@@ -396,6 +485,38 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
               />
             ) : (
               <img className={styles.placeholderPoster} src={posterSrc} alt="" />
+            )}
+
+            {videoSrc && (
+              <button
+                ref={playbackOverlayButtonRef}
+                type="button"
+                className={styles.playbackOverlay}
+                data-visible={isPlaybackOverlayVisible}
+                aria-label={isPlaying ? t('player.pause') : t('player.play')}
+                aria-controls={`${titleId}-video`}
+                aria-hidden={!isPlaybackOverlayVisible}
+                aria-pressed={isPlaying}
+                tabIndex={isPlaybackOverlayVisible ? 0 : -1}
+                disabled={!isOpen || !canControlVideo}
+                onFocus={(event) => {
+                  if (event.currentTarget.matches(':focus-visible')) {
+                    isPlaybackButtonFocusedRef.current = true;
+                    setIsPlaybackButtonFocused(true);
+                  }
+                }}
+                onBlur={() => {
+                  isPlaybackButtonFocusedRef.current = false;
+                  setIsPlaybackButtonFocused(false);
+                }}
+                onClick={togglePlayback}
+              >
+                {isPlaying ? (
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15L19 12 7 4.5z" /></svg>
+                )}
+              </button>
             )}
 
             <div className={styles.mediaHeading}>
@@ -442,7 +563,8 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
               <div className={styles.transportControls}>
                 <button
                   type="button"
-                  className={styles.controlButton}
+                  ref={controlsPlaybackButtonRef}
+                  className={`${styles.controlButton} ${styles.playbackControl}`}
                   aria-label={isPlaying ? t('player.pause') : t('player.play')}
                   aria-keyshortcuts="Space"
                   aria-controls={`${titleId}-video`}
@@ -485,38 +607,68 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
               </div>
 
               <div className={styles.audioControls}>
-                <button
-                  type="button"
-                  className={styles.controlButton}
-                  aria-label={isMuted || volume === 0 ? t('player.unmute') : t('player.mute')}
-                  aria-keyshortcuts="M"
-                  aria-pressed={isMuted || volume === 0}
-                  disabled={!isOpen || !canControlVideo}
-                  onClick={toggleMute}
+                <div
+                  ref={volumeControlRef}
+                  className={styles.volumeControl}
+                  onPointerEnter={(event) => {
+                    if (event.pointerType !== 'touch') setIsVolumeSliderOpen(true);
+                  }}
+                  onPointerLeave={(event) => {
+                    if (event.pointerType === 'touch') return;
+                    const keyboardFocused = volumeControlRef.current?.querySelector(':focus-visible');
+                    if (!keyboardFocused) closeVolumeSlider();
+                  }}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                      closeVolumeSlider();
+                    }
+                  }}
                 >
-                  {isMuted || volume === 0 ? (
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 9v6h4l5 4V5L8 9H4zM17 9l5 6m0-6-5 6" />
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 9v6h4l5 4V5L8 9H4zM16 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12" />
-                    </svg>
-                  )}
-                </button>
-                <input
-                  className={styles.volumeSlider}
-                  type="range"
-                  min={0}
-                  max={1}
-                  step={0.01}
-                  value={isMuted ? 0 : volume}
-                  style={{ '--volume': `${(isMuted ? 0 : volume) * 100}%` } as React.CSSProperties}
-                  aria-label={t('player.volume')}
-                  aria-controls={`${titleId}-video`}
-                  disabled={!isOpen || !canControlVideo}
-                  onChange={handleVolumeChange}
-                />
+                  <button
+                    ref={volumeButtonRef}
+                    type="button"
+                    className={`${styles.controlButton} ${styles.volumeButton}`}
+                    aria-label={t('player.volume')}
+                    aria-expanded={isVolumeSliderOpen}
+                    aria-controls={volumeSliderId}
+                    disabled={!isOpen || !canControlVideo}
+                    onFocus={(event) => {
+                      if (event.currentTarget.matches(':focus-visible')) setIsVolumeSliderOpen(true);
+                    }}
+                    onClick={() => setIsVolumeSliderOpen((open) => !open)}
+                  >
+                    {isMuted || volume === 0 ? (
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 9v6h4l5 4V5L8 9H4zM17 9l5 6m0-6-5 6" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 9v6h4l5 4V5L8 9H4zM16 9a4 4 0 0 1 0 6m2-9a8 8 0 0 1 0 12" />
+                      </svg>
+                    )}
+                  </button>
+                  <div
+                    className={styles.volumePopover}
+                    data-open={isVolumeSliderOpen}
+                    aria-hidden={!isVolumeSliderOpen}
+                  >
+                    <input
+                      id={volumeSliderId}
+                      className={styles.volumeSlider}
+                      type="range"
+                      min={0}
+                      max={1}
+                      step={0.01}
+                      value={isMuted ? 0 : volume}
+                      style={{ '--volume': `${(isMuted ? 0 : volume) * 100}%` } as React.CSSProperties}
+                      aria-label={t('player.volume')}
+                      aria-controls={`${titleId}-video`}
+                      tabIndex={isVolumeSliderOpen ? 0 : -1}
+                      disabled={!isOpen || !canControlVideo}
+                      onChange={handleVolumeChange}
+                    />
+                  </div>
+                </div>
                 <span className={styles.timeReadout} aria-label={t('player.time')}>
                   {formatTime(currentTime)} <span aria-hidden="true">/</span> {formatTime(duration)}
                 </span>
