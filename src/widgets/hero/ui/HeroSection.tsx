@@ -107,14 +107,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, isActive }
               {t('hero.tagline')}
             </span>
           </div>
-          <button
-            type="button"
-            className={styles.nextLink}
-            onClick={() => onNavigate(1)}
-            data-sand-target="true"
-          >
-            {t('hero.nextLink')}
-          </button>
         </div>
       </Container>
     </Section>

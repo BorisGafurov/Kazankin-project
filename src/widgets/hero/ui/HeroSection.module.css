@@ -81,18 +81,6 @@
   color: var(--color-muted-on-dark-soft);
 }
 
-.nextLink {
-  color: var(--color-light-beige);
-  font-weight: 600;
-  transition: color var(--transition-fast);
-  cursor: pointer;
-  text-align: right;
-}
-
-.nextLink:hover {
-  color: var(--color-card-bg);
-}
-
 @media (max-width: 640px) {
   .heroContent {
     align-items: center;
@@ -101,10 +89,6 @@
   .footerBar {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .nextLink {
-    text-align: left;
   }
 }
 
