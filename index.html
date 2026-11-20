@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Дмитрий Казанкин — видеомонтаж и постобработка</title>
+  <meta name="description" content="Портфолио Дмитрия Казанкина: монтаж видео, работа со звуком, цветом, графикой и субтитрами. От отснятого материала до цельной истории.">
+  <meta name="keywords" content="видеомонтаж, монтаж видео, саунд-дизайн, цветокоррекция, графика, субтитры, Дмитрий Казанкин, Саратов, удалённо">
+  <meta name="author" content="Дмитрий Казанкин">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Дмитрий Казанкин — видеомонтаж и постобработка">
+  <meta property="og:description" content="От отснятого материала до цельной истории. Монтаж, звук, цвет и графика.">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <meta name="theme-color" content="#100D0C">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" type="image/png" sizes="512x512" href="./favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="preload" href="./fonts/DrukWideCyr-Bold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="./fonts/DrukTextWideCyr-Medium.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="./fonts/FindSansPro-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face {
+      font-family: 'Druk Wide Cyr';
+      src: url('./fonts/DrukWideCyr-Bold.otf') format('opentype');
+      font-style: normal;
+      font-weight: 700 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Druk Text Wide Cyr';
+      src: url('./fonts/DrukTextWideCyr-Medium.otf') format('opentype');
+      font-style: normal;
+      font-weight: 500 800;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Find Sans Pro';
+      src: url('./fonts/FindSansPro-Light.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Find Sans Pro';
+      src: url('./fonts/FindSansPro-Regular.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Find Sans Pro';
+      src: url('./fonts/FindSansPro-Medium.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 500 600;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Find Sans Pro';
+      src: url('./fonts/FindSansPro-Bold.ttf') format('truetype');
+      font-style: normal;
+      font-weight: 700 900;
+      font-display: swap;
+    }
+    :root, html, body {
+      background: #100D0C;
+      color-scheme: dark;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #root {
+      background: #100D0C;
+      width: 100%;
+      height: 100%;
+    }
+    #boot-splash {
+      position: fixed;
+      z-index: 2147483647;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: #100D0C;
+      animation: bootSplashExit 300ms ease-in 2.2s forwards;
+    }
+    #boot-splash__content {
+      width: 100%;
+      text-align: center;
+    }
+    #boot-splash__logo {
+      display: block;
+      color: #D1B39C;
+      font-family: 'Druk Wide Cyr', 'Arial Narrow', sans-serif;
+      font-size: clamp(2rem, 9vw, 7.5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.035em;
+      white-space: nowrap;
+      animation: bootLogoEnter 900ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+    }
+    #boot-splash__rule {
+      display: block;
+      width: min(32vw, 260px);
+      height: 2px;
+      margin: 20px auto 0;
+      background: #57191D;
+      transform-origin: left center;
+      animation: bootRuleEnter 700ms ease-out 180ms both;
+    }
+    #boot-splash__subtitle {
+      display: block;
+      width: fit-content;
+      margin: 12px auto 0;
+      color: #F3EFE7;
+      font-family: 'Druk Text Wide Cyr', 'Find Sans Pro', sans-serif;
+      font-size: clamp(0.88rem, 1.6vw, 1.2rem);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      transform-origin: top center;
+      animation: bootSubtitleReveal 520ms cubic-bezier(0.2, 0.75, 0.25, 1) 880ms both;
+    }
+    @keyframes bootLogoEnter {
+      from { transform: translateY(10px) scale(0.96); }
+      to { transform: translateY(0) scale(1); }
+    }
+    @keyframes bootRuleEnter {
+      from { opacity: 0; transform: scaleX(0); }
+      to { opacity: 1; transform: scaleX(1); }
+    }
+    @keyframes bootSubtitleReveal {
+      from {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+        transform: translateY(-0.2em);
+      }
+      to {
+        opacity: 1;
+        clip-path: inset(0);
+        transform: translateY(0);
+      }
+    }
+    @keyframes bootSplashExit {
+      to { opacity: 0; visibility: hidden; }
+    }
+    @media (max-width: 480px) {
+      #boot-splash__logo {
+        font-size: clamp(1.6rem, 10vw, 3.25rem);
+        letter-spacing: 0.02em;
+      }
+      #boot-splash__rule {
+        width: min(42vw, 180px);
+        margin-top: 14px;
+      }
+      #boot-splash__subtitle {
+        margin-top: 10px;
+        font-size: clamp(0.8rem, 3vw, 1rem);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #boot-splash,
+      #boot-splash__logo,
+      #boot-splash__rule,
+      #boot-splash__subtitle {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Дмитрий Казанкин",
+    "jobTitle": "Видеомонтажёр",
+    "description": "Видеомонтаж, работа со звуком и цветом, графика и субтитры.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Саратов",
+      "addressCountry": "RU"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Услуги видеомонтажа",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Монтаж видео" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Обработка звука и подбор музыки" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Цветокоррекция" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Графика и субтитры" } }
+      ]
+    }
+  }
+  </script>
+  <script type="module" crossorigin src="./assets/index-DtxOMOab.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DvSL3oVx.css">
+</head>
+<body>
+  <div id="boot-splash" role="status" aria-label="Загрузка сайта KAZANKIN">
+    <div id="boot-splash__content">
+      <span id="boot-splash__logo" aria-hidden="true">KAZANKIN</span>
+      <span id="boot-splash__rule" aria-hidden="true"></span>
+      <span id="boot-splash__subtitle" aria-hidden="true">Видеомонтаж</span>
+    </div>
+  </div>
+  <div id="root" inert aria-hidden="true"></div>
+  <script>
+    (() => {
+      const splash = document.getElementById('boot-splash');
+      const appRoot = document.getElementById('root');
+      const splashSubtitle = document.getElementById('boot-splash__subtitle');
+      let language = '';
+      try {
+        const savedLanguage = window.localStorage.getItem('kazankin_lang');
+        if (savedLanguage === 'ru' || savedLanguage === 'en') language = savedLanguage;
+      } catch {
+        // Fall back to the browser language when localStorage is unavailable.
+      }
+      if (!language) {
+        const browserLanguage = window.navigator.languages?.[0] ?? window.navigator.language ?? '';
+        language = browserLanguage.toLowerCase().startsWith('ru') ? 'ru' : 'en';
+      }
+      const subtitle = language === 'ru' ? 'Видеомонтаж' : 'Video edit';
+      if (splashSubtitle) splashSubtitle.textContent = subtitle;
+      document.documentElement.lang = language;
+      splash?.setAttribute(
+        'aria-label',
+        language === 'ru' ? 'Загрузка сайта KAZANKIN — Видеомонтаж' : 'Loading KAZANKIN — Video edit'
+      );
+      window.setTimeout(() => {
+        splash?.remove();
+        appRoot?.removeAttribute('inert');
+        appRoot?.removeAttribute('aria-hidden');
+      }, 2500);
+    })();
+  </script>
+</body>
+</html>
