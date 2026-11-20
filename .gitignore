@@ -33,6 +33,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Temporary work & agent caches
+.work/
+.manus/
+
 # System & Editor
 .DS_Store
 Thumbs.db

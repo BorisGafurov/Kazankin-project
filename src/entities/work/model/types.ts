@@ -41,6 +41,8 @@ export const WORK_CASES: WorkCase[] = [
       ru: `${WORK_COVER_BASE}/horeo%20RU.png`,
       en: `${WORK_COVER_BASE}/horeo%20EN.png`,
     },
+    previewVideoSrc: `${WORK_VIDEO_BASE}/vo-pole-bereza-preview.mp4`,
+    videoSrc: `${WORK_VIDEO_BASE}/vo-pole-bereza-full.mp4`,
     titleKey: 'works.item2.title',
     categoryKey: 'works.item2.category',
   },

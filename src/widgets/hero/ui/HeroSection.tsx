@@ -39,7 +39,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, isActive }
   }, []);
 
   const showBackgroundVideo = !prefersReducedMotion;
-  const videoSrc = `https://s3.twcstorage.ru/c8925614-a849-4c93-a31d-76171d3611b7/videos/hero/${isMobile ? 'hero-mobile.mp4' : 'hero-desktop.mp4'}`;
+  const videoSrc = `https://s3.twcstorage.ru/c8925614-a849-4c93-a31d-76171d3611b7/KPV/hero/${isMobile ? 'hero-mobile.mp4' : 'hero-desktop.mp4'}`;
 
   useEffect(() => {
     const video = backgroundVideoRef.current;
