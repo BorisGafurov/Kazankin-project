@@ -9,7 +9,9 @@ const preloadSiteAssets = (): void => {
     const image = new Image();
     image.decoding = 'async';
     image.fetchPriority = 'low';
-    image.src = `${import.meta.env.BASE_URL}${imageSrc.replace(/^\/+/, '')}`;
+    image.src = /^(?:https?:)?\/\//i.test(imageSrc)
+      ? imageSrc
+      : `${import.meta.env.BASE_URL}${imageSrc.replace(/^\/+/, '')}`;
   });
 
   void document.fonts.load('700 1rem "Druk Wide Cyr"').catch(() => undefined);

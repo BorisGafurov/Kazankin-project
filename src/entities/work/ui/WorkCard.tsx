@@ -38,7 +38,10 @@ export const WorkCard: React.FC<WorkCardProps> = ({
   );
   const previewVideoRef = useRef<HTMLVideoElement>(null);
   const title = t(work.titleKey);
-  const imageSrc = `${import.meta.env.BASE_URL}${getWorkImageSrc(work, lang).replace(/^\/+/, '')}`;
+  const imagePath = getWorkImageSrc(work, lang);
+  const imageSrc = /^(?:https?:)?\/\//i.test(imagePath)
+    ? imagePath
+    : `${import.meta.env.BASE_URL}${imagePath.replace(/^\/+/, '')}`;
   const previewVideoSrc = work.previewVideoSrc;
   const shouldPlayPreview = Boolean(previewVideoSrc)
     && !pausePreview
