@@ -615,6 +615,10 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
                   }}
                   onPointerLeave={(event) => {
                     if (event.pointerType === 'touch') return;
+                    if (
+                      event.relatedTarget instanceof Node
+                      && event.currentTarget.contains(event.relatedTarget)
+                    ) return;
                     const keyboardFocused = volumeControlRef.current?.querySelector(':focus-visible');
                     if (!keyboardFocused) closeVolumeSlider();
                   }}
