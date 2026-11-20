@@ -199,7 +199,12 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
     const video = videoRef.current;
     if (!video || !work) return;
 
-    video.pause();
+    if (!isOpen) {
+      video.pause();
+      setIsPlaying(false);
+      return;
+    }
+
     try {
       video.currentTime = 0;
     } catch {
@@ -209,7 +214,6 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
     video.muted = isMuted;
     setCurrentTime(0);
     setDuration(0);
-    setIsPlaying(false);
     if (playbackOverlayHideTimerRef.current !== null) {
       window.clearTimeout(playbackOverlayHideTimerRef.current);
       playbackOverlayHideTimerRef.current = null;
@@ -220,7 +224,20 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
     setIsPlaybackButtonFocused(false);
     setHasMediaError(false);
     setDetectedVideoRatio(null);
-  }, [work?.id, videoSrc]);
+
+    if (videoSrc) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If browser restricts unmuted autoplay, retry muted or wait for user action
+          video.muted = true;
+          video.play().catch(() => {
+            setIsPlaying(false);
+          });
+        });
+      }
+    }
+  }, [isOpen, work?.id, videoSrc]);
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -462,6 +479,7 @@ export const WorkVideoPlayer: React.FC<WorkVideoPlayerProps> = ({
                 src={videoSrc}
                 poster={posterSrc}
                 preload="metadata"
+                autoPlay
                 playsInline
                 onClick={() => { void togglePlayback(); }}
                 onLoadStart={() => {
